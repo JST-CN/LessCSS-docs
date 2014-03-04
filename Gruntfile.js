@@ -46,14 +46,14 @@ module.exports = function(grunt) {
         // Metadata
         pkg: '<%= pkg %>',
         site: '<%= site %>',
-        data: ['<%= site.data %>/*.{json,yml}', 'content/**/*.json'],
+        data: ['<%= site.data %>/*.{json,yml}', 'content_zh/**/*.json'],
 
         // Extensions
         plugins: '<%= site.plugins %>',
         helpers: ['<%= site.helpers %>/*.js'],
 
         // Helper options
-        compose: {cwd: 'content'},
+        compose: {cwd: 'content_zh'},
         marked: {
           process: true,
           heading: '<%= site.markedtemplates %>/heading.tmpl',
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       },
       site: {
         options: {
-          partials: ['content/**/*.md'],
+          partials: ['content_zh/**/*.md'],
           permalinks: {preset: 'pretty'}
         },
         src: '<%= site.pages %>/*.hbs',

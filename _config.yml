@@ -17,7 +17,7 @@ date:             <%= new Date() %>
 styles:           styles
 
 # Content
-content:          content
+content:          content_zh
 
 # Templates
 templates:        templates
@@ -40,15 +40,15 @@ plugins:
 current_version:   <%= less.version %>
 
 # Site metadata
-brand:             lesscss.org
+brand:             lesscss.net
 title:             Less.js
-lead:              Less « The Dynamic Stylesheet Language
+lead:              Less « 动态样式语言
 description: >
-  Less extends CSS with dynamic behavior such as variables, mixins, operations and functions.
-  Less runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
+  Less为CSS添加了动态特性，如变量、混合、运算、函数等。
+  Less既可以在服务端编译（Node.js或者Rhino），也可以在客户端编译（现代浏览器）。
 
 # URLs
-homepage:          http://lesscss.org
+homepage:          http://lesscss.net
 repo:              <%= pkg.repository.url %>
 issues:            <%= pkg.bugs.url %>?&state=open
 download:
@@ -60,14 +60,14 @@ cdn:
 
 # SEO/SEM
 analytics:
-  alexa:           lpTeh1awA400OE
+  alexa:           false
   google:          false
   google_site_id:  false
 
 
 # Comments
 disqus:
-  enabled:        true
+  enabled:        false
   shortname:      <%= pkg.name %>
 
 # Social
