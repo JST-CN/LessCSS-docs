@@ -1,31 +1,31 @@
-## Contributing to the Documentation
+## 贡献文档
 
-**Formatting Standards**
+**格式规范**
 
-For consistency across all examples in the docs and to ensure that our code examples are readable, please follow these guidelines when contributing:
+为了文档中所有实例的一致性及确保我们代码示例的可读性，贡献时请遵循以下原则：
 
-* Four spaces for indentation, and always use proper indentation
-* Multiple-line formatting (one property and value per line)
-* Double quotes only, never single quotes
-* Always put a space after a property's colon (.e.g, `display: block;` and not `display:block;`)
-* End all lines with a semi-colon
-* For multiple, comma-separated selectors, place each selector on its own line
-* Attribute selectors, like `input[type="text"]` should always wrap the attribute's value in double quotes. This is important to do in your own code as well for consistency and safety (see this [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values) that can lead to XSS attacks)
-* When using HTML in your examples, use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags with _no trailing slash_)
-* All page files should have globally unique names regardless of where they are located in the repository
+* 合理的使用缩进，缩进格式为四个空格
+* 多行格式( 每行一个属性和对应的值 )
+* 请使用双引号，避免出现单引号
+* 在属性值冒号后面使用一个空格符( 例: `display: block;` 而不是 `display:block;` ) 
+* 每行请以分号结束
+* 对于多个用逗号分割的选择器，将每个选择器独立分为一行
+* 属性选择器, 例：`input[type="text"]` 应将属性值放在双引号之间. 这对确保您的代码一致性和安全性非常重要( 请参见 [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values)，可能导致 XSS 攻击 )
+* 当您的例子中有使用 HTML 时，请使用符合 HTML5 Doctype 的标签和元素( 例：自结束标签没有结尾的斜线 )
+* 所有的页面文件的名称应保持在整个库中的唯一性
 
-## Tools
+## 工具
 
 ### Assemble
 
 * Visit [Assemble's documentation](http://assemble.io/docs/) site to learn more about customization and configuration.
 * Markdown: [Markdown Cheatsheet](http://assemble.io/docs/Cheatsheet-Markdown.html)
 
-## Coding Style
+## 代码风格
 
-Examples:
+示例:
 
-**Good**
+**正确的**
 
 ```css
 body {
@@ -34,7 +34,7 @@ body {
 }
 ```
 
-**Bad**
+**错误的**
 
 ```css
 body {
@@ -43,14 +43,14 @@ font-size: 12px;
 }
 ```
 
-**Bad**
+**错误的**
 
 ```css
 body { padding-top: 80px; font-size: 12px }
 ```
 
-### Feature Requests, Bugs and Pull Requests
+### 功能需求, Bugs 提交及 Pull Requests
 
-* If you would like to request a feature, suggest an improvement, or report a bug, please [submit an Issue]({{ site.codeissues }}).
-* Feature requests are more likely to get attention if you include a clearly-described use case.
-* If you wish to submit a pull request, please [read this first]({{ site.codebasemaster }}CONTRIBUTING).md.
+* 如果你有新的功能需求、提出改进或报告BUG，请 [提交一个 Issue]({{ site.codeissues }}).
+* 功能需求请提供一个清楚的描述用例，以便更容易被重视.
+* 如果您想要提交 pull request，请[首先阅读此文档]({{ site.codebasemaster }}CONTRIBUTING).md
