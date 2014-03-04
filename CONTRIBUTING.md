@@ -51,6 +51,6 @@ body { padding-top: 80px; font-size: 12px }
 
 ### 功能需求, Bugs 提交及 Pull Requests
 
-* 如果你有新的功能需求、提出改进或报告BUG，请 [提交一个 Issue]({{ site.codeissues }}).
+* 如果你有新的功能需求、提出改进或报告BUG，请提交一个 Issue.
 * 功能需求请提供一个清楚的描述用例，以便更容易被重视.
-* 如果您想要提交 pull request，请[首先阅读此文档]({{ site.codebasemaster }}CONTRIBUTING).md
+* 如果您想要提交 pull request，请首先阅读此文档 CONTRIBUTING.md
