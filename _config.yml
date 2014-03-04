@@ -3,7 +3,7 @@
 # =============================================
 
 # Dest config
-root:             lesscss.net
+root:             _lesscss.net
 dest:             <%= site.root %>
 
 # Source config
