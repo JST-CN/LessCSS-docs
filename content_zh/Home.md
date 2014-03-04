@@ -1,6 +1,6 @@
-TODO - Things to incorporate maybe and then delete this page
+TODO -可能合并的待办事项,稍后删除这个页面.
 
-**External Resources**
+**外部资源**
 * Example Less Projects
 * [StackOverflow: Questions tagged with "Less"][stackoverflow]
 * [Sitepoint, "A Comprehensive Introduction to Less"][sitepoint-article]
