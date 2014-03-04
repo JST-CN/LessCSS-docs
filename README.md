@@ -46,7 +46,7 @@
 * 只使用双引号，不使用单引号
 * 在属性的冒号后始终放置一个空格（例如， `display: block;` 而不是 `display:block;`）
 * 所有行都要以分号结束
-* 属性选择器中的属性值应该始终用双引号包裹，比如 `input[type="text"]` 。在你自己的代码中这样做也是对一致性和安全性很重要的。（见这篇博客 [提交 不带引号的属性值](http://mathiasbynens.be/notes/unquoted-attribute-values) 中的 XSS 攻击）
+* 属性选择器中的属性值应该始终用双引号包裹，比如 `input[type="text"]` 。在你自己的代码中这样做也是对一致性和安全性很重要的。（见这篇博客 [提交不带引号的属性值](http://mathiasbynens.be/notes/unquoted-attribute-values) 中的 XSS 攻击）
 * 示例中使用HTML时，正确使用与HTML5 doctype对应的标签和元素的写法（例如，_自闭合标记_不写结束的斜杠）
 
 示例:
@@ -85,7 +85,7 @@ body { padding-top: 80px; font-size: 12px }
 
 ## 工具
 
-本文档站点使用 [Assemble](http://assemble.io) 工具构建。如有需要，请访问这个项目 [报告bugs ](https://github.com/assemble/assemble/issues?state=open)，或者自行了解更多关于使用和定制的知识。
+本文档站点使用 [Assemble](http://assemble.io) 工具构建。如有需要，请访问这个项目 [报告bugs](https://github.com/assemble/assemble/issues?state=open)，或者自行了解更多关于使用和定制的知识。
 
 ## 构建文档
 
@@ -95,7 +95,7 @@ body { padding-top: 80px; font-size: 12px }
 node data/utils/pkg && grunt
 ```
 
-## 许可证
+## 许可协议
 Copyright (c) 2014, Alexis Sellier, LESS Core Team, Contributors
 文档使用 [Creative Commons](./LICENSE-CC) 协议发布。
 文档源代码使用 [MIT License](./LICENSE-MIT) 协议发布。
