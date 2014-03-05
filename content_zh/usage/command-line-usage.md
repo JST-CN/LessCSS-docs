@@ -1,50 +1,50 @@
 ---
-title: Command Line Usage
+标题: 命令行使用
 ---
 
-> Compile `.less` files to `.css` using the command line
+> 使用命令行编译 `.less` 文件生产 `.css`文件
 
-<span class="warning">Heads up! If the command line isn't your thing, learn more about [GUIs for Less](#guis-for-less).</span>
+<span class="warning">注意! 如果命令行不是你的长处, 更多的去了解 [GUIs for Less](#guis-for-less).</span>
 
-### Installing lessc for use globally
+### 安装Lessc到全局使用
 
-Install with [npm](https://www.npmjs.org/)
+用[npm](https://www.npmjs.org/)工具包安装
 
 ```bash
 npm install less -g
 ```
 
-and then you will have the `lessc` command available globally. For a specific version (or tag) you can add `@VERSION` after our package name, e.g. `npm install less@1.6.2 -g`.
+然后你将可以使用 `lessc` 这个全局命令. 对于指定的版本(或者 标签) 你能在我们的安装包后添加 `@VERSION`, 例如. `npm install less@1.6.2 -g`.
 
-### Installing for node development
+### 安装到项目开发
 
-Alternatively if you don't use the compiler globally, you may be after
+另外如果你不使用全局编译器,你可能会
 
 ```bash
 npm i less --save-dev
 ```
 
-This will install the latest official version of lessc in your project folder, also adding it to the `devDependencies` in your project's `package.json`.
+该命令会安装最新的lessc官方版本到你的项目文件夹, 同时会把它添加到你项目`package.json`文件的`devDependencies`.
 
-Note that a [tilde version range][] will be automatically specified in `package.json`. This is good, as new patch releases of the latest version will be installable by npm.
+请注意,[波浪线版本范围][]将自动在package.json中指定。这是对的,因为最新版本发布的新补丁将由npm安装。
+#### lessc的测试版本
 
-#### Beta releases of lessc
+因为新功能将会定期的发布, lessc builds will be published to npm, tagged as. 这些版本_不会_作为`@latest`的正式发布,通常会带有个版本号或带`alpha/beta/release`字样的候选版本.
 
-Periodically, as new functionality is being developed, lessc builds will be published to npm, tagged as. These builds will _not_ be published as a `@latest` official release, and will typically have a build number or alpha/beta/release candidate designation.
+由于补丁发布是不间断的，我们会立即发布补丁版本和alpha/beta/候选版本将作为次要或主要版本升级（为了遵循[语义版本](http://semver.org/),我们会从1.4.0版本继续）。
+Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades .
 
-Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades (we endevour since 1.4.0 to follow [semantic versioning](http://semver.org/)).
+#### 安装lessc 未发布的开发版本
 
-#### Installing an unpublished development version of lessc
+如果你想安装一个前沿,lessc未发布的版本,按照说明指定一个[git的URL作为一个依赖][]和一定要指定一个实际的提交SHA(不是一个分支的名字)使用`commit-ish`。这将保证您的项目总是使用lessc的具体版本.
 
-If you want to install a bleeding-edge, unpublished version of lessc, follow the instructions for specifying a [git URL as a dependency][] and be sure to specify an actual commit SHA (not a branch name) as the `commit-ish`. This will guarantee that your project always uses that exact version of lessc.
-
-The specified git URL may be that of the official lessc repo or a fork.
+指定的git URL 可能就是官方lessc的repo或者一个fork.
 
 
 [tilde version range]: https://www.npmjs.org/doc/misc/semver.html#Ranges
 [git URL as a dependency]: https://npmjs.org/doc/json.html#Git-URLs-as-Dependencies
 
-### Server-Side and Command Line Usage
+### 服务器端命令行使用
 
 The binary included in this repository, `bin/lessc` works with [Node.js](http://nodejs.org/) on *nix, OSX and Windows.
 
@@ -58,7 +58,7 @@ lessc [option option=parameter ...] <source> [destination]
 
 If source is set to `-' (dash or hyphen-minus), input is read from stdin.
 
-#### Examples
+#### 例如
 
 ```bash
 # compile bootstrap.less to bootstrap.css
@@ -68,14 +68,14 @@ $ lessc bootstrap.less bootstrap.css
 $ lessc -x bootstrap.less bootstrap.css
 ```
 
-### Help
+### 帮助
 
 ```bash
 lessc --help
 lessc --h
 ```
 
-Prints a help message with available options and exits.
+打印一个带有可选项的帮助菜单,然后退出
 
 ### Include paths
 
@@ -92,20 +92,20 @@ In node, set a paths option
 { paths: ['PATH1', 'PATH2']  }
 ```
 
-### Makefile
+### 生成文件
 
 ```bash
 lessc -M
 lessc --depends
 ```
 
-### No Color
+### 无色
 
 ```bash
 lessc --no-color
 ```
 
-### No IE Compatability
+### 不兼容IE
 
 ```bash
 lessc --no-ie-compat
@@ -113,7 +113,7 @@ lessc --no-ie-compat
 
 Currently only used for the data-uri function to ensure that images aren't created that are too large for the browser to handle.
 
-### Disable JavaScript
+### 禁用JavaScript
 
 ```bash
 lessc --no-js
@@ -127,6 +127,7 @@ lessc --l
 ```
 
 Runs the less parser and just reports errors without any output.
+运行less转换器,仅仅会报告错误,没有任何输出
 
 ### Silent
 
@@ -141,27 +142,27 @@ lessc --silent
 lessc --strict-imports
 ```
 
-### Allow imports from insecure https hosts
+### 允许导入不安全的https hosts
 
 ```bash
 lessc --insecure
 ```
 
-### Version
+### 版本
 
 ```bash
 lessc -v
 lessc --version
 ```
 
-### Compress
+### 压缩
 
 ```bash
 lessc -x
 lessc --compress
 ```
 
-Compress using less built-in compression. This does an okay job but does not utilise all the tricks of dedicated css compression. Please feel free to improve our compressed output with a pull request.
+压缩使用less内置的压缩工具,这是一个好的习惯,但没有利用所有专用压缩css的技巧.您能发挥想象改进我们的压缩输出，通过提交pull request.
 
 ### Clean CSS
 
@@ -169,9 +170,9 @@ Compress using less built-in compression. This does an okay job but does not uti
 lessc --clean-css
 ```
 
-Clean CSS is our minifer of choice if you want to get the most minified you can. This option switches it on.
+清理CSS是我们minifer迷你化的选择,如果你想要最简化,请打开这个选项。
 
-Note - it does not yet support sourcemaps, for that you can only use our own compression.
+注意,它还不支持sourcemaps,要支持那样的话,你可以仅仅只使用我们的压缩。
 
 ### Clean CSS Options
 
@@ -287,16 +288,16 @@ but with this option on it will instead output
 
 You may also want to consider using the data-uri function instead of this option, which will embed images into the css.
 
-### Strict Math
+### 严格的数学运算
 
 ```bash
 lessc -sm=on
 lessc --strict-math=on
 ```
 
-Defaults to Off. 
+默认关闭
 
-Without this option on Less will try and process all maths in your css e.g.
+如果这个选项不开启 Less将尝试计算所有的数学运算在你的css中，例如.
 
 ```less
 .class {
@@ -304,9 +305,9 @@ Without this option on Less will try and process all maths in your css e.g.
 }
 ```
 
-will be processed currently.
+目前能被计算。
 
-With strict math on, only maths that is inside un-necessary parenthesis will be processed. For instance.
+如果开启严格数学运算, 仅仅只有不必要的圆括号号内的运算会被计算，例如。
 
 ```less
 .class {
@@ -324,18 +325,17 @@ With strict math on, only maths that is inside un-necessary parenthesis will be 
 }
 ```
 
-We originally planned to default this to true in the future, but it has been a contraversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where `/` is valid or calc is used.
-
-### Strict Units
+我们原计划默认开启在将来,但它一直是contraversial选项,我们正在考虑是否用正确的方式解决了这个问题,或者是否Less应该有例外情况‘/’是有效的或Calc 是有用的
+### 严格的单位
 
 ```bash
 lessc -su=on
 lessc --strict-units=on
 ```
 
-Defaults to off.
+默认关闭
 
-Without this option, less attempts to guess at the output unit when it does maths. For instance
+没有这个选项, less 会尝试猜数学上单位输出。例如：
 
 ```less
 .class {
@@ -343,35 +343,33 @@ Without this option, less attempts to guess at the output unit when it does math
 }
 ```
 
-In this case, things are clearly not right - a length multiplied by a length gives an area, but css does not support specifying areas. So we assume that the user meant for one of the values to be a value, not a unit of length and we output `2px`.
+对于这个例子，事情很明显不对，一个长度乘以另一个长度得到一个面积，但是css不支持这种面积，因此我们断定用户的意思是一个值乘以另外一个值，而不是长度单位，因此输出 `2px`.
 
-With strict units on, we assume this is a bug in the calculation and throw an error.
-
-### Global Variable
+如果这个选项开启，我们会断定是一个计算bug,然后报出一个错误。
+### 全局变量
 
 ```bash
 lessc --global-var="my-background=red"
 ```
 
-This option defines a variable that can be referenced by the file. Effectively the declaration is put at the top of your base Less file, meaning it can be used but it also can be overridden if this variable is defined in the file.
+这个选项定义一个能被文件引用的变量.高效的声明是放置在你基础Less文件的顶部,意味着他能被使用,但也能被覆盖如果在文件中定义了这个变量.
 
-### Modify Variable
+### 修改变量
 
 ```bash
 lessc --modify-var="my-background=red"
 ```
 
-As opposed to the global variable option, this puts the declaration at the end of your base file, meaning it will override anything defined in your Less file.
+与全局变量选项不同的是,这将在你的基础文件最后放置一个声明,意味着它将覆盖任何Less文件中的定义。
 
-### URL Arguments
+### URL 参数
 
 ```bash
 lessc --url-args="cache726357"
 ```
 
-This option allows you to specify a argument to go on to every URL. This may be used for cache-busting for instance.
-
-### Line Numbers
+这个选项允许你指定一个参数给每一个URL，这能破坏掉客户端缓存.
+### 行号
 
 ```bash
 lessc --line-numbers=comments
@@ -379,4 +377,4 @@ lessc --line-numbers=mediaquery
 lessc --line-numbers=all
 ```
 
-Generates inline source-mapping. This was the only option before browsers started supporting sourcemaps. We are consider deprecating, so please get in touch if you want this option to stick around.
+生成内联source-mapping. 这是浏览器开始支持sourcemaps之前唯一的选择。我们认为不以为然的,所以请联系如果你想要保留这个选项。
