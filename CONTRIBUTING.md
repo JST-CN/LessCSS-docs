@@ -1,40 +1,38 @@
-## 贡献文档
+## 贡献者指南
 
 **格式规范**
 
-为了文档中所有实例的一致性及确保我们代码示例的可读性，贡献时请遵循以下原则：
+为了使文档中所有示例保持一致并确保可读性，贡献文档时请遵循以下原则：
 
-* 合理的使用缩进，缩进格式为四个空格
-* 多行格式( 每行一个属性和对应的值 )
-* 请使用双引号，避免出现单引号
-* 在属性值冒号后面使用一个空格符( 例: `display: block;` 而不是 `display:block;` ) 
-* 每行请以分号结束
-* 对于多个用逗号分割的选择器，将每个选择器独立分为一行
-* 属性选择器, 例：`input[type="text"]` 应将属性值放在双引号之间. 这对确保您的代码一致性和安全性非常重要( 请参见 [blog post on unquoted attribute values](http://mathiasbynens.be/notes/unquoted-attribute-values)，可能导致 XSS 攻击 )
-* 当您的例子中有使用 HTML 时，请使用符合 HTML5 Doctype 的标签和元素( 例：自结束标签没有结尾的斜线 )
-* 所有的页面文件的名称应保持在整个库中的唯一性
+* 2个空格(Space)缩进，不使用制表符（Tab) ，始终保持缩进是正确的
+* 使用多行书写属性的格式（每行一个属性和值）
+* 对于多个用逗号分隔的选择器，每个选择器占一行
+* 只使用双引号，不使用单引号
+* 在属性的冒号后始终放置一个空格（例如， `display: block;` 而不是 `display:block;`）
+* 所有行都要以分号结束
+* 属性选择器中的属性值应该始终用双引号包裹，比如 `input[type="text"]` 。在你自己的代码中这样做也是对一致性和安全性很重要的。（见这篇博客 [提交 不带引号的属性值](http://mathiasbynens.be/notes/unquoted-attribute-values) 中的 XSS 攻击）
+* 示例中使用HTML时，正确使用与HTML5 doctype对应的标签和元素的写法（例如，_自闭合标记_不写结束的斜杠）
+* 所有页面的文件名应该全局唯一，不管这些文件在哪个文件夹中
 
 ## 工具
 
 ### Assemble
 
-* Visit [Assemble's documentation](http://assemble.io/docs/) site to learn more about customization and configuration.
-* Markdown: [Markdown Cheatsheet](http://assemble.io/docs/Cheatsheet-Markdown.html)
+* 访问[Assemble的文档](http://assemble.io/docs/)学习更多关于定制和配置的知识。
+* Markdown: [Markdown速查表](http://assemble.io/docs/Cheatsheet-Markdown.html)
 
 ## 代码风格
 
-示例:
-
-**优雅的写法**
+**好的写法**
 
 ```css
 body {
-  padding-top: 80px;
-  font-size: 12px;
+	padding-top: 80px;
+	font-size: 12px;
 }
 ```
 
-**不雅的写法**
+**不好的写法**
 
 ```css
 body {
@@ -43,14 +41,14 @@ font-size: 12px;
 }
 ```
 
-**不雅的写法**
+**不好的写法**
 
 ```css
 body { padding-top: 80px; font-size: 12px }
 ```
 
-### 功能需求, Bugs 提交及 Pull Requests
+### 功能提议，Bug和Pull Request
 
-* 如果你有新的功能需求、提出改进或报告BUG，请提交一个 Issue.
-* 功能需求请提供一个清楚的描述用例，以便更容易被重视.
-* 如果您想要提交 pull request，请首先阅读此文档 CONTRIBUTING.md
+* 如果你有功能提议，或者改进的建议，或者想报告一个bug，请[提交一个issue](https://github.com/JST-CN/lesscss.net/issues?state=open)。
+* 提交功能提议时如果能包含一个描述清晰的使用案例，会更容易被重视。
+* 如果你想提交一个Pull Request，请首先阅读[这个]({{ site.codebasemaster }}CONTRIBUTING.md)。

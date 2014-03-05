@@ -1,12 +1,12 @@
-### isnumber
+### 函数(isnumber)
 
-> Returns `true` if a value is a number, `false` otherwise.
+> 如果一个值是一个数字，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a number, `false` otherwise.
+返回: 若是数字返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 isnumber(#ff0);     // false
@@ -20,15 +20,15 @@ isnumber(url(...)); // false
 ```
 
 
-### isstring
+### 函数(isstring)
 
-> Returns `true` if a value is a string, `false` otherwise.
+> 如果一个值是一个字符串，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a string, `false` otherwise.
+返回: 若是字符串返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 isstring(#ff0);     // false
@@ -42,15 +42,15 @@ isstring(url(...)); // false
 ```
 
 
-### iscolor
+### 函数(iscolor)
 
-> Returns `true` if a value is a color, `false` otherwise.
+> 如果一个值是一个颜色，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a color, `false` otherwise.
+返回: 若是颜色返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 iscolor(#ff0);     // true
@@ -64,15 +64,15 @@ iscolor(url(...)); // false
 ```
 
 
-### iskeyword
+### 函数(iskeyword)
 
-> Returns `true` if a value is a keyword, `false` otherwise.
+> 如果一个值是一个关键字，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a keyword, `false` otherwise.
+返回: 若是关键字返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 iskeyword(#ff0);     // false
@@ -86,15 +86,15 @@ iskeyword(url(...)); // false
 ```
 
 
-### isurl
+### 函数(isurl)
 
-> Returns `true` if a value is a url, `false` otherwise.
+>  如果一个值是一个url地址，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` -  待判断的值或变量.
 
-Returns: `true` if value is a url, `false` otherwise.
+返回: 若是url返回真'true',否则假'false'.
 
-Example:
+例如:
 
 ```less
 isurl(#ff0);     // false
@@ -108,15 +108,15 @@ isurl(url(...)); // true
 ```
 
 
-### ispixel
+### 函数(ispixel)
 
-> Returns `true` if a value is a number in pixels, `false` otherwise.
+> 如果一个值是带像素长度单位的数字，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a pixel, `false` otherwise.
+返回: 若是带px单位的数字返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 ispixel(#ff0);     // false
@@ -130,15 +130,15 @@ ispixel(url(...)); // false
 ```
 
 
-### isem
+### 函数(isem)
 
-> Returns `true` if a value is an em value, `false` otherwise.
+> 如果一个值是带em长度单位的数字，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is an em value, `false` otherwise.
+返回: 若是带em单位的数字返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 isem(#ff0);     // false
@@ -152,15 +152,15 @@ isem(url(...)); // false
 ```
 
 
-### ispercentage
+### 函数(ispercentage)
 
-> Returns `true` if a value is a percentage value, `false` otherwise.
+> 如果一个值是带百分比单位的数字，返回'真(true)',否则返回'假(false)'.
 
-Parameters: `value` - a value or variable being evaluated.
+参数: `value` - 待判断的值或变量.
 
-Returns: `true` if value is a percentage value, `false` otherwise.
+返回: 若是带百分比单位的数字返回真`true`,否则假`false`.
 
-Example:
+例如:
 
 ```less
 ispercentage(#ff0);     // false
@@ -174,17 +174,16 @@ ispercentage(url(...)); // false
 ```
 
 
-### isunit
+### 函数(isunit)
 
-> Returns `true` if a value is a number in specified units, `false` otherwise.
+> 如果一个值是带指定单位的数字，返回'真(true)',否则返回'假(false)'.
 
-Parameters:
-* `value` - a value or variable being evaluated.
-* `unit` - a unit identifier (optionaly quoted) to test for.
+参数:
+* `value` - 待判断的值或变量.
+* `unit` -  用于测试比较的一个单位标示符.
 
-Returns: `true` if value is a number in specified units, `false` otherwise.
-
-Example:
+返回: 若是带指定单位的数字返回真`true`,否则假`false`.
+例如:
 
 ```less
 isunit(11px, px);  // true
