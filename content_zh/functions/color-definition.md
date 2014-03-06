@@ -36,7 +36,7 @@
 
 ### argb
 
-> 创建一个十六进制颜色表达式，格式为(**NOT** `#RRGGBBAA`!)而不是#RRGGBBAA。
+> 创建一个十六进制颜色表达式，以#RRGGBBAA格式为(**NOT** `#RRGGBBAA`!)。
 
 这种格式被用于Internet Explorer，.NET和Android开发。
 
