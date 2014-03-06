@@ -6,9 +6,9 @@
 
 ## 安装
 
-在[node.js](http://nodejs.org/)中安装LESS最简单的方式就是使用Node包管理工具npm来安装：*
+在[node.js](http://nodejs.org/)中安装LESS最简单的方式就是使用Node包管理工具npm来安装：                      *---
 
-在服务器上安装LESS最简单的方式就是使用[node.js](http://nodejs.org/)包管理工具 npm 来安装：
+_在服务器上安装LESS最简单的方式就是使用[node.js](http://nodejs.org/)包管理工具 npm 来安装：_
 
 ```bash
 $ npm install -g less
@@ -93,7 +93,7 @@ Less还集成了流行的构建框架grunt,使用[grunt-contrib-less](https://gi
 
 # 在浏览器中使用LESSCSS
 
-> 在浏览器中使用less.js开发是很好的，但不推荐用于生产环境中。*
+> 在浏览器中使用less.js开发是很好的，但不推荐用于生产环境中。                                     *---
 
 浏览器端使用是在使用LESS开发时最直观的一种方式。如果是在生产环境中，尤其是对性能要求比较高的场合，_建议使用node或者其它第三方工具先编译成CSS再上线使用_。
 
