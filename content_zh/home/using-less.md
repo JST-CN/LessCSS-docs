@@ -1,41 +1,38 @@
 ---
-title: Server-side usage
+标题：服务器端使用
 ---
 
-> Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the [Usage]({{rel 'usage'}}) section for more
-detailed information.
+> Less可以通过npm在命令行上使用，作为一个脚本文件浏览器或用于广泛的第三方工具下载。有关更多详细信息， 参见[用法]({{rel 'usage'}}) 部分。
 
-## Installation
+## 安装
 
-The easiest way to install Less on the server, is via npm, the [node.js](http://nodejs.org/) package manager, as so:
+在[node.js](http://nodejs.org/)中安装LESS最简单的方式就是使用Node包管理工具npm来安装：
 
 ```bash
 $ npm install -g less
 ```
 
-## Command-line usage
+## 在命令行中使用
 
-Once installed, you can invoke the compiler from the command-line, as such:
+一旦安装完成，就可以在命令行中调用，例如：
 
 ```bash
 $ lessc styles.less
 ```
 
-This will output the compiled CSS to `stdout`, you may then redirect it to a file of your choice:
+这样的话编译后的CSS将会输出到stdout中，你可以选择将这个输出重定向到文件中：
 
 ```bash
 $ lessc styles.less > styles.css
 ```
 
-To output minified CSS, simply pass the `-x` option. If you would like more involved minification,
-the [Clean CSS](https://github.com/GoalSmashers/clean-css) is also available with
-the `--clean-css` option.
+如果你想输出一个压缩后的CSS，只要加到‘-x’选项即可。如果你想要更NB的压缩，你也可以选择使用[Clean CSS](https://github.com/GoalSmashers/clean-css)压缩器，只要加上"--clean-css"选项即可。
 
-To see all the command line options run lessc without parameters.
+直接运行lessc，不带任何参数将可以看到所有的命令行参数。
 
-## Usage in Code
+## 在Node.js代码中使用 
 
-You can invoke the compiler from node, as such:
+你可以在Node中调用编译器，例如：
 
 ```js
 var less = require('less');
@@ -45,7 +42,7 @@ less.render('.class { width: (1 + 1) }', function (e, css) {
 });
 ```
 
-which will output
+将会输出
 
 ```css
 .class {
@@ -53,7 +50,7 @@ which will output
 }
 ```
 
-you may also manually invoke the parser and compiler:
+你也可以手工调用解析器和编译器：
 
 ```js
 var parser = new(less.Parser);
@@ -66,19 +63,19 @@ parser.parse('.class { width: (1 + 1) }', function (err, tree) {
 });
 ```
 
-## Configuration
+## 设置
 
-You may pass some options to the compiler:
+你可以给编译器传入一些参数：
 
 ```js
 var parser = new(less.Parser)({
-  paths: ['.', './lib'], // Specify search paths for @import directives
-  filename: 'style.less' // Specify a filename, for better error messages
+  paths: ['.', './lib'], // 指定@import搜索的目录
+  filename: 'style.less' // 为了更好地输出错误信息，可以指定一个文件名
 });
 
 parser.parse('.class { width: (1 + 1) }', function (e, tree) {
   tree.toCSS({
-    // Minify CSS output
+    // 压缩输出的CSS
     compress: true
   });
 });
@@ -86,38 +83,38 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 
 ## Grunt
 
-Less also integrates with the popular build framework grunt, using the [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less) plugin.
+Less还集成了流行的构建框架grunt,使用[grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)插件。
 
-## Third party tools
+## 第三方工具
 
-See the [Usage]({{rel 'usage'}}) section for details of other tools.
+有关其他工具详细信息,参见[用法]({{rel 'usage'}}) 部分。
 
-# Client-side usage
+# 在浏览器中使用LESSCSS
 
-> Using less.js in the browser is great for development, but it's not recommended for production
+> 在浏览器中使用less.js开发是很好的，但不推荐用于生产环境中。
 
-Client-side is the easiest way to get started and good for developing with Less, but in production, when performance and reliability is important, _we recommend pre-compiling using node.js or one of the many third party tools available_.
+浏览器端使用是在使用LESS开发时最直观的一种方式。如果是在生产环境中，尤其是对性能要求比较高的场合，_建议使用node或者其它第三方工具先编译成CSS再上线使用_。
 
-To start off, link your `.less` stylesheets with the `rel` attribute set to "`stylesheet/less`":
+首先，引入`rel`属性的值是`stylesheet/less`的`.less`样式表。
 
 ```html
 <link rel="stylesheet/less" type="text/css" href="styles.less" />
 ```
 
-Next, [download less.js](https://github.com/less/less.js/archive/master.zip) and include it in a `<script></script>` tag in the `<head>` element of your page:
+接下来，[下载 less.js](https://github.com/less/less.js/archive/master.zip)并将其包涵在您的页面`<head>`元素的`<script></script>`标记中：
 
 ```html
 <script src="less.js" type="text/javascript"></script>
 ```
 
-### Tips
+### 特别注意
 
-* Make sure you include your stylesheets **before** the script.
-* When you link more than one `.less` stylesheet each of them is compiled independently. So any variables, mixins or namespaces you define in a stylesheet are not accessible in any other.
+* 确保包涵`.less`样式表在`less.js`脚本**之前**
+* 当你引入多个`.less`样式表时，它们都是独立编译的。所以，在每个文件中定义的变量、混合、命名空间都不会被其它的文件共享。
 
-## Browser Options
+## 浏览器选项
 
-Options are defined by setting them on a global `less` object **before** the `<script src="less.js"></script>`:
+你可以引入`<script src="less.js"></script>`**之前**通过创建一个全局`less`对象的方式来指定参数，例如：
 
 ``` html
 <!-- set options before less.js script -->
