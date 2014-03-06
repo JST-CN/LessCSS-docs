@@ -46,11 +46,10 @@ Since patch releases are non-breaking we will publish patch releases immediately
 
 ### 服务器端命令行使用
 
-The binary included in this repository, `bin/lessc` works with [Node.js](http://nodejs.org/) on *nix, OSX and Windows.
-
+这个资源库包含了二进制资源，`bin/lessc` 可以在安装有[Node.js](http://nodejs.org/) 的*nix, OSX and Windows这些平台上工作。
 **Usage**: `lessc [option option=parameter ...] <source> [destination]`
 
-### Command line usage
+### 命令行使用
 
 ```bash
 lessc [option option=parameter ...] <source> [destination]
@@ -126,8 +125,7 @@ lessc --lint
 lessc --l
 ```
 
-Runs the less parser and just reports errors without any output.
-运行less转换器,仅仅会报告错误,没有任何输出
+运行less转换器,仅仅会报告错误,无任何输出
 
 ### Silent
 
@@ -164,7 +162,7 @@ lessc --compress
 
 压缩使用less内置的压缩工具,这是一个好的习惯,但没有利用所有专用压缩css的技巧.您能发挥想象改进我们的压缩输出，通过提交pull request.
 
-### Clean CSS
+### 清理CSS
 
 ```bash
 lessc --clean-css
@@ -174,22 +172,22 @@ lessc --clean-css
 
 注意,它还不支持sourcemaps,要支持那样的话,你可以仅仅只使用我们的压缩。
 
-### Clean CSS Options
+### 带选项的CSS清理
 
 ```bash
 lessc --clean-css --clean-option=--selectors-merge-mode:ie8 --clean-option=--advanced
 ```
 
-Use this to pass options to clean css. The default options are the safest, so are IE8 compatible.
+使用这个命令传递选项清理，默认选项是最保险的清理，因为兼容IE8。
 
-### Source Map Output Filename
+### 可输出文件名的源代码映射(Source Map)
 
 ```bash
 lessc --source-map
 lessc --source-map=file.map
 ```
 
-Tells less to generate a sourcemap. If you have the sourcemap option without a filename it will use the source less file name but with the extension map.
+告诉less 生成一个源代码映射文件(sourcemap).如果不提供文件名映射，则使用源less文件名来扩展映射。
 
 ### Source Map Rootpath
 
