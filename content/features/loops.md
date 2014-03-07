@@ -1,21 +1,21 @@
-> Creating loops
+> 编写循环
 
-In Less a mixin can call itself. Such recursive mixins, when combined with [Guard Expressions](#mixin-guards-feature) and [Pattern Matching](#mixins-parametric-feature-pattern-matching), can be used to create various iterative/loop structures.
+在Less中，混合可以调用它自身。这样，当一个混合递归调用自己，再结合[Guard表达式](#mixin-guards-feature)和[模式匹配](#mixins-parametric-feature-pattern-matching)这两个特性，就可以写出循环结构。
 
-Example:
+示例：
 
 ```less
 .loop(@counter) when (@counter > 0) {
-  .loop((@counter - 1));    // next iteration
-  width: (10px * @counter); // code for each iteration
+  .loop((@counter - 1));    // 递归调用自身
+  width: (10px * @counter); // 每次调用时产生的样式代码
 }
 
 div {
-  .loop(5); // launch the loop
+  .loop(5); // 调用循环
 }
 ```
 
-Output:
+输出：
 
 ```css
 div {
@@ -27,7 +27,7 @@ div {
 }
 ```
 
-A generic example of using a recursive loop to generate CSS grid classes:
+使用递归循环最常见的情况就是生成栅格系统的CSS：
 
 ```less
 .generate-columns(4);
@@ -40,7 +40,7 @@ A generic example of using a recursive loop to generate CSS grid classes:
 }
 ```
 
-Output:
+输出：
 
 ```css
 .column-1 {
