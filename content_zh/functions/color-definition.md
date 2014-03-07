@@ -18,7 +18,7 @@
 
 ### rgba
 
-> 创建一个十进制值分别为red,green,blue和alpha（RGBA）的透明颜色对象。
+> 创建一个十进制值分别为red,green,blue和alpha(透明度)（RGBA）的透明颜色对象。
 
 参数：
 
@@ -51,7 +51,7 @@
 
 ### hsl
 
-> 创建一个值分别为hue，saturation 和 lightness (HSL)的不透明的颜色对象。
+> 创建一个值分别为hue（色相），saturation（饱和度） 和 lightness(亮度) (HSL)的不透明的颜色对象。
 
 参数：
 
@@ -67,12 +67,12 @@
 
 如果你想创建一个新的颜色是基于其他的色相，hsl是非常有用的，例如：“@new: hsl(hue(@old), 45%, 90%);”
 
-新值和旧值色相一致，饱和度和亮度是刚刚设定的新值
+@new和@old色相(hue)一致，饱和度(saturation)和亮度(lightness)是刚刚设定的新值
 
 
 ### hsla
 
-> 创建一个值分别为hue，saturation，lightness和alpha (HSLA)透明的颜色对象。
+> 创建一个值分别为hue（色相），saturation（饱和度），lightness(亮度)和alpha(透明度) (HSLA)透明的颜色对象。
 
 Parameters:
 参数：
@@ -90,7 +90,7 @@ Parameters:
 
 ### hsv
 
-> 创建一个值分别为hue，saturation和value（HSV）不透明的颜色对象。
+> 创建一个值分别为hue（色相），saturation（饱和度）和value（值）（HSV）不透明的颜色对象。
 
 注意：这是在Photoshop中可用的色彩空间，和“hsl”是不一样。
 
@@ -108,7 +108,7 @@ Parameters:
 
 ### hsva
 
-> 创建一个值分别为hue，saturation，value和alpha（HSVA）透明的颜色对象。
+> 创建一个值分别为hue（色相），saturation（饱和度），value（值）和alpha（透明度）（HSVA）透明的颜色对象。
 
 注意：这是在Photoshop中可用的色彩空间，和“hsla”不一样。
 
