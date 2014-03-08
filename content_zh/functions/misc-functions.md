@@ -1,45 +1,45 @@
 ### color
 
-> Parses a color, so a string representing a color becomes a color.
+> 解析颜色，将代表颜色的字符串转换为颜色值。
 
-Parameters: `string`: a string of the specified color.
+参数： `string`: 代表颜色值的字符串。
 
-Returns: `color`
+返回： `color`
 
-Example: `color("#aaa");`
+示例： `color("#aaa");`
 
-Output: `#aaa`
+输出： `#aaa`
 
 
 ### convert
 
-> Convert a number from one unit into another.
+> 将数字从一种类型转换到另一种类型。
 
-The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.
+第一个参数为带单位的数值，第二个参数为单位。如果两个参数的单位是兼容的，则数字的单位被转换。如果两个参数的单位不兼容，则原样返回第一个参数。
 
-See [unit](#misc-functions-unit) for changing the unit without conversion.
+无需转化改变单位参照 [unit](#misc-functions-unit)。
 
-_Compatible unit groups_:
+_兼容的单位组_:
 
-* lengths: `m`, `cm`, `mm`, `in`, `pt` and `pc`,
-* time: `s` and `ms`,
-* angle: `rad`, `deg`, `grad` and `turn`.
+* 长度: `m`, `cm`, `mm`, `in`, `pt` and `pc`,
+* 时间: `s` and `ms`,
+* 角度: `rad`, `deg`, `grad` and `turn`.
 
-Parameters:
-* `number`: a floating point number with units.
-* `identifier`, `string` or `escaped value`: units
+参数：
+* `number`: 带单位的浮点数。
+* `identifier`, `string` or `escaped value`: 单位
 
-Returns: `number`
+返回： `number`
 
-Example:
+示例：
 
 ```less
 convert(9s, "ms")
 convert(14cm, mm)
-convert(8, mm) // incompatible unit types
+convert(8, mm) // 不兼容的单位类型
 ```
 
-Output:
+输出：
 
 ```
 9000ms
@@ -50,27 +50,27 @@ Output:
 
 ### data-uri
 
-> Inlines a resource and falls back to `url()` if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.
+> 将一个资源内嵌到样式文件，如果开启了ieCompat选项，而且资源文件的体积过大，或者是在浏览器中使用，则会使用`url()`进行回退。如果没有指定MIME，则Node.js会使用MIME包来决定正确的MIME。
 
-Parameters:
-* `mimetype`: (Optional) A MIME type string.
-* `url`: The URL of the file to inline.
+参数：
+* `mimetype`: 可选参数，MIME类型字符串。
+* `url`: 需要内嵌的文件的URL。
 
-Example: `data-uri('../data/image.jpg');`
+示例： `data-uri('../data/image.jpg');`
 
-Output: `url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');`
+输出： `url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');`
 
-Output in browser: `url('../data/image.jpg');`
+在浏览器中输出： `url('../data/image.jpg');`
 
-Example: `data-uri('image/jpeg;base64', '../data/image.jpg');`
+示例： `data-uri('image/jpeg;base64', '../data/image.jpg');`
 
-Output: `url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');`
+输出： `url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');`
 
 ### default
 
-> Available only inside guard conditions and returns `true` only if no other mixin matches, `false` otherwise.
+> 只能边界条件中使用，没有匹配到其他自定义函数（mixin）的时候返回`true`，否则返回`false`。
 
-Example:
+示例：
 
 ```less
 .mixin(1)                   {x: 11}
@@ -85,7 +85,7 @@ div.special {
   .mixin(1);
 }
 ```
-Output:
+输出：
 
 ```css
 div {
@@ -96,7 +96,7 @@ div.special {
 }
 ```
 
-It is possible to use the value returned by `default` with guard operators. For example `.mixin() when not(default()) {}` will match only if there's at least one more mixin definition that matches`.mixin()` call:
+`default`的返回值还可以和边界操作一起使用。例如，`.mixin() when not(default()) {}`，将会在至少一个除自身外的自定义函数(mixin)满足条件时被调用：
 
 ```less
 .mixin(@value) when (ispixel(@value)) {width: @value}
@@ -111,7 +111,7 @@ div-2 {
   .mixin(100%);
 }
 ```
-result:
+结果：
 
 ```css
 div-1 {
@@ -123,7 +123,7 @@ div-2 {
 }
 ```
 
-It is allowed to make multiple `default()` calls in the same guard condition or in a different conditions of a mixins with the same name:
+在同一个边界条件或者不同的混合条件中，`default()`可以被调用多次：
 
 ```less
 div {
@@ -133,7 +133,7 @@ div {
   .m(1); // OK
 }
 ```
-However Less will throw a error if it detects a *potential* conflict between multiple mixin definitions using `default()`:
+然而，使用`default()`时如果检测到多个混合条件有*潜在性*冲突，Less会抛出一个异常：
 
 ```less
 div {
@@ -143,9 +143,9 @@ div {
   .m(1); // Error
 }
 ```
-In above example it is impossible to determine what value each `default()` call should return since they recursively depend on each other.
+在以上的例子中，通过与其他条件的相互依赖就可以确认在调用时`default()`所返回的值。
 
-Advanced multiple `default()` usage:
+更多`default()`的高级用法：
 
 ```less
 .x {
@@ -162,7 +162,7 @@ Advanced multiple `default()` usage:
   &-baz   {.m('baz')}
 }
 ```
-Result:
+结果：
 
 ```css
 .x-blue {
@@ -179,9 +179,9 @@ Result:
 }
 ```
 
-The `default` function is available as a Less built-in function _only inside guard expressions_. If used outside of a mixin guard condition it is interpreted as a regular CSS value:
+`default`函数只能作为Less构建函数_在边界条件_中使用。如果在混合条件之外使用，`default`函数只会被解释成普通的CSS属性值：
 
-Example:
+示例：
 
 ```less
 div {
@@ -189,7 +189,7 @@ div {
   bar: default(42);
 }
 ```
-Result:
+结果：
 
 ```css
 div {
@@ -201,18 +201,18 @@ div {
 
 ### unit
 
-> Remove or change the unit of a dimension
+> 移除或者改变属性值的单位。
 
-Parameters:
-* `dimension`: A number, with or without a dimension.
-* `unit`: (Optional) the unit to change to, or if omitted it will remove the unit.
+参数：
+* `dimension`: 数字，带或不带单位。
+* `unit`: 可选参数，将要替换成的单位，如果省略则移除原单位。
 
-See [convert](#misc-functions-convert) for changing the unit without conversion.
+转化成指定单位参照 [convert](#misc-functions-convert)。
 
-Example: `unit(5, px)`
+示例： `unit(5, px)`
 
-Output: `5px`
+输出： `5px`
 
-Example: `unit(5em)`
+示例： `unit(5em)`
 
-Output: `5`
+输出： `5`
