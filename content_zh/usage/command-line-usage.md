@@ -111,7 +111,7 @@ lessc --no-ie-compat
 ```
 
 Currently only used for the data-uri function to ensure that images aren't created that are too large for the browser to handle.
-
+目前仅用于 data-uri函数，确保创建出能够适合浏览器处理的图片大小。
 ### 禁用JavaScript
 
 ```bash
@@ -180,7 +180,7 @@ lessc --clean-css --clean-option=--selectors-merge-mode:ie8 --clean-option=--adv
 
 使用这个命令传递选项清理，默认选项是最保险的清理，因为兼容IE8。
 
-### 可输出文件名的源代码映射(Source Map)
+### 可输出自定义文件名的源代码映射(Source Map)
 
 ```bash
 lessc --source-map
@@ -189,15 +189,17 @@ lessc --source-map=file.map
 
 告诉less 生成一个源代码映射文件(sourcemap).如果不提供文件名映射，则使用源less文件名来扩展映射。
 
-### Source Map Rootpath
+### Source Map Rootpath源代码映射根路径
 
 ```bash
 lessc --source-map-rootpath=dev-files/
 ```
 
 Specifies a rootpath that should be prepended to each of the less file paths inside the sourcemap and also to the path to the map file specified in your output css.
+指定一个预设的根路径用于存放每一个less文件的源代码映射和编译生成的css文件
 
 Use this option if for instance you have a css file generated in the root on your web server but have your source less/css/map files in a different folder. So for the option above you might have
+举例来说如果你有根生成的css文件在Web服务器上，但有你的源代码在不同的文件夹中少/ CSS/映射文件使用此选项。因此，对于你上面的选项可能有
 
 ```bash
 output.css
@@ -211,8 +213,7 @@ dev-files/main.less
 lessc --source-map-basepath=less-files/
 ```
 
-This is the opposite of the rootpath option, it specifies a path which should be removed from the output paths. For instance if you are compiling a file in the less-files directory but the source files will be available on your web server in the root or current directory, you can specify this to remove the additional `less-files` part of the path
-
+与根路径相反的相反的做法，它指明应当从输出路径被删除的路径。例如，如果你正在编译`less-files`目录的一个文件，但源文件将在根目录或当前目录下的Web服务器有效，您可以指定此项，移除输出路径中额外的``less-files``文件路径。
 ### Source Map Less Inline
 
 ```bash
@@ -238,26 +239,27 @@ lessc --source-map-url=../my-map.json
 ```
 
 Allows you to override the URL in the css that points at the map file. This is for cases when the rootpath and basepath options are not producing exactly what you need.
+允许你重写你的，为了防止根路径和原路径选项没有正确生成你需要的情况。
 
-### Rootpath
+### 根路径
 
 ```bash
 lessc -rp=resources/
 lessc --rootpath=resources/
 ```
 
-Allows you to add a path to every generated import and url in your css. This does not effect less import statements that are processed, just ones that are left in the output css.
+允许你添加一个用于导入文件和Css文件生成的路径，这不会影响less 被编译的导入语句，仅仅影响停留在输出Css的位置。
 
-For instance, if all the images the css use are in a folder called resources, you can use this option to add this on to the URL's and then have the name of that folder configurable.
+例如，如果所有Css引用了resources文件的图片，你能使用此选项添加路径到URL，然后有你配置的文件夹名称。
 
-### Relative URLs
+### 相对路径
 
 ```bash
 lessc -ru
 lessc --relative-urls
 ```
 
-By default URLs are kept as-is, so if you import a file in a sub-directory that references an image, exactly the same URL will be output in the css. This option allows you to re-write URL's in imported files so that the URL is always relative to the base imported file. E.g.
+默认情况下，URL是保持原样，因此当你导入一个引入了图片的子目录文件时，输出Css中路径也会相同。此选项允许您重写URL，将导入的文件的路径作为图片路径的相对路径，这样就确保URL总是相对于基于导入的文件。例如
 
 ```less
 # main.less
@@ -268,7 +270,7 @@ By default URLs are kept as-is, so if you import a file in a sub-directory that 
 }
 ```
 
-this will output the following normally
+正常情况将输出如下：
 
 ```css
 .icon-1 {
@@ -276,7 +278,7 @@ this will output the following normally
 }
 ```
 
-but with this option on it will instead output
+但是使用此选项则生成如下：
 
 ```css
 .icon-1 {
@@ -284,7 +286,7 @@ but with this option on it will instead output
 }
 ```
 
-You may also want to consider using the data-uri function instead of this option, which will embed images into the css.
+你可能也想考虑使用能嵌入图片到css中的 data-uri函数替换这个选项。
 
 ### 严格的数学运算
 
@@ -295,7 +297,7 @@ lessc --strict-math=on
 
 默认关闭
 
-如果这个选项不开启 Less将尝试计算所有的数学运算在你的css中，例如.
+如果这个选项关闭， Less将尝试计算你Css中所有的数学运算，例如.
 
 ```less
 .class {
