@@ -3,7 +3,7 @@
 ## CSS Comments
 
 CSS-style comments are preserved by Less:
-LESS保留了CSS样式的注释方法：
+LESS保留了CSS样式注释的方法：
 
 ```less
 .class {
