@@ -1,0 +1,238 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>using-less-in-the-browser</title></head><body><hr />
+<h2 id="title-using-less-in-the-browser">title: Using Less in the Browser</h2>
+<hr />
+<h2 id="title-lesscss">title: 在浏览器中使用LESSCSS</h2>
+<h3 id="watch-mode">Watch mode</h3>
+<p>To enable Watch mode, option <code>env</code> must be set to <code>development</code>. Then AFTER the less.js file is included, call <code>less.watch()</code>, like this:</p>
+<pre><code class="html">&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;less.watch();&lt;/script&gt;
+</code></pre>
+
+<p>Alternatively you can temporary enable Watch mode by appending <code>#!watch</code> to the URL.</p>
+<h3 id="modify-variables">Modify variables</h3>
+<h3 id="_1">修改变量</h3>
+<p>Enables run-time modification of Less variables. When called with new values, the Less file is recompiled without reloading. Simple basic usage:</p>
+<pre><code class="js">less.modifyVars({
+  '@buttonFace': '#5B83AD',
+  '@buttonText': '#D9EEF2'
+});
+</code></pre>
+
+<h3 id="debugging">Debugging</h3>
+<p>It is possible to output rules in your CSS which allow tools to locate the source of the rule.</p>
+<p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaQuery</code> to the url.</p>
+<p>You can use the "comments" option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and the "mediaQuery" option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
+<h2 id="client-side-usage">Client-side Usage</h2>
+<p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
+<pre><code class="html">&lt;!-- set options before less.js script --&gt;
+&lt;script&gt;
+  less = {
+    env: &quot;development&quot;,
+    logLevel: 2,
+    async: false,
+    fileAsync: false,
+    poll: 1000,
+    functions: {},
+    dumpLineNumbers: &quot;comments&quot;,
+    relativeUrls: false,
+    globalVars: {
+      var1: '&quot;string value&quot;',
+      var2: 'regular value'
+    },
+    rootpath: &quot;:/a.com/&quot;
+  };
+&lt;/script&gt;
+&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<h3 id="client-side-options">Client side options</h3>
+<h4 id="async">async</h4>
+<p>Type: <code>Boolean</code></p>
+<p>Default: <code>false</code></p>
+<p>Whether to request the import files with the async option or not. See fileAsync.</p>
+<h4 id="dumplinenumbers">dumpLineNumbers</h4>
+<p>Type: <code>String</code>
+Options: <code>|`comments`|`mediaQuery`|`all`
+Default:</code></p>
+<p>When set this outputs source line information directly into the output css file. This helps you debug where a particular rule came from.</p>
+<p>The comments option is used for outputting user understandable content, whilst mediaQuery is for use with a firefox extension which parses the css and extracts out the information.</p>
+<p>In the future we hope this option to be superseded by sourcemaps.</p>
+<h4 id="env">env</h4>
+<p>Type: <code>String</code>
+Default: depends on page URL</p>
+<p>Environment to run may be either <code>development</code> or <code>production</code>. </p>
+<p>In production, your css is cached in local storage and information messages are not output to the console.</p>
+<p>If the document's URL starts with <code>file://</code> or is on local machine or has a non standard port, it will automatically be set to <code>development</code>.</p>
+<p>e.g.</p>
+<pre><code class="js">less = { env: 'production' };
+</code></pre>
+
+<h4 id="errorreporting">errorReporting</h4>
+<p>Type: <code>String</code></p>
+<p>Options: <code>html</code>|<code>console</code>|<code>function</code></p>
+<p>Default: <code>html</code></p>
+<p>Set the method of error reporting when compilation fails.</p>
+<h4 id="fileasync">fileAsync</h4>
+<p>Type: <code>Boolean</code></p>
+<p>Default: <code>false</code></p>
+<p>Whether to request the import asyncronously when in a page under a file protocol.</p>
+<h4 id="functions">functions</h4>
+<p>Type: <code>object</code></p>
+<p>User functions, keyed by name.</p>
+<p>e.g.</p>
+<pre><code class="js">less = { functions: { myfunc: function() { return 1; }} };
+</code></pre>
+
+<p>and it can be used like a native Less function e.g.</p>
+<pre><code class="less">.my-class {
+  border-width: unit(myfunc(), px);
+}
+</code></pre>
+
+<h4 id="loglevel">logLevel</h4>
+<p>Type: <code>Number</code></p>
+<p>Default: 2</p>
+<p>The amount of logging in the javascript console. Note: If you are in the environment 'production' you will get no logging.</p>
+<pre><code class="bash">2 - Information and errors
+1 - Errors
+0 - Nothing
+</code></pre>
+
+<h4 id="poll">poll</h4>
+<p>Type: <code>Integer</code></p>
+<p>Default: <code>1000</code></p>
+<p>The amount of time (in milliseconds) between polls while in watch mode.</p>
+<h4 id="relativeurls">relativeUrls</h4>
+<p>Type: <code>Boolean</code></p>
+<p>Default: <code>false</code></p>
+<p>Optionally adjust URLs to be relative. When false, URLs are already relative to the entry less file.</p>
+<h4 id="globalvars">globalVars</h4>
+<p>Type: <code>Object</code></p>
+<p>Default: <code>undefined</code></p>
+<p>List of global variables to be injected into the code. Keys of the object are variables names, values are variables values. Variables of "string" type must explicity include quites.</p>
+<h4 id="rootpath">rootpath</h4>
+<p>Type: <code>String</code></p>
+<p>Default: <code>false</code></p>
+<p>A path to add on to the start of every URL resource.</p></body></html>
