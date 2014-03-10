@@ -65,11 +65,11 @@ less.modifyVars({
 async的参数是用来判断是否异步导入文件。
 
 #### dumpLineNumbers
-类型： `String`
+类型： `字符串（String）`
 
-参数： ``|`comments`|`mediaQuery`|`all`
+参数： `comments`|`mediaQuery`|`all`
 
-默认： ``
+默认： ` `
 
 当设置dumpLineNumbers直接输出源行信息到编译好的CSSS的文件中时，有利于你调试指定行。
 
@@ -133,7 +133,7 @@ functions可以像内置的LESS函数一样使用。
 
 默认： 2
 
-javascript控制台的日志量（错误等级）。注意：在production环境下，获取不到日志。
+javascript控制台日志量（错误等级）。注意：在production环境下，获取不到日志。
 
 ```bash
 2 - 提示信息（Information）和错误（errors）
