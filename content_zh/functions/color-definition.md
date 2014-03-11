@@ -107,9 +107,9 @@
 
 ### hsva（@hue,@saturation,@value,@alpha）
 
-> 创建一个值分别为hue（色相），saturation（饱和度），value（值）和alpha（透明度）（HSVA）透明的颜色对象。
+> 通过色相 (hue)，饱和度 (saturation)，色调 (value)，以及 alpha 四种值 (HSVA) 创建透明的颜色对象。
 
-注意：这是在Photoshop中可用的色彩空间，和“hsla”不一样。
+注意：HSVA 与 HSLA 不同，HSVA另一种在Photoshop中可用的色彩空间。
 
 参数：
 * `@hue`: 整数 0-360 代表度数
