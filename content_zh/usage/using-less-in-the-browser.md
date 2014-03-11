@@ -69,7 +69,7 @@ async的参数是用来判断是否异步导入文件。
 
 参数： `comments`|`mediaQuery`|`all`
 
-默认： ` `
+默认： `空`
 
 当设置dumpLineNumbers直接输出源行信息到编译好的CSSS的文件中时，有利于你调试指定行。
 
