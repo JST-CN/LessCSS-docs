@@ -2,7 +2,7 @@
 
 ## CSS注释
 
-LESS保留了CSS样式注释的方法：
+CSS 的注释格式在 LESS 中依然有效：
 
 ```less
 .class {
@@ -13,7 +13,7 @@ LESS保留了CSS样式注释的方法：
 
 ## LESS注释
 
-单行注释在LESS中也是有效的，而且在编译后输出的CSS中也不会显示：
+LESS 同样也支持双斜线的注释，但是编译成 CSS 的时候自动过滤掉：
 
 ```less
 .class {
