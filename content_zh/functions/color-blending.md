@@ -10,9 +10,9 @@
 * `@color1`: 颜色对象( A color object)
 * `@color2`: 颜色对象( A color object)
 
-返回: `颜色(color)`
+返回值: `颜色(color)`
 
-**例子**:
+**例如**:
 
 ```less
 multiply(#ff6600, #000000);
@@ -88,16 +88,16 @@ multiply(#ff6600, #0000ff);
 
 ### screen(@color1,@color2)
 
-> 与multiply() 函数效果相反，输出结果是更亮的颜色。（译注：对应Photoshop中的“变亮/滤色”。）
+> 与`multiply()` 函数效果相反，输出结果是更亮的颜色。（译注：对应Photoshop中的“变亮/滤色”。）
 
 参数：
 
 * `@color1`: 颜色对象(A color object)
 * `@color2`: 颜色对象(A color object)
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 screen(#ff6600, #000000);
@@ -174,16 +174,16 @@ screen(#ff6600, #0000ff);
 
 ### overlay(@color1,@color2)
 
-> 结合 multiply() 与 screen() 两个函数的效果，令浅的颜色变得更浅，深的颜色变得更深。（译注：对应Photoshop中的“叠加”。）**注意**：输出结果由第一个颜色参数决定。
+> 结合 `multiply()` 与 `screen()` 两个函数的效果，令浅的颜色变得更浅，深的颜色变得更深。（译注：对应Photoshop中的“叠加”。）**注意**：输出结果由第一个颜色参数决定。
 
 参数：
 
 * `@color1`: 颜色对象，是用于叠加的颜色，也是结果是更亮还是更暗的决定因素。
 * `@color2`:  颜色对象，被_叠加_的颜色。
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 overlay(#ff6600, #000000);
@@ -260,16 +260,16 @@ overlay(#ff6600, #0000ff);
 
 ### softlight(@color1,@color2)
 
-> 与 overlay() 函数效果相似，只是当纯黑色或纯白色作为参数时输出结果不会是纯黑色或纯白色。（译注：对应Photoshop中的“柔光”。）
+> 与 `overlay()` 函数效果相似，只是当纯黑色或纯白色作为参数时输出结果不会是纯黑色或纯白色。（译注：对应Photoshop中的“柔光”。）
 
 参数：
 
 * `@color1`: 混合色（光源）
 * `@color2`:  被混合的颜色
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 softlight(#ff6600, #000000);
@@ -346,16 +346,16 @@ softlight(#ff6600, #0000ff);
 
 ### hardlight(@color1,@color2)
 
-> 与 overlay() 函数效果相似，不过由第二个颜色参数决定输出颜色的亮度或黑度，而不是第一个颜色参数决定。（译注：对应Photoshop中的“强光/亮光/线性光/点光”。）
+> 与 `overlay()` 函数效果相似，不过由第二个颜色参数决定输出颜色的亮度或黑度，而不是第一个颜色参数决定。（译注：对应Photoshop中的“强光/亮光/线性光/点光”。）
 
 参数：
 
 * `@color1`: 混合色（光源）
 * `@color2`: 颜色对象，用于叠加颜色，也是结果是更亮还是更暗的决定因素。
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 hardlight(#ff6600, #000000);
@@ -439,9 +439,9 @@ hardlight(#ff6600, #0000ff);
 * `@color1`: 被减的颜色对象
 * `@color2`: 减去的颜色对象
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 difference(#ff6600, #000000);
@@ -518,16 +518,16 @@ difference(#ff6600, #0000ff);
 
 ### exclusion(@color1,@color2)
 
-> 效果与 difference() 函数效果相似，只是输出结果差别更小 (lower contrast)。（译注：对应Photoshop中的“差值/排除”。）
+> 效果与 `difference()` 函数效果相似，只是输出结果差别更小 (lower contrast)。（译注：对应Photoshop中的“差值/排除”。）
 
 参数：
 
 * `@color1`: 被减的颜色对象
 * `@color2`: 减去的颜色对象
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 exclusion(#ff6600, #000000);
@@ -611,9 +611,9 @@ exclusion(#ff6600, #0000ff);
 * `@color1`: 颜色对象(A color object)
 * `@color2`: 颜色对象(A color object)
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 average(#ff6600, #000000);
@@ -696,9 +696,9 @@ average(#ff6600, #0000ff);
 * `@color1`: 被减的颜色对象
 * `@color2`: 减去的颜色对象
 
-返回： `颜色(color)`
+返回值： `颜色(color)`
 
-例子：
+例如：
 
 ```less
 negation(#ff6600, #000000);
