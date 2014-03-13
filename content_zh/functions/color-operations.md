@@ -1,9 +1,7 @@
-Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we've used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.
 颜色值运算有几点注意事项：参数必须单位/格式相同；百分比将作为绝对值处理，比如 10% 增加 10%，结果是 20% 而不是 11%；参数值只能在限定的范围内；they do not wrap around (这一句不清楚意思，可能是指参数值不会在超过范围后自动从另一侧“穿越”回去。)。返回值时，除了十六进制的颜色值 (hex versions) 外将对其他格式做简化处理。
 
 ### saturate(@color,@amount)
 
-> Increase the saturation of a color in the HSL color space by an absolute amount.
 > 增加一定数值的颜色饱和度。
 
 参数：
@@ -21,7 +19,6 @@ Color operations generally take parameters in the same units as the values they 
 
 ### desaturate(@color,@amount)
 
-> Decrease the saturation of a color in the HSL color space by an absolute amount.
 > 降低一定数值的颜色饱和度。
 
 参数：
@@ -39,7 +36,6 @@ Color operations generally take parameters in the same units as the values they 
 
 ### lighten(@color,@amount)
 
-> Increase the lightness of a color in the HSL color space by an absolute amount.
 > 增加一定数值的颜色亮度。
 
 参数：
@@ -57,7 +53,6 @@ Color operations generally take parameters in the same units as the values they 
 
 ### darken(@color,@amount)
 
-> Decrease the lightness of a color in the HSL color space by an absolute amount.
 > 降低一定数值的颜色亮度。
 
 参数：
@@ -75,10 +70,8 @@ Color operations generally take parameters in the same units as the values they 
 
 ### fadein(@color,@amount)
 
-> Decrease the transparency (or increase the opacity) of a color, making it more opaque.
 > 降低颜色的透明度（或增加不透明度），令其更不透明。
 
-Has no effect on opaque colors. To fade in the other direction use `fadeout`.
 对不透明的颜色无效。如果要增加颜色的透明度，使用 `fadeout()` 函数。
 
 参数：
@@ -95,10 +88,9 @@ Has no effect on opaque colors. To fade in the other direction use `fadeout`.
 
 ### fadeout(@color,@amount)
 
-> Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use `fadein`.
 > 增加颜色的透明度（或降低不透明度），令其更透明。
 
-对不透明的颜色无效。如果要增加颜色的透明度，使用 fadein() 函数。
+对不透明的颜色无效。如果要增加颜色的透明度，使用`fadein()` 函数。
 
 参数：
 
@@ -114,7 +106,6 @@ Has no effect on opaque colors. To fade in the other direction use `fadeout`.
 
 ### fade(@color,@amount)
 
-> Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.
 > 给颜色（包括不透明的颜色）设定一定数值的透明度。
 
 参数：
@@ -131,24 +122,20 @@ Has no effect on opaque colors. To fade in the other direction use `fadeout`.
 
 ### spin(@color,@amount)
 
-> Rotate the hue angle of a color in either direction.
 > 任意方向旋转颜色的色相角度 (hue angle)。
 
-While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn't retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don't do this:
 旋转范围 0-360，超过一周后将从起点开始继续旋转（+-控制方向），比如旋转360度与720度是相同的结果。需要注意的是，颜色值会通过RGB格式转换，这个过程不能保留灰色的色相值（灰色没有饱和度，色相值也就没有意义了），因此要确定使用函数的方法能够保留颜色的色相值，例如不要这样使用函数：
 
 ```less
 @c: saturate(spin(#aaaaaa, 10), 10%);
 ```
 
-Do this instead:
 而应该用这种方法代替：
 
 ```less
 @c: spin(saturate(#aaaaaa, 10%), 10);
 ```
 
-Colors are always returned as RGB values, so applying `spin` to a grey value will do nothing.
 因为颜色值永远输出为 RGB 格式，因此 `spin()` 函数对灰色无效。
 
 参数：
@@ -178,7 +165,6 @@ spin(hsl(10, 90%, 50%), -30)
 
 ### mix(@color1,@color2, [@weight: 50%])
 
-> Mix two colors together in variable proportion. Opacity is included in the calculations.
 > 根据比例混合两种颜色，包括计算不透明度。
 
 参数：
@@ -207,11 +193,9 @@ rgba(75, 25, 0, 0.75)
 
 ### greyscale(@color)
 
-> Remove all saturation from a color in the HSL color space; the same as calling `desaturate(@color, 100%)`.
 > 完全移除颜色的饱和度，与 `desaturate(@color, 100%)` 函数效果相同。
 
 Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; [`luma`](#color-channel-luma) may provide a better result as it extracts perceptual rather than linear brightness, for example `greyscale('#0000ff')` will return the same value as `greyscale('#00ff00')`, though they appear quite different in brightness to the human eye.
-因为颜色的饱和度不受色相值影响，所以输出的颜色会稍显暗淡(dull or muddy)；如果使用[`luma`](#color-channel-luma)值可能会有更好的结果，因为它提取的是百分比亮度，而不是线性亮度。比如`greyscale('#0000ff')`与`greyscale('#00ff00')`会得出相同的结果，尽管对人眼来说，它们的亮度是不一样的。
 
 参数： `@color`: 颜色对象(A color object)
 
@@ -223,10 +207,8 @@ Because the saturation is not affected by hue, the resulting color mapping may b
 
 ![Color 1](holder.js/100x40/#80f20d:#000000/text:80f20d) ➜ ![Color 2](holder.js/100x40/#808080:#000000/text:808080)
 
-Notice that the generated grey looks darker than the original green, even though its lightness value is the same.
 注意：即便它们的亮度值(lightness value)一样，但是生成的灰色看起来比原来的绿色更暗些。
 
-Compare with using `luma` (usage is different because `luma` returns a single value, not a color):
 与`luma`相比较(因为`luma`返回一个单独的值，而不是颜色，所以它们的用法不一样)：
 
 ```less
@@ -238,18 +220,21 @@ color: rgb(@c, @c, @c);
 
 ![Color 1](holder.js/100x40/#80f20d:#000000/text:80f20d) ➜ ![Color 2](holder.js/100x40/#cacaca:#000000/text:cacaca)
 
-This time the grey's lightness looks about the same as the green, though its value is actually higher.
-实际上灰色的值跟高些，但是灰色的亮度值跟绿色看起来大致上相同。
+实际上灰色的值跟高些，但是灰色的亮度值跟绿色的看起来大致上相同。
 
 ### contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])
 
 > Choose which of two colors provides the greatest contrast with another.
+选择这两种颜色提供了最大对比度与另一个
+> 从两种颜色中选出与对比度差距最大的@threshold。
+如果你写40%，那就是40%倾向于亮色，60%倾向于暗色，这样在两者差距不大的时候会倾向于暗色。
 
 This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the [contrast function in Compass for SASS](http://compass-style.org/reference/compass/utilities/color/contrast/). In accordance with [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef), colors are compared using their [luma](#color-channel-luma) value, not their lightness.
 
 这个函数对比 @background 的 luma 值与 @threshold 参数的大小，如果大于输出 @darkcolor, 小于则输出 @lightcolor，便于选择相对于背景更容易阅读的颜色，同时提高了使用颜色的灵活性，与 [Compass 的 contrast() 函数](http://compass-style.org/reference/compass/utilities/color/contrast/) 工作方式相同。根据 [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef) 应该对比颜色的 luma 值，而不是亮度值 (lightness)。
 
 The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can't use this function to select the *least* contrasting color by reversing the order.
+`@light` 和 `@dark` 两个参数可以调换顺序。因为`contrast()`函数会自动计算它们的luma值和自动分配`@light`和`@dark`，这样你就不用通过颠倒两个参数的顺序才能选到最浅对比度颜色(the *least* contrasting color)。
 
 参数：
 
