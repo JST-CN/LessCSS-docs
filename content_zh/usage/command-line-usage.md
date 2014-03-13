@@ -98,7 +98,7 @@ lessc -M
 lessc --depends
 ```
 
-### 无色
+### 不着色
 
 ```bash
 lessc --no-color
@@ -187,7 +187,7 @@ lessc --source-map
 lessc --source-map=file.map
 ```
 
-告诉less 生成一个源代码映射文件(sourcemap).如果不提供文件名映射，则使用源less文件名来扩展映射。
+告诉less 生成一个源代码映射文件(sourcemap).如果不提供文件名映射，则使用源less编译后CSS全文件名来作为扩展映射名称。
 
 ### Source Map Rootpath源代码映射根路径
 
@@ -196,7 +196,7 @@ lessc --source-map-rootpath=dev-files/
 ```
 
 Specifies a rootpath that should be prepended to each of the less file paths inside the sourcemap and also to the path to the map file specified in your output css.
-指定一个预设的根路径用于存放每一个less文件的源代码映射和编译生成的css文件
+指定一个根路径用于预设在源代码映射每一个less文件路径和编译生成的css文件中
 
 Use this option if for instance you have a css file generated in the root on your web server but have your source less/css/map files in a different folder. So for the option above you might have
 举例来说如果你有根生成的css文件在Web服务器上，但有你的源代码在不同的文件夹中少/ CSS/映射文件使用此选项。因此，对于你上面的选项可能有
@@ -221,6 +221,7 @@ lessc --source-map-less-inline
 ```
 
 This option specifies that we should include all of the css files in to the sourcemap. This means that you only need your map file to get to your original source.
+此选项指定所有的less文件原内容都会包括在源文件映射中，意味着获取你的.map文件就能获取less源代码.
 
 This can be used in conjunction with the map inline option so that you do not need to have any additional external files at all.
 
@@ -231,7 +232,7 @@ lessc --source-map-map-inline
 ```
 
 This option specifies that the map file should be inline in the output CSS. This is not recommended for production, but for development it allows the compiler to produce a single output file which in browsers that support it, use the compiled css but show you the non-compiled less source.
-
+此选项指定map文件应该内嵌在输出的CSS，在生产中不推荐，但对于开发环境，编译产生单个文件，使之浏览器支持显示编译的css而不是未编译的less资源
 ### Source Map URL
 
 ```bash
