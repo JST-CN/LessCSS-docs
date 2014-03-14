@@ -224,7 +224,6 @@ color: rgb(@c, @c, @c);
 
 ### contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])
 
-> Choose which of two colors provides the greatest contrast with another.
 > 选择两种颜色相比较，得出哪种颜色的对比度最大就倾向于对比度最大的颜色。
 
 
