@@ -195,7 +195,7 @@ rgba(75, 25, 0, 0.75)
 
 > 完全移除颜色的饱和度，与 `desaturate(@color, 100%)` 函数效果相同。
 
-Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; [`luma`](#color-channel-luma) may provide a better result as it extracts perceptual rather than linear brightness, for example `greyscale('#0000ff')` will return the same value as `greyscale('#00ff00')`, though they appear quite different in brightness to the human eye.
+因为颜色的饱和度不受色相值影响，所以输出的颜色会稍显暗淡 (dull or muddy)；如果使用[`luma`](#color-channel-luma)值可能会有更好的结果，因为它提取的是百分比亮度，而不是线性亮度。比如`greyscale('#0000ff')`与`greyscale('#00ff00')`会得出相同的结果，尽管对人眼来说，它们的亮度是不一样的。
 
 参数： `@color`: 颜色对象(A color object)
 
@@ -225,16 +225,13 @@ color: rgb(@c, @c, @c);
 ### contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])
 
 > Choose which of two colors provides the greatest contrast with another.
-选择这两种颜色提供了最大对比度与另一个
-> 从两种颜色中选出与对比度差距最大的@threshold。
-如果你写40%，那就是40%倾向于亮色，60%倾向于暗色，这样在两者差距不大的时候会倾向于暗色。
+> 选择两种颜色相比较，得出哪种颜色的对比度最大就倾向于对比度最大的颜色。
 
-This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the [contrast function in Compass for SASS](http://compass-style.org/reference/compass/utilities/color/contrast/). In accordance with [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef), colors are compared using their [luma](#color-channel-luma) value, not their lightness.
 
 这个函数对比 @background 的 luma 值与 @threshold 参数的大小，如果大于输出 @darkcolor, 小于则输出 @lightcolor，便于选择相对于背景更容易阅读的颜色，同时提高了使用颜色的灵活性，与 [Compass 的 contrast() 函数](http://compass-style.org/reference/compass/utilities/color/contrast/) 工作方式相同。根据 [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef) 应该对比颜色的 luma 值，而不是亮度值 (lightness)。
 
-The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can't use this function to select the *least* contrasting color by reversing the order.
-`@light` 和 `@dark` 两个参数可以调换顺序。因为`contrast()`函数会自动计算它们的luma值和自动分配`@light`和`@dark`，这样你就不用通过颠倒两个参数的顺序才能选到最浅对比度颜色(the *least* contrasting color)。
+
+`@light` 和 `@dark` 两个参数可以调换顺序。因为`contrast()`函数会自动计算它们的luma值和自动分配`@light`和`@dark`，这样你就不用通过颠倒两个参数的顺序才能选到最小对比度颜色(the *least* contrasting color)。
 
 参数：
 
@@ -264,7 +261,8 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);
 #000000 // 黑色
 #ffffff // 白色
 ```
-These examples use the calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it's possible to use the threshold to permit lower-contrast outcomes, as in the last example:
+
+这些例子是利用计算颜色的值作为背景色和前景色。正如你所见，即便可能使用阈值允许得出更低对比度的颜色，但是不可能白衬白结束，也不可能黑衬黑结束。如最后一个例子：
 
 ![Color 1](holder.js/100x40/#aaaaaa:#000000/text:000000)
 ![Color 1](holder.js/100x40/#222222:#ffffff/text:ffffff)
