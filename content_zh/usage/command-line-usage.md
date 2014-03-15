@@ -2,7 +2,7 @@
 标题: 命令行使用
 ---
 
-> 使用命令行编译 `.less` 文件生产 `.css`文件
+> 使用命令行编译 `.less` 文件生成 `.css`文件
 
 <span class="warning">注意! 如果命令行不是你的长处, 更多的去了解 [GUIs for Less](#guis-for-less).</span>
 
@@ -31,14 +31,14 @@ npm i less --save-dev
 
 因为新功能将会定期的发布, lessc builds will be published to npm, tagged as. 这些版本_不会_作为`@latest`的正式发布,通常会带有个版本号或带`alpha/beta/release`字样的候选版本.
 
-由于补丁发布是不间断的，我们会立即发布补丁版本和alpha/beta/候选版本将作为次要或主要版本升级（为了遵循[语义版本](http://semver.org/),我们会从1.4.0版本继续）。
+由于补丁发布是持续性的，我们会立即发布补丁版本，及作为次要或主要版本升级的alpha/beta/候选版本（为了遵循[语义版本](http://semver.org/),我们会从1.4.0版本继续）。
 Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades .
 
 #### 安装lessc 未发布的开发版本
 
-如果你想安装一个前沿,lessc未发布的版本,按照说明指定一个[git的URL作为一个依赖][]和一定要指定一个实际的提交SHA(不是一个分支的名字)使用`commit-ish`。这将保证您的项目总是使用lessc的具体版本.
+如果你想安装一个超前的,lessc未发布的版本,按照说明指定一个[git的URL作为一个依赖][]和一定要指定一个实际的提交SHA(不是一个分支的名字)使用`commit-ish`。这将保证您的项目总是使用lessc的具体版本.
 
-指定的git URL 可能就是官方lessc的repo或者一个fork.
+指定的git URL 可能就是官方lessc的repo库或者一个fork库.
 
 
 [tilde version range]: https://www.npmjs.org/doc/misc/semver.html#Ranges
@@ -55,7 +55,7 @@ Since patch releases are non-breaking we will publish patch releases immediately
 lessc [option option=parameter ...] <source> [destination]
 ```
 
-If source is set to `-' (dash or hyphen-minus), input is read from stdin.
+如果源文件设置`-'命令选项，从标准输入文件读取数据。
 
 #### 例如
 
@@ -82,35 +82,34 @@ lessc --h
 lessc --include-path=PATH1;PATH2
 ```
 
-Sets available include paths. Separated by ':' or ';' on Windows.
+设置可用的包含路径，在Windows,用':' 或者 ';'分隔
 
-Use this to configure a list of paths which less will use to find imports in. You might use this for instance to specify a path to a library which you want to be referenced simply and relatively in the less files.
+使用这个命令配置一系列less导入所能用到的路径，你可能用到这个比如你想在less文件中指定一个你想要引用的一个less工具库.
 
-In node, set a paths option
+在node中使用的话，这样设置一个路径选项
 ```js
 { paths: ['PATH1', 'PATH2']  }
 ```
 
-### 生成文件
+### makefile-输出一个带有依赖列表关系的makefile
 
 ```bash
 lessc -M
 lessc --depends
 ```
 
-### 不着色
+### no-color-禁用彩色的输出
 
 ```bash
 lessc --no-color
 ```
 
-### 不兼容IE
+### no-ie-compat-禁用IE兼容性检查
 
 ```bash
 lessc --no-ie-compat
 ```
 
-Currently only used for the data-uri function to ensure that images aren't created that are too large for the browser to handle.
 目前仅用于 data-uri函数，确保创建出能够适合浏览器处理的图片大小。
 ### 禁用JavaScript
 
@@ -118,7 +117,7 @@ Currently only used for the data-uri function to ensure that images aren't creat
 lessc --no-js
 ```
 
-### Lint
+### Lint-仅语法检查
 
 ```bash
 lessc --lint
@@ -127,7 +126,7 @@ lessc --l
 
 运行less转换器,仅仅会报告错误,无任何输出
 
-### Silent
+### Silent-抑制错误消息输出
 
 ```bash
 lessc -s
@@ -146,7 +145,7 @@ lessc --strict-imports
 lessc --insecure
 ```
 
-### 版本
+### 显示版本
 
 ```bash
 lessc -v
@@ -189,17 +188,15 @@ lessc --source-map=file.map
 
 告诉less 生成一个源代码映射文件(sourcemap).如果不提供文件名映射，则使用源less编译后CSS全文件名来作为扩展映射名称。
 
-### Source Map Rootpath源代码映射根路径
+### Source Map Rootpath源代码映射带根路径
 
 ```bash
 lessc --source-map-rootpath=dev-files/
 ```
 
-Specifies a rootpath that should be prepended to each of the less file paths inside the sourcemap and also to the path to the map file specified in your output css.
-指定一个根路径用于预设在源代码映射每一个less文件路径和编译生成的css文件中
+指定一个根路径添加到源代码映射的每一个less文件路径,并添加到编译生成的css文件源代码映射文件名上
 
-Use this option if for instance you have a css file generated in the root on your web server but have your source less/css/map files in a different folder. So for the option above you might have
-举例来说如果你有根生成的css文件在Web服务器上，但有你的源代码在不同的文件夹中少/ CSS/映射文件使用此选项。因此，对于你上面的选项可能有
+举例来说如果你生成的css文件在Web服务器根目录上，但你的源Less/Css/map文件在不同的文件夹中。因此，用这个选项可能有下面的结果
 
 ```bash
 output.css
@@ -213,17 +210,16 @@ dev-files/main.less
 lessc --source-map-basepath=less-files/
 ```
 
-与根路径相反的相反的做法，它指明应当从输出路径被删除的路径。例如，如果你正在编译`less-files`目录的一个文件，但源文件将在根目录或当前目录下的Web服务器有效，您可以指定此项，移除输出路径中额外的``less-files``文件路径。
+与根路径相反的相反的做法，它指明应当从输出路径被移除的路径。例如，如果你正在编译`less-files`目录的一个文件，但源文件将在根目录或当前目录下的Web服务器有效，您可以指定此项，移除输出路径中额外的``less-files``文件路径。
 ### Source Map Less Inline
 
 ```bash
 lessc --source-map-less-inline
 ```
 
-This option specifies that we should include all of the css files in to the sourcemap. This means that you only need your map file to get to your original source.
-此选项指定所有的less文件原内容都会包括在源文件映射中，意味着获取你的.map文件就能获取less源代码.
+此选项指定所有的less文件内容都会内嵌在源文件映射中，意味着获取你的.map文件就能获取less源代码.
 
-This can be used in conjunction with the map inline option so that you do not need to have any additional external files at all.
+这可以与内联映射选项（见Source Map Map Inline）一起使用,这样你不需要任何额外的外部文件。
 
 ### Source Map Map Inline
 
@@ -231,16 +227,14 @@ This can be used in conjunction with the map inline option so that you do not ne
 lessc --source-map-map-inline
 ```
 
-This option specifies that the map file should be inline in the output CSS. This is not recommended for production, but for development it allows the compiler to produce a single output file which in browsers that support it, use the compiled css but show you the non-compiled less source.
-此选项指定map文件应该内嵌在输出的CSS，在生产中不推荐，但对于开发环境，编译产生单个文件，使之浏览器支持显示编译的css而不是未编译的less资源
+此选项指定map文件（包括less文件）应该内嵌在输出的CSS，在生产中不推荐，但对于开发环境，编译输出单个文件，在支持它的浏览器，就可以使用编译的css而显示未编译的less资源
 ### Source Map URL
 
 ```bash
 lessc --source-map-url=../my-map.json
 ```
 
-Allows you to override the URL in the css that points at the map file. This is for cases when the rootpath and basepath options are not producing exactly what you need.
-允许你重写你的，为了防止根路径和原路径选项没有正确生成你需要的情况。
+允许你在CSS中重写你的指向map文件的URL，为了防止根路径和原路径选项没有准确生成你需要的情况。
 
 ### 根路径
 
