@@ -29,10 +29,9 @@ npm i less --save-dev
 请注意,[波浪线版本范围][]将自动在package.json中指定。这是对的,因为最新版本发布的新补丁将由npm安装。
 #### lessc的测试版本
 
-因为新功能将会定期的发布, lessc builds will be published to npm, tagged as. 这些版本_不会_作为`@latest`的正式发布,通常会带有个版本号或带`alpha/beta/release`字样的候选版本.
+因为新功能将会定期的发布,lessc 构建也会将他们作为标记发布到npm。 这些版本_不会_作为`@latest`的正式发布,通常是带有版本号或带`alpha/beta/release`字样的候选版本.
 
-由于补丁发布是持续性的，我们会立即发布补丁版本，及作为次要或主要版本升级的alpha/beta/候选版本（为了遵循[语义版本](http://semver.org/),我们会从1.4.0版本继续）。
-Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades .
+由于补丁发布是持续性的，我们会同时公布补丁版本，作为次要或主要版本升级的alpha/beta/候选版本也会被公布（为了遵循[语义版本](http://semver.org/),我们会从1.4.0版本继续）。
 
 #### 安装lessc 未发布的开发版本
 
