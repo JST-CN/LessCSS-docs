@@ -1,8 +1,8 @@
 > TODO
 
-## CSS Comments
+## CSS注释
 
-CSS-style comments are preserved by Less:
+CSS 的注释格式在 LESS 中依然有效：
 
 ```less
 .class {
@@ -11,9 +11,9 @@ CSS-style comments are preserved by Less:
 }
 ```
 
-## Less Comments
+## LESS注释
 
-Single-line comments are also valid in Less, but they are ‘silent’, they don’t show up in the compiled CSS output:
+LESS 同样也支持双斜线的注释，但是编译成 CSS 的时候自动过滤掉：
 
 ```less
 .class {
