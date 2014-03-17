@@ -1,46 +1,46 @@
-### length
+### 长度(length)
 
-> Returns the number of elements in a value list.
+> 返回集合中的值的数目.
 
-Parameters: `list` - a comma or space separated list of values.
-Returns: an integer number of elements in a list
+参数: `list` - 逗号或者空格隔开的值集合。
+返回: 集合的值个数。
 
-Example: `length(1px solid #0080ff);`
-Output: `3`
+例如: `length(1px solid #0080ff);`
+输出: `3`
 
-Example:
+例如:
 
 ```less
 @list: "banana", "tomato", "potato", "peach";
 n: length(@list);
 ```
 
-Output:
+输出:
 
 ```
 n: 4;
 ```
 
-### extract
+### 提取(extract)
 
-> Returns the value at a specified position in a list.
+> 返回集合中指定索引的值。
 
-Parameters:
-`list` - a comma or space separated list of values.
-`index` - an integer that specifies a position of a list element to return.
-Returns: a value at the specified position in a list.
+参数:
+`list` - 逗号或者空格隔开的值集合。
+`index` - 用于返回集合中指定位置值的整型数字。
+返回: 集合指定位置处的值。
 
-Example: `extract(8px dotted red, 2);`
-Output: `dotted`
+例如: `extract(8px dotted red, 2);`
+输出: `dotted`
 
-Example:
+例如:
 
 ```less
 @list: apple, pear, coconut, orange;
 value: extract(@list, 3);
 ```
 
-Output:
+输出:
 
 ```
 value: coconut;
