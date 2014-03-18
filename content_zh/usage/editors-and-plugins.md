@@ -1,20 +1,20 @@
 ---
-title: Editors and plugins
+title: 编辑器和插件
 ---
 
-Also see: [GUIs for Less.js](#guis-for-less)
+或参阅: [GUIs for Less.js](#guis-for-less)
 
-## Editors and IDEs
+## 编辑器和IDE
 
-* [Crunch!](http://crunchapp.net/) (built-in support)
-* [Mindscape Web Workbench][web-workbench] (built-in support)
-* [NetBeans][netbeans] (built-in [syntax highlighting][netbeans-sh])
+* [Crunch!](http://crunchapp.net/) (内置支持)
+* [Mindscape Web Workbench][web-workbench] (内置支持)
+* [NetBeans][netbeans] (内置支持 [语法高亮][netbeans-sh])
 * [TextMate](https://github.com/appden/less.tmbundle)
 * [Vim](https://github.com/groenewege/vim-less)
-* [jetBrains WebStorm][webstorm] and [PhpStorm][phpstorm] (built-in support)
-* [Brackets][brackets] (built-in syntax highlighting, [several extensions][brackets-ext] for compilation)
-* [CodeLobster][codelobster] (built-in [syntax highlighting][codelobster-sh])
-* [KineticWing IDE][kineticwing] (built-in [support][kineticwing-less])
+* [jetBrains WebStorm][webstorm] and [PhpStorm][phpstorm] (内置支持)
+* [Brackets][brackets] (内置支持 语法高亮, [一些编译扩展][brackets-ext])
+* [CodeLobster][codelobster] (内置支持 [语法高亮][codelobster-sh])
+* [KineticWing IDE][kineticwing] (内置 [支持][kineticwing-less])
 
 ### [Sublime Text 2 & 3](http://sublimetext.com/)
 
@@ -25,7 +25,7 @@ Also see: [GUIs for Less.js](#guis-for-less)
 
 ### [Eclipse](http://www.eclipse.org/)
 
-* [Plugin](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html) by Vincent Simonet
+* 由 Vincent Simonet 提供的[插件](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html)
 
 ### [Visual Studio](http://www.visualstudio.com/)
 
@@ -40,11 +40,11 @@ Also see: [GUIs for Less.js](#guis-for-less)
 
 ### [Notepad++ 6.x][Npp]
 
-* [Less.js Syntax Highlighting][Npp-Less-Salitrero] User Defined Language by Raúl Salitrero
-* [Less.js Syntax Highlighting][Npp-Less-azrafe7] User Defined Language by azrafe7
-* [How to Install][Npp-How-to]
+* [Less.js 语法高亮][Npp-Less-Salitrero] 由 Raúl Salitrero 自定义的
+* [Less.js 语法高亮][Npp-Less-azrafe7] 由 azrafe7 自定义的
+* [安装指南][Npp-How-to]
 
-<!-- invisible links -->
+<!-- 隐藏链接 -->
 
 [SublimeOnSaveBuild]: https://github.com/alexnj/SublimeOnSaveBuild "Sublime Text Package for Less.js"
 [Less-sublime]: https://github.com/danro/Less-sublime "Sublime Text Package for Less.js"
