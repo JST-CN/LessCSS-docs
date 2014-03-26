@@ -13,3 +13,5 @@ vendor
 TODO.md
 *.sublime-*
 .idea
+
+.DS_Store

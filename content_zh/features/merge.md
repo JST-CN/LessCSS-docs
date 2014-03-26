@@ -1,10 +1,10 @@
-> Combine properties
+> 合并属性
 
-The `merge` feature allows for aggregating values from multiple properties into a comma separated list under a single property. `merge` is useful for properties such as background and transform.
+`merge`特性可以从多个属性中将值集合集合到一个单一属性之下的逗号分割属性列表中。对于诸如background和transform之类的属性来说，`merge`非常有用。
 
-Released [v1.5.0]({{ less.master }}CHANGELOG.md)
+发布于 [v1.5.0]({{ less.master }}CHANGELOG.md)
 
-Example:
+示例：
 
 ```less
 .mixin() {
@@ -15,14 +15,13 @@ Example:
   box-shadow+: 0 0 20px black;
 }
 ```
-Outputs
+输出：
 
 ```css
 .myclass {
   box-shadow: inset 0 0 10px #555, 0 0 20px black;
 }
 ```
+为避免任何非有意的添加，`merge`需要在每个待加入的声明中显示的设置一个`+`标记。
 
-To avoid any unintentional joins, `merge` requires an explicit `+` flag on each join pending declaration.
-
-_Note: although convention on the transform property is to have space separated, comma separation is supported which is why there is no option on this feature for whether to generate space or comma separated._
+_注意：尽管transform规范中属性使用空格分割，但它仍然支持使用逗号分割；这也是为什么这个特性中没有选项来配置用空格还是逗号分割的原因。_

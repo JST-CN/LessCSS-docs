@@ -1,8 +1,9 @@
-> Allow wrapping of a css block, defined in a mixin
+> 允许在mixin中定义包装的CSS块
 
-Released [v1.7.0]({{ less.master }}CHANGELOG.md)
 
-You may want to define a mixin that will abstract out either wrapping a piece of code in a media query or a non supported browser class name. You can now pass rulesets to mixins so that the mixin can wrap the content. E.g.
+发布于 [v1.7.0]({{ less.master }}CHANGELOG.md)
+
+你可能希望定义一个mixin将一个媒体查询中的一个代码块或者一个浏览器不支持的类名抽象出来。现在，你可以传递规则集给mixin，然后该mixin会包装这些规则集。比如：
 
 ```less
 .desktop-and-old-ie(@rules) {
@@ -18,8 +19,7 @@ header {
   });
 }
 ```
-
-Here the `desktop-and-old-ie` mixin defines the media query and root class so that you can use a mixin to wrap a piece of code. This will output..
+这里的`desktop-and-old-ie` mixin定义了媒体查询和祖先类，因此你可以使用mixin来包装一段代码。上面这段代码会输出：
 
 ```css
 header {

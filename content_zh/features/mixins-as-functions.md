@@ -1,8 +1,8 @@
-> Return variables from mixins
+> 从mixin中返回变量
 
-All variables defined in a mixin are visible and can be used in caller's scope (unless the caller defines its own variable with the same name).
+所有定义在一个mixin中的变量都是可见的，还可以用于调用它的作用域中（除非调用它的作用域定义了同名变量）。
 
-Example:
+示例：
 
 ```less
 .mixin() {
@@ -17,7 +17,7 @@ Example:
 }
 
 ```
-Results in:
+结果：
 
 ```css
 .caller {
@@ -25,10 +25,9 @@ Results in:
   height: 200px;
 }
 ```
+因此定义在mixin中的变量还可以充当它的返回值。这样就允许我们创建一个用起来类似函数的mixin。
 
-Thus variables defined in a mixin can act as its return values. This allows us to create a mixin that can be used almost like a function.
-
-Example:
+示例：
 
 ```less
 .average(@x, @y) {
@@ -41,7 +40,7 @@ div {
 }
 ```
 
-Results in:
+结果：
 
 ```css
 div {

@@ -1,6 +1,6 @@
-> Functions you can use in your styles.
+> 可以在你的样式中使用的函数。
 
-## Generating colors
+## 生成颜色(Generating colors)
 
 ```less
 rgb(r, g, b)
@@ -18,7 +18,7 @@ hsl(h, s, l)
 hsla(h, s, l, a)
 ```
 
-## Modifying colors
+## 修改颜色(Modifying colors)
 
 ```less
 saturate(color, amount)
