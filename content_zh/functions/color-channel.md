@@ -1,143 +1,143 @@
-### hue
+### hue(@color)
 
-> Extracts the hue channel of a color object in the HSL color space.
+> 从HSL色彩空间中提取颜色对象的色相值。
 
-Parameters: `color` - a color object.
+参数：`@color` - 颜色对象(a color object)
 
-Returns: `integer` `0-360`
+返回值： `整数` `0-360`
 
-Example: `hue(hsl(90, 100%, 50%))`
+例如： `hue(hsl(90, 100%, 50%))`
 
-Output: `90`
+输出： `90`
 
 
-### saturation
+### saturation(@color)
 
-> Extracts the saturation channel of a color object in the HSL color space.
+> 从HSL色彩空间中提取颜色对象的饱和度值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `percentage` `0-100`
+返回值： `百分比` `0-100`
 
-Example: `saturation(hsl(90, 100%, 50%))`
+例如： `saturation(hsl(90, 100%, 50%))`
 
-Output: `100%`
+输出： `100%`
 
 
-### lightness
+### lightness(@color)
 
-> Extracts the lightness channel of a color object in the HSL color space.
+> 从HSL色彩空间中提取颜色对象的亮度值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `percentage` `0-100`
+返回值： `百分比` `0-100`
 
-Example: `lightness(hsl(90, 100%, 50%))`
+例如： `lightness(hsl(90, 100%, 50%))`
 
-Output: `50%`
+输出： `50%`
 
 
-### hsvhue
+### hsvhue(@color)
 
-> Extracts the hue channel of a color object in the HSV color space.
+> 从HSV色彩空间中提取颜色对象的色相值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `integer` `0-360`
+返回值： `整数` `0-360`
 
-Example: `hsvhue(hsv(90, 100%, 50%))`
+例如： `hsvhue(hsv(90, 100%, 50%))`
 
-Output: `90`
+输出： `90`
 
 
-### hsvsaturation
+### hsvsaturation(@color)
 
-> Extracts the saturation channel of a color object in the HSV color space.
+> 从HSV色彩空间中提取颜色对象的饱和度值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `percentage` 0-100
+返回值： `百分比` 0-100
 
-Example: `hsvsaturation(hsv(90, 100%, 50%))`
+例如： `hsvsaturation(hsv(90, 100%, 50%))`
 
-Output: `100%`
+输出： `100%`
 
 
-### hsvvalue
+### hsvvalue(@color)
 
-> Extracts the value channel of a color object in the HSV color space.
+> 从色彩空间中提取颜色对象的色调值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `percentage` 0-100
+返回值： `百分比` 0-100
 
-Example: `hsvvalue(hsv(90, 100%, 50%))`
+例如： `hsvvalue(hsv(90, 100%, 50%))`
 
-Output: `50%`
+输出： `50%`
 
 
-### red
+### red(@color)
 
-> Extracts the red channel of a color object.
+> 提取颜色对象的红色值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `integer` `0-255`
+返回值： `整数` `0-255`
 
-Example: `red(rgb(10, 20, 30))`
+例如： `red(rgb(10, 20, 30))`
 
-Output: `10`
+输出： `10`
 
 
-### green
+### green(@color)
 
-> Extracts the green channel of a color object.
+> 提取颜色对象的绿色值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `integer` 0-255
+返回值： `整数` 0-255
 
-Example: `green(rgb(10, 20, 30))`
+例如： `green(rgb(10, 20, 30))`
 
-Output: `20`
+输出： `20`
 
 
-### blue
+### blue(@color)
 
-> Extracts the blue channel of a color object.
+> 提取颜色对象的蓝色值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `integer` 0-255
+返回值： `整数` 0-255
 
-Example: `blue(rgb(10, 20, 30))`
+例如： `blue(rgb(10, 20, 30))`
 
-Output: `30`
+输出： `30`
 
 
-### alpha
+### alpha(@color)
 
-> Extracts the alpha channel of a color object.
+> 提取颜色对象的透明度值。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `float` `0-1`
+返回值： `浮点数` `0-1`
 
-Example: `alpha(rgba(10, 20, 30, 0.5))`
+例如： `alpha(rgba(10, 20, 30, 0.5))`
 
-Output: `0.5`
+输出： `0.5`
 
 
-### luma
+### luma(@color)
 
-> Calculates the [luma](http://en.wikipedia.org/wiki/Luma_%28video%29) (perceptual brightness) of a color object.
+> 计算颜色对象[luma](http://en.wikipedia.org/wiki/Luma_%28video%29)的值（亮度的百分比表示法）。
 
-Uses **SMPTE C / Rec. 709** coefficients, as recommended in [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef). This calculation is also used in the contrast function.
+使用在[WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef)中定义的**SMPTE C / Rec. 709**  coefficients。 这个计算公式也用在 contrast() 函数中。
 
-Parameters: `color` - a color object.
+参数： `@color` - 颜色对象(a color object)
 
-Returns: `percentage` 0-100%
+返回值： `百分比` 0-100%
 
-Example: `luma(rgb(100, 200, 30))`
+例如： `luma(rgb(100, 200, 30))`
 
-Output: `65%`
+输出： `65%`

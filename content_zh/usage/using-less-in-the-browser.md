@@ -69,7 +69,7 @@ async的参数是用来判断是否异步导入文件。
 
 参数： `comments`|`mediaQuery`|`all`
 
-默认： ` `
+默认： `空`
 
 当设置dumpLineNumbers直接输出源行信息到编译好的CSSS的文件中时，有利于你调试指定行。
 
@@ -103,14 +103,14 @@ less = { env: 'production' };
 在LESS编译失败时候，errorReporting会设置错误报告的方法。
 
 #### fileAsync
-类型： `（布尔值）Boolean`
+类型： `布尔值（Boolean）`
 
 默认： `false`
 
 使用文件协议访问页面时异步加载导入的文件。
 
 #### functions
-类型： `object`
+类型： `对象（object）`
 
 在functions这个对象中，key作为函数的名字。
 

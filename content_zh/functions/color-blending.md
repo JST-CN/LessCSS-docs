@@ -1,17 +1,18 @@
-> These operations are _similar_ (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks or GIMP, so you can use them to make your CSS colors match your images.
+> 颜色混合的方式与图像编辑器 Photoshop, Firework 或者 GIMP 的图层混合模式 (layer blending modes) 相似，因此制作 .psd 文件时处理颜色的方法可以同样用在 CSS 中。
 
-### multiply
 
-> Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.
+### multiply(@color1,@color2)
 
-Parameters:
+> 分别将两种颜色的红绿蓝 (RGB) 三种值做乘法运算，然后再除以255，输出结果是更深的颜色。（译注：对应Photoshop中的“变暗/正片叠底”。）
 
-* `color1`: A color object.
-* `color2`: A color object.
+参数：
 
-Returns: `color`
+* `@color1`: 颜色对象( A color object)
+* `@color2`: 颜色对象( A color object)
 
-**Examples**:
+返回值: `颜色(color)`
+
+**例如**:
 
 ```less
 multiply(#ff6600, #000000);
@@ -85,18 +86,18 @@ multiply(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#000000:#ffffff/text:000000)
 
 
-### screen
+### screen(@color1,@color2)
 
-> Do the opposite of `multiply`. The result is a brighter color.
+> 与`multiply()` 函数效果相反，输出结果是更亮的颜色。（译注：对应Photoshop中的“变亮/滤色”。）
 
-Parameters:
+参数：
 
-* `color1`: A color object.
-* `color2`: A color object.
+* `@color1`: 颜色对象(A color object)
+* `@color2`: 颜色对象(A color object)
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 screen(#ff6600, #000000);
@@ -171,18 +172,18 @@ screen(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#ff66ff:#000000/text:ff66ff)
 
 
-### overlay
+### overlay(@color1,@color2)
 
-> Combines the effects of both `multiply` and `screen`. Conditionally make light channels lighter and dark channels darker. **Note**: The results of the conditions are determined by the first color parameter.
+> 结合 `multiply()` 与 `screen()` 两个函数的效果，令浅的颜色变得更浅，深的颜色变得更深。（译注：对应Photoshop中的“叠加”。）**注意**：输出结果由第一个颜色参数决定。
 
-Parameters:
+参数：
 
-* `color1`: A base color object. Also the determinant color to make the result lighter or darker.
-* `color2`: A color object to _overlay_.
+* `@color1`: 颜色对象，是用于叠加的颜色，也是结果是更亮还是更暗的决定因素。
+* `@color2`:  颜色对象，被_叠加_的颜色。
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 overlay(#ff6600, #000000);
@@ -257,18 +258,18 @@ overlay(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#ff0000:#ffffff/text:ff0000)
 
 
-### softlight
+### softlight(@color1,@color2)
 
-> Similar to `overlay` but avoids pure black resulting in pure black, and pure white resulting in pure white.
+> 与 `overlay()` 函数效果相似，只是当纯黑色或纯白色作为参数时输出结果不会是纯黑色或纯白色。（译注：对应Photoshop中的“柔光”。）
 
-Parameters:
+参数：
 
-* `color1`: A color object to _soft light_ another.
-* `color2`: A color object to be _soft lighten_.
+* `@color1`: 混合色（光源）
+* `@color2`:  被混合的颜色
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 softlight(#ff6600, #000000);
@@ -343,18 +344,18 @@ softlight(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#ff2900:#ffffff/text:ff2900)
 
 
-### hardlight
+### hardlight(@color1,@color2)
 
-> The same as `overlay` but with the color roles reversed.
+> 与 `overlay()` 函数效果相似，不过由第二个颜色参数决定输出颜色的亮度或黑度，而不是第一个颜色参数决定。（译注：对应Photoshop中的“强光/亮光/线性光/点光”。）
 
-Parameters:
+参数：
 
-* `color1`: A color object to _overlay_.
-* `color2`: A base color object. Also the determinant color to make the result lighter or darker.
+* `@color1`: 混合色（光源）
+* `@color2`: 颜色对象，用于叠加颜色，也是结果是更亮还是更暗的决定因素。
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 hardlight(#ff6600, #000000);
@@ -429,18 +430,18 @@ hardlight(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#0000ff:#ffffff/text:0000ff)
 
 
-### difference
+### difference(@color1,@color2)
 
-> Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.
+> 从第一个颜色值中减去第二个（分别计算 RGB 三种颜色值），输出结果是更深的颜色。（译注：对应Photoshop中的“差值/排除”。）
 
-Parameters:
+参数：
 
-* `color1`: A color object to act as the minuend.
-* `color2`: A color object to act as the subtrahend.
+* `@color1`: 被减的颜色对象
+* `@color2`: 减去的颜色对象
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 difference(#ff6600, #000000);
@@ -515,18 +516,18 @@ difference(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#ff66ff:#000000/text:ff66ff)
 
 
-### exclusion
+### exclusion(@color1,@color2)
 
-> A similar effect to `difference` with lower contrast.
+> 效果与 `difference()` 函数效果相似，只是输出结果差别更小 (lower contrast)。（译注：对应Photoshop中的“差值/排除”。）
 
-Parameters:
+参数：
 
-* `color1`: A color object to act as the minuend.
-* `color2`: A color object to act as the subtrahend.
+* `@color1`: 被减的颜色对象
+* `@color2`: 减去的颜色对象
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 exclusion(#ff6600, #000000);
@@ -601,18 +602,18 @@ exclusion(#ff6600, #0000ff);
 ![Color 3](holder.js/100x40/#ff66ff:#000000/text:ff66ff)
 
 
-### average
+### average(@color1,@color2)
 
-> Compute the average of two colors on a per-channel (RGB) basis.
+> 分别对 RGB 的三种颜色值取平均值，然后输出结果。
 
-Parameters:
+参数：
 
-* `color1`: A color object.
-* `color2`: A color object.
+* `@color1`: 颜色对象(A color object)
+* `@color2`: 颜色对象(A color object)
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 average(#ff6600, #000000);
@@ -686,20 +687,18 @@ average(#ff6600, #0000ff);
 ![Color 2](holder.js/100x40/#0000ff:#ffffff/text:0000ff)
 ![Color 3](holder.js/100x40/#803380:#ffffff/text:803380)
 
-### negation
+### negation(@color1,@color2)
 
-> Do the opposite effect to `difference`.
+> 与 difference() 函数效果相反，输出结果是更亮的颜色。请注意：效果相反不代表做加法运算。
 
-The result is a brighter color. **Note**: The _opposite_ effect doesn't mean the _inverted_ effect as resulting from an _addition_ operation.
+参数：
 
-Parameters:
+* `@color1`: 被减的颜色对象
+* `@color2`: 减去的颜色对象
 
-* `color1`: A color object to act as the minuend.
-* `color2`: A color object to act as the subtrahend.
+返回值： `颜色(color)`
 
-Returns: `color`
-
-Example:
+例如：
 
 ```less
 negation(#ff6600, #000000);
