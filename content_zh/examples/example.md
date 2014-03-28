@@ -1,4 +1,4 @@
-Write some Less:
+LESS例子：
 
 ```less
 @base: #f938ab;
