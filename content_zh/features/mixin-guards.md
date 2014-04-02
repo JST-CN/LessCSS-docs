@@ -1,10 +1,10 @@
-> Conditional mixins
+> 带条件的mixins。
 
-Guards are useful when you want to match on _expressions_, as opposed to simple values or arity. If you are familiar with functional programming, you have probably encountered them already.
+当你想要匹配_表达式_，而不是简单的值或者参数数量时，guard是很有用的。如果你熟悉函数式编程，那么你肯定遇到过这类问题。
 
-In trying to stay as close as possible to the declarative nature of CSS, Less has opted to implement conditional execution via **guarded mixins** instead of `if`/`else` statements, in the vein of `@media` query feature specifications.
+为了尽可能的保持CSS声明的本质，Less选择实现了**guarded mixins**，而不是`if`/`else`语句，也就是说并不是一脉相承的实现`@media`查询的规范。
 
-Let's start with an example:
+让我们从一个例子开始：
 
 ```less
 .mixin (@a) when (lightness(@a) >= 50%) {
@@ -18,14 +18,14 @@ Let's start with an example:
 }
 ```
 
-The key is the `when` keyword, which introduces a guard sequence (here with only one guard). Now if we run the following code:
+这里有一个`when`关键字，它引进了一个guard序列（在这里只有一个guard）。现在，假设我们运行以下代码：
 
 ```less
 .class1 { .mixin(#ddd) }
 .class2 { .mixin(#555) }
 ```
 
-Here's what we'll get:
+会得到：
 
 ```css
 .class1 {
@@ -38,30 +38,29 @@ Here's what we'll get:
 }
 ```
 
-### Guard comparison operators
+### Guard中的比较运算符
 
-The full list of comparison operators usable in guards are: `>`, `>=`, `=`, `=<`, `<`. Additionally, the keyword `true` is the only truthy value, making these two mixins equivalent:
+guards中可用的比较运算符的完整列表为： `>`, `>=`, `=`, `=<`, `<`。此外，关键字`true`是让两个mixins等价的唯一真值：
 
 ```less
 .truth (@a) when (@a) { ... }
 .truth (@a) when (@a = true) { ... }
 ```
 
-Any value other than the keyword `true` is falsy:
+除了关键字`true`，其他任何值都是假值：
 
 ```less
 .class {
   .truth(40); // Will not match any of the above definitions.
 }
 ```
-
-Guards can be separated with a comma `,`, if any of the guards evaluates to true, it's considered as a match:
+Guards可以使用逗号`,`分割，如果guards求值都为`true`，它就被认为是一个相等的匹配：
 
 ```less
 .mixin (@a) when (@a > 10), (@a < -10) { ... }
 ```
 
-Note that you can also compare arguments with each other, or with non-arguments:
+注意，你也可以比较其他每个参数或者不使用参数：
 
 ```less
 @media: mobile;
@@ -73,16 +72,16 @@ Note that you can also compare arguments with each other, or with non-arguments:
 .max (@a; @b) when (@a < @b) { width: @b }
 ```
 
-### Type checking functions
+### 类型检查函数
 
-Lastly, if you want to match mixins based on value type, you can use the `is` functions:
+最后，如果你想基于值类型匹配mixins，那么你可以使用`is`函数：
 
 ```less
 .mixin (@a; @b: 0) when (isnumber(@b)) { ... }
 .mixin (@a; @b: black) when (iscolor(@b)) { ... }
 ```
 
-Here are the basic type checking functions:
+下面是一些基本的类型检查函数：
 
 * `iscolor`
 * `isnumber`
@@ -90,29 +89,28 @@ Here are the basic type checking functions:
 * `iskeyword`
 * `isurl`
 
-If you want to check if a value is in a specific unit in addition to being a number, you may use one of:
+如果你想检查一个值除了数字是否是一个特定的单位，你可以使用下列方法之一：
 
 * `ispixel`
 * `ispercentage`
 * `isem`
 * `isunit`
 
-### Conditional mixins
+### 带条件的mixins
 
-_(**FIXME**)_ Additionally, the `default` function may be used to make a mixin match depending on other mixing matches, and you may use it to create "conditional mixins" similar to `else` or `default` statements (of `if` and `case` structures respectively):
+_(**FIXME**)_ 此外，`default`函数可以用于让一个mixin匹配依赖于其他mixin匹配，然后你可以使用它来创建类似于`else`或者`default`语句（分别属于`if`和`case`结构）的“条件式mixins”：
 
 ```less
 .mixin (@a) when (@a > 0) { ...  }
 .mixin (@a) when (default()) { ... } // matches only if first mixin does not, i.e. when @a <= 0
 ```
-
-Last but not least, you may use the `and` keyword to provide additional conditions inside a guard:
+最后一项要点，在一个guard内你可以使用`and`关键字提供额外的条件：
 
 ```less
 .mixin (@a) when (isnumber(@a)) and (@a > 0) { ... }
 ```
 
-And finally, the **`not`** keyword to negate conditions:
+最后，**`not`**关键字用于否定条件：
 
 ```less
 .mixin (@b) when not (@b > 0) { ... }
