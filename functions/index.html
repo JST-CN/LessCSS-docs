@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Less&#x4E3A;CSS&#x6DFB;&#x52A0;&#x4E86;&#x52A8;&#x6001;&#x7279;&#x6027;&#xFF0C;&#x5982;&#x53D8;&#x91CF;&#x3001;&#x6DF7;&#x5408;&#x3001;&#x8FD0;&#x7B97;&#x3001;&#x51FD;&#x6570;&#x7B49;&#x3002; Less&#x65E2;&#x53EF;&#x4EE5;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x7F16;&#x8BD1;&#xFF08;Node.js&#x6216;&#x8005;Rhino&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7F16;&#x8BD1;&#xFF08;&#x73B0;&#x4EE3;&#x6D4F;&#x89C8;&#x5668;&#xFF09;&#x3002;
+">
+<meta name="author" content="The Core Less Team">
+
+<title>
+  Functions | Less.js
+</title>
+
+<!-- Main styles -->
+<link href="../public/css/index.css" rel="stylesheet">
+
+<!-- Webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
+
+  </head>
+  <body>
+    
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../#" class="navbar-brand" alt="Less">
+        <img src="../public/img/logo.png">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../features">Language Features</a>
+        </li>
+        
+        <li class="active">
+          <a href="../functions">Function Reference</a>
+        </li>
+        <li>
+          <a href="../usage">Usage</a>
+        </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+          <a href="../about">About</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="https://github.com/less/less-docs.git">Docs Repo</a> </li>
+            <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
+            <li class="divider"></li>
+            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    
+    <div class="docs-header" id="content">
+      <div class="container">
+        <h1>Functions</h1>
+        <p>Function reference</p>
+        
+      </div>
+    </div>
+
+    
+    <div class="banner">
+  <div class="container">
+    less v1.7.0 has been released -
+    <strong>
+      <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
+    </strong>
+  </div>
+</div>
+
+
+    
+    <div class="container docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sidebar hidden-print" role="complementary">
+            <div id="toc">
+            <ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li><li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li><li><a href="#misc-functions-convert">convert</a></li><li><a href="#misc-functions-data-uri">data-uri</a></li><li><a href="#misc-functions-default">default</a></li><li><a href="#misc-functions-unit">unit</a></li></ul></li><li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape 转义函数</a></li><li><a href="#string-functions-e">e 预判函数</a></li><li><a href="#string-functions-">% 百分号格式化参数</a></li><li><a href="#string-functions-replace">replace 替换</a></li></ul></li><li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">长度(length)</a></li><li><a href="#list-functions-extract">提取(extract)</a></li></ul></li><li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li><li><a href="#math-functions-floor">floor</a></li><li><a href="#math-functions-percentage">percentage</a></li><li><a href="#math-functions-round">round</a></li><li><a href="#math-functions-sqrt">sqrt</a></li><li><a href="#math-functions-abs">abs</a></li><li><a href="#math-functions-sin">sin</a></li><li><a href="#math-functions-asin">asin</a></li><li><a href="#math-functions-cos">cos</a></li><li><a href="#math-functions-acos">acos</a></li><li><a href="#math-functions-tan">tan</a></li><li><a href="#math-functions-atan">atan</a></li><li><a href="#math-functions-pi">pi</a></li><li><a href="#math-functions-pow">pow</a></li><li><a href="#math-functions-mod">mod</a></li><li><a href="#math-functions-min">min</a></li><li><a href="#math-functions-max">max</a></li></ul></li><li><a href="#type-functions">Type Functions</a><ul class="nav"><li><a href="#type-functions-isnumber">函数(isnumber)</a></li><li><a href="#type-functions-isstring">函数(isstring)</a></li><li><a href="#type-functions-iscolor">函数(iscolor)</a></li><li><a href="#type-functions-iskeyword">函数(iskeyword)</a></li><li><a href="#type-functions-isurl">函数(isurl)</a></li><li><a href="#type-functions-ispixel">函数(ispixel)</a></li><li><a href="#type-functions-isem">函数(isem)</a></li><li><a href="#type-functions-ispercentage">函数(ispercentage)</a></li><li><a href="#type-functions-isunit">函数(isunit)</a></li></ul></li><li><a href="#color-definition">Color Definition Functions</a><ul class="nav"><li><a href="#color-definition-rgbredgreenblue">rgb(@red,@green,@blue)</a></li><li><a href="#color-definition-rgbaredgreenbluealpha">rgba(@red,@green,@blue,@alpha)</a></li><li><a href="#color-definition-argbcolor">argb(@color)</a></li><li><a href="#color-definition-hslhuesaturationlightness">hsl（@hue,@saturation,@lightness）</a></li><li><a href="#color-definition-hslahuesaturationlightnessalpha">hsla（@hue,@saturation,@lightness,@alpha）</a></li><li><a href="#color-definition-hsvhuesaturationvalue">hsv(@hue,@saturation,@value)</a></li><li><a href="#color-definition-hsvahuesaturationvaluealpha">hsva（@hue,@saturation,@value,@alpha）</a></li></ul></li><li><a href="#color-channel">Color Channel Functions</a><ul class="nav"><li><a href="#color-channel-huecolor">hue(@color)</a></li><li><a href="#color-channel-saturationcolor">saturation(@color)</a></li><li><a href="#color-channel-lightnesscolor">lightness(@color)</a></li><li><a href="#color-channel-hsvhuecolor">hsvhue(@color)</a></li><li><a href="#color-channel-hsvsaturationcolor">hsvsaturation(@color)</a></li><li><a href="#color-channel-hsvvaluecolor">hsvvalue(@color)</a></li><li><a href="#color-channel-redcolor">red(@color)</a></li><li><a href="#color-channel-greencolor">green(@color)</a></li><li><a href="#color-channel-bluecolor">blue(@color)</a></li><li><a href="#color-channel-alphacolor">alpha(@color)</a></li><li><a href="#color-channel-lumacolor">luma(@color)</a></li></ul></li><li><a href="#color-operations">Color Operation Functions</a><ul class="nav"><li><a href="#color-operations-saturatecoloramount">saturate(@color,@amount)</a></li><li><a href="#color-operations-desaturatecoloramount">desaturate(@color,@amount)</a></li><li><a href="#color-operations-lightencoloramount">lighten(@color,@amount)</a></li><li><a href="#color-operations-darkencoloramount">darken(@color,@amount)</a></li><li><a href="#color-operations-fadeincoloramount">fadein(@color,@amount)</a></li><li><a href="#color-operations-fadeoutcoloramount">fadeout(@color,@amount)</a></li><li><a href="#color-operations-fadecoloramount">fade(@color,@amount)</a></li><li><a href="#color-operations-spincoloramount">spin(@color,@amount)</a></li><li><a href="#color-operations-mixcolor1color2-weight-50">mix(@color1,@color2, [@weight: 50%])</a></li><li><a href="#color-operations-greyscalecolor">greyscale(@color)</a></li><li><a href="#color-operations-contrastbackground-darkcolor-black-lightcolor-white-threshold-43">contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])</a></li></ul></li><li><a href="#color-blending">Color Blending Functions</a><ul class="nav"><li><a href="#color-blending-multiplycolor1color2">multiply(@color1,@color2)</a></li><li><a href="#color-blending-screencolor1color2">screen(@color1,@color2)</a></li><li><a href="#color-blending-overlaycolor1color2">overlay(@color1,@color2)</a></li><li><a href="#color-blending-softlightcolor1color2">softlight(@color1,@color2)</a></li><li><a href="#color-blending-hardlightcolor1color2">hardlight(@color1,@color2)</a></li><li><a href="#color-blending-differencecolor1color2">difference(@color1,@color2)</a></li><li><a href="#color-blending-exclusioncolor1color2">exclusion(@color1,@color2)</a></li><li><a href="#color-blending-averagecolor1color2">average(@color1,@color2)</a></li><li><a href="#color-blending-negationcolor1color2">negation(@color1,@color2)</a></li></ul></li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+          
+
+
+
+<div class="docs-section">
+  <div class="page-header">
+    <h1 id="functions-overview">Functions</h1>
+  </div>
+  <p class="lead">Built-in functions supported by Less.</p>
+</div>
+
+
+  <!-- Misc Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="misc-functions">Misc Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="misc-functions-color">color</h3><blockquote>
+<p>解析颜色，将代表颜色的字符串转换为颜色值。</p>
+</blockquote>
+<p>参数： <code>string</code>: 代表颜色值的字符串。</p>
+<p>返回： <code>color</code></p>
+<p>示例： <code>color(&quot;#aaa&quot;);</code></p>
+<p>输出： <code>#aaa</code></p>
+<h3 id="misc-functions-convert">convert</h3><blockquote>
+<p>将数字从一种类型转换到另一种类型。</p>
+</blockquote>
+<p>第一个参数为带单位的数值，第二个参数为单位。如果两个参数的单位是兼容的，则数字的单位被转换。如果两个参数的单位不兼容，则原样返回第一个参数。</p>
+<p>无需转化改变单位参照 <a href="#misc-functions-unit">unit</a>。</p>
+<p><em>兼容的单位组</em>:</p>
+<ul>
+<li>长度: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> and <code>pc</code>,</li>
+<li>时间: <code>s</code> and <code>ms</code>,</li>
+<li>角度: <code>rad</code>, <code>deg</code>, <code>grad</code> and <code>turn</code>.</li>
+</ul>
+<p>参数：</p>
+<ul>
+<li><code>number</code>: 带单位的浮点数。</li>
+<li><code>identifier</code>, <code>string</code> or <code>escaped value</code>: 单位</li>
+</ul>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">convert(<span class="lang-number">9</span>s, <span class="lang-string">"ms"</span>)</span>
+<span class="lang-function">convert(<span class="lang-number">14</span>cm, mm)</span>
+<span class="lang-function">convert(<span class="lang-number">8</span>, mm)</span> <span class="lang-comment">// 不兼容的单位类型</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>9000ms
+140mm
+8
+</code></pre><h3 id="misc-functions-data-uri">data-uri</h3><blockquote>
+<p>将一个资源内嵌到样式文件，如果开启了ieCompat选项，而且资源文件的体积过大，或者是在浏览器中使用，则会使用<code>url()</code>进行回退。如果没有指定MIME，则Node.js会使用MIME包来决定正确的MIME。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>mimetype</code>: 可选参数，MIME类型字符串。</li>
+<li><code>url</code>: 需要内嵌的文件的URL。</li>
+</ul>
+<p>示例： <code>data-uri(&#39;../data/image.jpg&#39;);</code></p>
+<p>输出： <code>url(&#39;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&#39;);</code></p>
+<p>在浏览器中输出： <code>url(&#39;../data/image.jpg&#39;);</code></p>
+<p>示例： <code>data-uri(&#39;image/jpeg;base64&#39;, &#39;../data/image.jpg&#39;);</code></p>
+<p>输出： <code>url(&#39;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&#39;);</code></p>
+<h3 id="misc-functions-default">default</h3><blockquote>
+<p>只能边界条件中使用，没有匹配到其他自定义函数（mixin）的时候返回<code>true</code>，否则返回<code>false</code>。</p>
+</blockquote>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-class">.mixin</span>(1)                   {x<span class="lang-value">: <span class="lang-number">11</span>}
+.mixin(<span class="lang-number">2</span>)                   {y: <span class="lang-number">22</span>}
+.mixin(@x) when (default()) {z: @x}
+
+div {
+  .mixin(<span class="lang-number">3</span>);</span>
+}
+
+<span class="lang-tag">div</span><span class="lang-class">.special</span> {
+  <span class="lang-class">.mixin</span>(1);
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">z</span>:<span class="lang-value"> <span class="lang-number">3</span></span></span>;
+<span class="lang-rule">}</span></span>
+<span class="lang-tag">div</span><span class="lang-class">.special</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">x</span>:<span class="lang-value"> <span class="lang-number">11</span></span></span>;
+<span class="lang-rule">}</span></span>
+</code></pre>
+<p><code>default</code>的返回值还可以和边界操作一起使用。例如，<code>.mixin() when not(default()) {}</code>，将会在至少一个除自身外的自定义函数(mixin)满足条件时被调用：</p>
+<pre><code class="lang-less"><span class="lang-class">.mixin</span>(<span class="lang-at_rule">@value)<span class="lang-preprocessor"> when</span> (<span class="lang-function">ispixel(@value)</span>) {</span><span class="lang-attribute">width</span><span class="lang-value">: @value}
+.mixin(@value) when not(default())    {padding: (@value / <span class="lang-number">5</span>)}
+
+div-<span class="lang-number">1</span> {
+  .mixin(<span class="lang-number">100</span>px);</span>
+}
+
+<span class="lang-tag">div</span>-2 {
+  <span class="lang-comment">/* ... */</span>
+  <span class="lang-class">.mixin</span>(100%);
+}
+</code></pre>
+<p>结果：</p>
+<pre><code class="lang-css"><span class="lang-tag">div-1</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">100</span>px</span></span>;
+  <span class="lang-rule"><span class="lang-attribute">padding</span>:<span class="lang-value"> <span class="lang-number">20</span>px</span></span>;
+<span class="lang-rule">}</span></span>
+<span class="lang-tag">div-2</span> <span class="lang-rules">{
+  <span class="lang-comment">/* ... */</span>
+<span class="lang-rule">}</span></span>
+</code></pre>
+<p>在同一个边界条件或者不同的混合条件中，<code>default()</code>可以被调用多次：</p>
+<pre><code class="lang-less"><span class="lang-tag">div</span> {
+  <span class="lang-class">.m</span>(<span class="lang-at_rule">@x)<span class="lang-preprocessor"> when</span> (<span class="lang-function">default()</span>),<span class="lang-preprocessor"> not</span>(<span class="lang-function">default()</span>)    {</span><span class="lang-value">always</span><span class="lang-value">: @x}
+  .m(@x) when (default()) and not(default()) {never:  @x}
+
+  .m(<span class="lang-number">1</span>);</span> <span class="lang-comment">// OK</span>
+}
+</code></pre>
+<p>然而，使用<code>default()</code>时如果检测到多个混合条件有<em>潜在性</em>冲突，Less会抛出一个异常：</p>
+<pre><code class="lang-less"><span class="lang-tag">div</span> {
+  <span class="lang-class">.m</span>(<span class="lang-at_rule">@x)<span class="lang-preprocessor"> when</span> (<span class="lang-function">default()</span>)    {</span>}
+  <span class="lang-class">.m</span>(<span class="lang-at_rule">@x)<span class="lang-preprocessor"> when</span><span class="lang-preprocessor"> not</span>(<span class="lang-function">default()</span>) {</span>}
+
+  <span class="lang-class">.m</span>(1); <span class="lang-comment">// Error</span>
+}
+</code></pre>
+<p>在以上的例子中，通过与其他条件的相互依赖就可以确认在调用时<code>default()</code>所返回的值。</p>
+<p>更多<code>default()</code>的高级用法：</p>
+<pre><code class="lang-less"><span class="lang-class">.x</span> {
+  <span class="lang-class">.m</span>(red)                                    {case-1<span class="lang-value">: darkred}
+  .m(blue)                                   {case-<span class="lang-number">2</span>: darkblue}
+  .m(@x) when (iscolor(@x)) and (default())  {default-color: @x}
+  .m(<span class="lang-string">'foo'</span>)                                  {case-<span class="lang-number">1</span>: I am <span class="lang-string">'foo'</span>}
+  .m(<span class="lang-string">'bar'</span>)                                  {case-<span class="lang-number">2</span>: I am <span class="lang-string">'bar'</span>}
+  .m(@x) when (isstring(@x)) and (default()) {default-string: and I am the default}
+
+  &amp;-blue  {.m(blue)}
+  &amp;-green {.m(green)}
+  &amp;-foo   {.m(<span class="lang-string">'foo'</span>)}
+  &amp;-baz   {.m(<span class="lang-string">'baz'</span>)}
+}</span>
+</code></pre>
+<p>结果：</p>
+<pre><code class="lang-css">.x-blue {
+  case-2: #00008b;
+}
+.x-green {
+  default-color: #008000;
+}
+.x-foo {
+  case-1: I am &#39;foo&#39;;
+}
+.x-baz {
+  default-string: and I am the default;
+}
+</code></pre>
+<p><code>default</code>函数只能作为Less构建函数<em>在边界条件</em>中使用。如果在混合条件之外使用，<code>default</code>函数只会被解释成普通的CSS属性值：</p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-tag">div</span> {
+  foo<span class="lang-value">: default();</span>
+  bar<span class="lang-value">: default(<span class="lang-number">42</span>);</span>
+}
+</code></pre>
+<p>结果：</p>
+<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">foo</span>:<span class="lang-value"> <span class="lang-function">default()</span></span></span>;
+  <span class="lang-rule"><span class="lang-attribute">bar</span>:<span class="lang-value"> <span class="lang-function">default(<span class="lang-number">42</span>)</span></span></span>;
+<span class="lang-rule">}</span></span>
+</code></pre>
+<h3 id="misc-functions-unit">unit</h3><blockquote>
+<p>移除或者改变属性值的单位。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>dimension</code>: 数字，带或不带单位。</li>
+<li><code>unit</code>: 可选参数，将要替换成的单位，如果省略则移除原单位。</li>
+</ul>
+<p>转化成指定单位参照 <a href="#misc-functions-convert">convert</a>。</p>
+<p>示例： <code>unit(5, px)</code></p>
+<p>输出： <code>5px</code></p>
+<p>示例： <code>unit(5em)</code></p>
+<p>输出： <code>5</code></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/misc-functions.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- String Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="string-functions">String Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="string-functions-escape">escape 转义函数</h3><blockquote>
+<p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
+</blockquote>
+<ul>
+<li>不转义编码的字符: <code>,</code>, <code>/</code>, <code>?</code>, <code>@</code>, <code>&amp;</code>, <code>+</code>, <code>&#39;</code>, <code>~</code>, <code>!</code> and <code>$</code>.</li>
+<li>最常见的转义编码字符: <code>\&lt;space\&gt;</code>, <code>#</code>, <code>^</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>|</code>, <code>:</code>, <code>&gt;</code>, <code>&lt;</code>, <code>;</code>, <code>]</code>, <code>[</code> and <code>=</code>.</li>
+</ul>
+<p>参数: <code>string</code>: 需要转义的字符串</p>
+<p>返回: 不带引号的转义字符串。</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">escape(<span class="lang-string">'a=1'</span>)</span>
+</code></pre>
+<p>输出:</p>
+<pre><code class="lang-css"><span class="lang-tag">a</span>%3<span class="lang-tag">D1</span>
+</code></pre>
+<p>注意: 如果一个参数不是一个字符串, 输出是未定义.当前的实现是颜色返回<code>undefined</code>，其他种类参数原样输出，这种转义不可靠，将来也许会改变。</p>
+<h3 id="string-functions-e">e 预判函数</h3><blockquote>
+<p>Css 转义, 用<code>~&quot;值&quot;</code> 符号代替。</p>
+</blockquote>
+<p>他认为字符串是一个参数返回不带引号的原内容。这可以用来输出一些Less并不认可的Css值，包括未验证的Css语法或者一个专有的语法。</p>
+<p>参数: <code>string</code> - 用来转义的字符串.</p>
+<p>返回: <code>string</code> - 不带引号的转义字符串。</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-attribute">filter</span><span class="lang-value">: e(<span class="lang-string">"ms:alwaysHasItsOwnSyntax.For.Stuff()"</span>);</span>
+</code></pre>
+<p>输出:</p>
+<pre><code class="lang-css"><span class="lang-tag">filter</span>: <span class="lang-tag">ms</span><span class="lang-pseudo">:alwaysHasItsOwnSyntax</span><span class="lang-class">.For</span><span class="lang-class">.Stuff</span>();
+</code></pre>
+<p>注意: 该函数也接受 <code>~&quot;&quot;</code> 转义值和数字做参数，其他类型参数会返回一个错误。 </p>
+<h3 id="string-functions-">% 百分号格式化参数</h3><blockquote>
+<p>函数 <code>%(string, arguments ...)</code> 格式化一个字符串.</p>
+</blockquote>
+<p>第一个参数是带占位符的字符串. 所有占位符始于百分号<code>%</code>后跟字母<code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, or <code>A</code>. 剩下的参数是替换占位符的表达式. 如果你需要输出百分号, 用双百分号转义<code>%%</code>.</p>
+<p>如果你需要把特殊字符转义成 utf-8转义码请使用大写字母占位符，该占位符会转义所有的特殊字符除了<code>()&#39;~!</code>。空格会被转义成<code>%20</code>。小写字母占位符会保留特殊字符的原样。</p>
+<p>占位符:</p>
+<ul>
+<li><code>d</code>, <code>D</code>, <code>a</code>, <code>A</code> - 能被任何类型参数替换 (颜色值, 数字, 转义值, 表达式, ...). 如果你在字符串中结合使用, 整个字符串参数都会替换进去 - 包括它的引号. 然后, 然后引号会被替换到字符串参数的原有位置, 也许会被转义或者还是不变的，取决于占位符是大写字母还是小写字母。</li>
+<li><code>s</code>, <code>S</code> - 能被除了颜色值以为任何类型参数替换. 如果你在字符串中结合使用, 只会替换成字符串参数的值，-而字符串参数引号都被忽略</li>
+</ul>
+<p>参数:</p>
+<ul>
+<li><code>string</code>: 带占位符的格式化字符串,</li>
+<li><code>anything</code>* : 替换占位符的值.</li>
+</ul>
+<p>返回: 格式化后的字符串 <code>string</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less">format-<span class="lang-tag">a</span>-d<span class="lang-value">: %(<span class="lang-string">"repetitions: %a file: %d"</span>, <span class="lang-number">1</span> + <span class="lang-number">2</span>, <span class="lang-string">"directory/file.less"</span>);</span>
+format-<span class="lang-tag">a</span>-d-upper<span class="lang-value">: %(<span class="lang-string">'repetitions: %A file: %D'</span>, <span class="lang-number">1</span> + <span class="lang-number">2</span>, <span class="lang-string">"directory/file.less"</span>);</span>
+format-s<span class="lang-value">: %(<span class="lang-string">"repetitions: %s file: %s"</span>, <span class="lang-number">1</span> + <span class="lang-number">2</span>, <span class="lang-string">"directory/file.less"</span>);</span>
+format-s-upper<span class="lang-value">: %(<span class="lang-string">'repetitions: %S file: %S'</span>, <span class="lang-number">1</span> + <span class="lang-number">2</span>, <span class="lang-string">"directory/file.less"</span>);</span>
+</code></pre>
+<p>输出:</p>
+<pre><code class="lang-css">format-a-d: &quot;repetitions: 3 file: &quot;directory/file.less&quot;&quot;;
+format-a-d-upper: &quot;repetitions: 3 file: %22directory%2Ffile.less%22&quot;;
+format-s: &quot;repetitions: 3 file: directory/file.less&quot;;
+format-s-upper: &quot;repetitions: 3 file: directory%2Ffile.less&quot;;
+</code></pre>
+<h3 id="string-functions-replace">replace 替换</h3><blockquote>
+<p>用另一个字符串替换文本.</p>
+</blockquote>
+<p>发布于 <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
+<p>参数:</p>
+<ul>
+<li><code>string</code>: 搜索和替换用的字符串.</li>
+<li><code>pattern</code>:一个字符串或者能搜索的正则表达式.</li>
+<li><code>replacement</code>: 匹配模式成功的替换字符串.</li>
+<li><code>flags</code>: (可选的) 正则表达式匹配标识（全匹配还是...）.</li>
+</ul>
+<p>返回: 替换过值后的字符串.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">replace(<span class="lang-string">"Hello, Mars?"</span>, <span class="lang-string">"Mars\?"</span>, <span class="lang-string">"Earth!"</span>)</span>;
+<span class="lang-function">replace(<span class="lang-string">"One + one = 4"</span>, <span class="lang-string">"one"</span>, <span class="lang-string">"2"</span>, <span class="lang-string">"gi"</span>)</span>;
+<span class="lang-function">replace(<span class="lang-string">'This is a string.'</span>, <span class="lang-string">"(string)\.$"</span>, <span class="lang-string">"new $1."</span>)</span>;
+<span class="lang-function">replace(~<span class="lang-string">"bar-1"</span>, <span class="lang-string">'1'</span>, <span class="lang-string">'2'</span>)</span>;
+</code></pre>
+<p>结果:</p>
+<pre><code class="lang-css">&quot;Hello, Earth!&quot;;
+&quot;2 + 2 = 4&quot;;
+&#39;This is a new string.&#39;;
+bar-2;
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/string-functions.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- List Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="list-functions">List Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="list-functions-length">长度(length)</h3><blockquote>
+<p>返回集合中的值的数目.</p>
+</blockquote>
+<p>参数: <code>list</code> - 逗号或者空格隔开的值集合。
+返回: 集合的值个数。</p>
+<p>例如: <code>length(1px solid #0080ff);</code>
+输出: <code>3</code></p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@list: <span class="lang-string">"banana"</span>, <span class="lang-string">"tomato"</span>, <span class="lang-string">"potato"</span>, <span class="lang-string">"peach"</span>;</span>
+n<span class="lang-value">: length(@list);</span>
+</code></pre>
+<p>输出:</p>
+<pre><code>n: 4;
+</code></pre><h3 id="list-functions-extract">提取(extract)</h3><blockquote>
+<p>返回集合中指定索引的值。</p>
+</blockquote>
+<p>参数:
+<code>list</code> - 逗号或者空格隔开的值集合。
+<code>index</code> - 用于返回集合中指定位置值的整型数字。
+返回: 集合指定位置处的值。</p>
+<p>例如: <code>extract(8px dotted red, 2);</code>
+输出: <code>dotted</code></p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@list:<span class="lang-preprocessor"> apple</span>,<span class="lang-preprocessor"> pear</span>,<span class="lang-preprocessor"> coconut</span>,<span class="lang-preprocessor"> orange</span>;</span>
+value<span class="lang-value">: extract(@list, <span class="lang-number">3</span>);</span>
+</code></pre>
+<p>输出:</p>
+<pre><code>value: coconut;
+</code></pre><div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/list-functions.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Math Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="math-functions">Math Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="math-functions-ceil">ceil</h3><blockquote>
+<p>向上取整。</p>
+</blockquote>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>integer</code></p>
+<p>示例： <code>ceil(2.4)</code></p>
+<p>输出： <code>3</code></p>
+<h3 id="math-functions-floor">floor</h3><blockquote>
+<p>向下取整。</p>
+</blockquote>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>integer</code></p>
+<p>示例： <code>floor(2.6)</code></p>
+<p>输出： <code>2</code></p>
+<h3 id="math-functions-percentage">percentage</h3><blockquote>
+<p>将浮点数转换为百分比字符串。</p>
+</blockquote>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>string</code></p>
+<p>示例： <code>percentage(0.5)</code></p>
+<p>输出： <code>50%</code></p>
+<h3 id="math-functions-round">round</h3><blockquote>
+<p>Applies rounding.</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>number</code>： 浮点数。</li>
+<li><code>decimalPlaces</code>： 可选参数，四舍五入取整的小数点位置，默认值为0。</li>
+</ul>
+<p>返回： <code>number</code></p>
+<p>示例： <code>round(1.67)</code></p>
+<p>输出： <code>2</code></p>
+<p>示例： <code>round(1.67, 1)</code></p>
+<p>输出： <code>1.7</code></p>
+<h3 id="math-functions-sqrt">sqrt</h3><blockquote>
+<p>计算一个数的平方根，原样保持单位。</p>
+</blockquote>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">sqrt(<span class="lang-number">25</span>cm)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code class="lang-css">5<span class="lang-tag">cm</span>
+</code></pre>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">sqrt(<span class="lang-number">18.6</span>%)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code class="lang-js"><span class="lang-number">4.312771730569565</span>%;
+</code></pre>
+<h3 id="math-functions-abs">abs</h3><blockquote>
+<p>计算数字的绝对值，原样保持单位。</p>
+</blockquote>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例 #1： <code>abs(25cm)</code></p>
+<p>输出： <code>25cm</code></p>
+<p>示例 #2： <code>abs(-18.6%)</code></p>
+<p>输出： <code>18.6%;</code></p>
+<h3 id="math-functions-sin">sin</h3><blockquote>
+<p>正弦函数。</p>
+</blockquote>
+<p>处理时会将没有单位的数字认为是弧度值。</p>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">sin(<span class="lang-number">1</span>)</span>; <span class="lang-comment">// 1弧度角的正弦值</span>
+<span class="lang-function">sin(<span class="lang-number">1</span>deg)</span>; <span class="lang-comment">// 1角度角的正弦值</span>
+<span class="lang-function">sin(<span class="lang-number">1</span>grad)</span>; <span class="lang-comment">// 1百分度角的正弦值</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>0.8414709848078965; // 1弧度角的正弦值
+0.01745240643728351; // 1角度角的正弦值
+0.015707317311820675; // 1百分度角的正弦值
+</code></pre><h3 id="math-functions-asin">asin</h3><blockquote>
+<p>反正弦函数。</p>
+</blockquote>
+<p>返回以弧度为单位的角度，区间在 <code>-π/2</code> 到 <code>π/2</code> 之间。</p>
+<p>参数： <code>number</code> - 区间在 <code>[-1, 1]</code> 之间的浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">asin(-<span class="lang-number">0.8414709848078965</span>)</span>
+<span class="lang-function">asin(<span class="lang-number">0</span>)</span>
+<span class="lang-function">asin(<span class="lang-number">2</span>)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>-1rad
+0rad
+NaNrad
+</code></pre><h3 id="math-functions-cos">cos</h3><blockquote>
+<p>余弦函数。</p>
+</blockquote>
+<p>处理时会将没有单位的数字认为是弧度值。</p>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">cos(<span class="lang-number">1</span>)</span> <span class="lang-comment">// 1弧度角的余弦值</span>
+<span class="lang-function">cos(<span class="lang-number">1</span>deg)</span> <span class="lang-comment">// 1角度角的余弦值</span>
+<span class="lang-function">cos(<span class="lang-number">1</span>grad)</span> <span class="lang-comment">// 1百分度角的余弦值</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>0.5403023058681398 // 1弧度角的余弦值
+0.9998476951563913 // 1角度角的余弦值
+0.9998766324816606 // 1百分度角的余弦值
+</code></pre><h3 id="math-functions-acos">acos</h3><blockquote>
+<p>反余弦函数。</p>
+</blockquote>
+<p>返回以弧度为单位的角度，区间在 <code>0</code> 到 <code>π</code> 之间。</p>
+<p>参数： <code>number</code> - 区间在 <code>[-1, 1]</code> 之间的浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">acos(<span class="lang-number">0.5403023058681398</span>)</span>
+<span class="lang-function">acos(<span class="lang-number">1</span>)</span>
+<span class="lang-function">acos(<span class="lang-number">2</span>)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>1rad
+0rad
+NaNrad
+</code></pre><h3 id="math-functions-tan">tan</h3><blockquote>
+<p>正切函数。</p>
+</blockquote>
+<p>处理时会将没有单位的数字认为是弧度值。</p>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">tan(<span class="lang-number">1</span>)</span> <span class="lang-comment">// 1弧度角的正切值</span>
+<span class="lang-function">tan(<span class="lang-number">1</span>deg)</span> <span class="lang-comment">// 1角度角的正切值</span>
+<span class="lang-function">tan(<span class="lang-number">1</span>grad)</span> <span class="lang-comment">// 1百分度角的正切值</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>1.5574077246549023   // 1弧度角的正切值
+0.017455064928217585 // 1角度角的正切值
+0.015709255323664916 // 1百分度角的正切值
+</code></pre><h3 id="math-functions-atan">atan</h3><blockquote>
+<p>反正切函数。</p>
+</blockquote>
+<p>返回以弧度为单位的角度，区间在 <code>-π/2</code> 到 <code>π/2</code> 之间。</p>
+<p>参数： <code>number</code> - 浮点数。</p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">atan(-<span class="lang-number">1.5574077246549023</span>)</span>
+<span class="lang-function">atan(<span class="lang-number">0</span>)</span>
+<span class="lang-function">round(<span class="lang-function">atan(<span class="lang-number">22</span>)</span>, <span class="lang-number">6</span>)</span> <span class="lang-comment">// 22四舍五入保留6位小数后的反正切值</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>-1rad
+0rad
+1.525373rad;
+</code></pre><h3 id="math-functions-pi">pi</h3><blockquote>
+<p>返回 &pi; (pi);</p>
+</blockquote>
+<p>参数： <code>none</code></p>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">pi()</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>3.141592653589793
+</code></pre><h3 id="math-functions-pow">pow</h3><blockquote>
+<p>乘方运算。</p>
+</blockquote>
+<p>假设第一个参数为A，第二个参数为B，返回A的B次方。返回值与A有相同单位，B的单位被忽略。</p>
+<p>参数：</p>
+<ul>
+<li><code>number</code>： 基数 - 浮点数。</li>
+<li><code>number</code>： 冪指数 - 浮点数。</li>
+</ul>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">pow(<span class="lang-number">0</span>cm, <span class="lang-number">0</span>px)</span>
+<span class="lang-function">pow(<span class="lang-number">25</span>, -<span class="lang-number">2</span>)</span>
+<span class="lang-function">pow(<span class="lang-number">25</span>, <span class="lang-number">0.5</span>)</span>
+<span class="lang-function">pow(-<span class="lang-number">25</span>, <span class="lang-number">0.5</span>)</span>
+<span class="lang-function">pow(-<span class="lang-number">25</span>%, -<span class="lang-number">0.5</span>)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code>1cm
+0.0016
+5
+NaN
+NaN%
+</code></pre><h3 id="math-functions-mod">mod</h3><blockquote>
+<p>取余运算。</p>
+</blockquote>
+<p>假设第一个参数为A，第二个参数为B，返回A对B取余的结果。返回值与A有相同单位，B的单位被忽略。这个函数也可以处理负数和浮点数。</p>
+<p>参数：</p>
+<ul>
+<li><code>number</code>： 浮点数。</li>
+<li><code>number</code>： 浮点数。</li>
+</ul>
+<p>返回： <code>number</code></p>
+<p>示例：</p>
+<pre><code class="lang-less"><span class="lang-function">mod(<span class="lang-number">0</span>cm, <span class="lang-number">0</span>px)</span>
+<span class="lang-function">mod(<span class="lang-number">11</span>cm, <span class="lang-number">6</span>px)</span>;
+<span class="lang-function">mod(-<span class="lang-number">26</span>%, -<span class="lang-number">5</span>)</span>;
+</code></pre>
+<p>输出：</p>
+<pre><code>NaNcm;
+5cm
+-1%;
+</code></pre><h3 id="math-functions-min">min</h3><blockquote>
+<p>最小值运算。</p>
+</blockquote>
+<p>返回所有传入参数中的最小值。</p>
+<p>参数： <code>value1, ..., valueN</code> - 一个或多个待比较的值。</p>
+<p>返回： 最小值。</p>
+<p>示例： <code>min(5, 10);</code></p>
+<p>输出： <code>5</code></p>
+<p>示例： <code>min(3px, 42px, 1px, 16px);</code></p>
+<p>输出： <code>1px</code></p>
+<h3 id="math-functions-max">max</h3><blockquote>
+<p>最大值运算。</p>
+</blockquote>
+<p>返回所有传入参数中的最大值。</p>
+<p>参数： <code>value1, ..., valueN</code> - 一个或多个待比较的值。</p>
+<p>返回： the highest value.</p>
+<p>示例： <code>max(5, 10);</code></p>
+<p>输出： <code>10</code></p>
+<p>示例： <code>max(3%, 42%, 1%, 16%);</code></p>
+<p>输出： <code>42%</code></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/math-functions.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Type Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="type-functions">Type Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="type-functions-isnumber">函数(isnumber)</h3><blockquote>
+<p>如果一个值是一个数字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是数字返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">isnumber(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isnumber(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isnumber(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">isnumber(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">isnumber(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">isnumber(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">isnumber(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isnumber(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isstring">函数(isstring)</h3><blockquote>
+<p>如果一个值是一个字符串，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是字符串返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">isstring(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// true</span>
+<span class="lang-function">isstring(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isstring(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-iscolor">函数(iscolor)</h3><blockquote>
+<p>如果一个值是一个颜色，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是颜色返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">iscolor(#ff0)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">iscolor(blue)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">iscolor(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">iscolor(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iscolor(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iscolor(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iscolor(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">iscolor(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-iskeyword">函数(iskeyword)</h3><blockquote>
+<p>如果一个值是一个关键字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是关键字返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">iskeyword(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">iskeyword(keyword)</span>;  <span class="lang-comment">// true</span>
+<span class="lang-function">iskeyword(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isurl">函数(isurl)</h3><blockquote>
+<p> 如果一个值是一个url地址，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> -  待判断的值或变量.</p>
+<p>返回: 若是url返回真&#39;true&#39;,否则假&#39;false&#39;.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">isurl(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isurl(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// true</span>
+</code></pre>
+<h3 id="type-functions-ispixel">函数(ispixel)</h3><blockquote>
+<p>如果一个值是带像素长度单位的数字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是带px单位的数字返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">ispixel(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">ispixel(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">ispixel(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isem">函数(isem)</h3><blockquote>
+<p>如果一个值是带em长度单位的数字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是带em单位的数字返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">isem(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isem(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isem(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">isem(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isem(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">isem(<span class="lang-number">7.8</span>em)</span>;    <span class="lang-comment">// true</span>
+<span class="lang-function">isem(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isem(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-ispercentage">函数(ispercentage)</h3><blockquote>
+<p>如果一个值是带百分比单位的数字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数: <code>value</code> - 待判断的值或变量.</p>
+<p>返回: 若是带百分比单位的数字返回真<code>true</code>,否则假<code>false</code>.</p>
+<p>例如:</p>
+<pre><code class="lang-less"><span class="lang-function">ispercentage(#ff0)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(blue)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(<span class="lang-string">"string"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(<span class="lang-number">1234</span>)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(<span class="lang-number">56</span>px)</span>;     <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(<span class="lang-number">7.8</span>%)</span>;     <span class="lang-comment">// true</span>
+<span class="lang-function">ispercentage(keyword)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">ispercentage(<span class="lang-function">url(...)</span>)</span>; <span class="lang-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isunit">函数(isunit)</h3><blockquote>
+<p>如果一个值是带指定单位的数字，返回&#39;真(true)&#39;,否则返回&#39;假(false)&#39;.</p>
+</blockquote>
+<p>参数:</p>
+<ul>
+<li><code>value</code> - 待判断的值或变量.</li>
+<li><code>unit</code> -  用于测试比较的一个单位标示符.</li>
+</ul>
+<p>返回: 若是带指定单位的数字返回真<code>true</code>,否则假<code>false</code>.
+例如:</p>
+<pre><code class="lang-less"><span class="lang-function">isunit(<span class="lang-number">11</span>px, px)</span>;  <span class="lang-comment">// true</span>
+<span class="lang-function">isunit(<span class="lang-number">2.2</span>%, px)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isunit(<span class="lang-number">33</span>px, rem)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">isunit(<span class="lang-number">4</span>rem, rem)</span>; <span class="lang-comment">// true</span>
+<span class="lang-function">isunit(<span class="lang-number">56</span>px, <span class="lang-string">"%"</span>)</span>; <span class="lang-comment">// false</span>
+<span class="lang-function">isunit(<span class="lang-number">7.8</span>%, <span class="lang-string">'%'</span>)</span>; <span class="lang-comment">// true</span>
+<span class="lang-function">isunit(<span class="lang-number">1234</span>, em)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isunit(#ff0, pt)</span>;  <span class="lang-comment">// false</span>
+<span class="lang-function">isunit(<span class="lang-string">"mm"</span>, mm)</span>;  <span class="lang-comment">// false</span>
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/type-functions.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Color Definition Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="color-definition">Color Definition Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="color-definition-rgbredgreenblue">rgb(@red,@green,@blue)</h3><blockquote>
+<p>通过十进制红色，绿色，蓝色三种值 (RGB) 创建不透明的颜色对象。</p>
+</blockquote>
+<p>在 HTML/CSS 中也会用文本颜色值 (literal color values) 定义颜色，例如 red -&gt; #ff0000</p>
+<p>参数：</p>
+<ul>
+<li><code>@red</code>: 整数 0-255 或百分比 0-100%</li>
+<li><code>@green</code>: 整数 0-255 或百分比 0-100%</li>
+<li><code>@blue</code>: 整数 0-255 或百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>rgb(90, 129, 32)</code></p>
+<p>输出： <code>#5a8120</code></p>
+<h3 id="color-definition-rgbaredgreenbluealpha">rgba(@red,@green,@blue,@alpha)</h3><blockquote>
+<p>通过十进制红色，绿色，蓝色，以及 alpha 四种值 (RGBA) 创建带alpha透明的颜色对象。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@red</code>: 整数 0-255 或百分比 0-100%.</li>
+<li><code>@green</code>: 整数 0-255 或百分比 0-100%.</li>
+<li><code>@blue</code>: 整数 0-255 或百分比 0-100%.</li>
+<li><code>@alpha</code>: 数字 0-1 或百分比 0-100%.</li>
+</ul>
+<p>返回值： <code>颜色（color）</code></p>
+<p>例如： <code>rgba(90, 129, 32, 0.5)</code></p>
+<p>输出： <code>rgba(90, 129, 32, 0.5)</code></p>
+<h3 id="color-definition-argbcolor">argb(@color)</h3><blockquote>
+<p>创建格式为 <code>#AARRGGBB</code> 的十六进制 (hex representation) 颜色 (注意不是 #RRGGBBAA ！)。</p>
+</blockquote>
+<p>这种格式被用在IE滤镜中，以及.NET和Android开发中。</p>
+<p>参数： <code>@color</code>: 颜色对象（color object）</p>
+<p>返回值： <code>字符串(string)</code></p>
+<p>例如： <code>argb(rgba(90, 23, 148, 0.5));</code></p>
+<p>输出： <code>#805a1794</code></p>
+<h3 id="color-definition-hslhuesaturationlightness">hsl（@hue,@saturation,@lightness）</h3><blockquote>
+<p>通过色相 (hue)，饱和度 (saturation)，亮度 (lightness) 三种值 (HSL) 创建不透明的颜色对象。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@hue</code>: 整数 0-360 表示度数</li>
+<li><code>@saturation</code>: 整数 0-100% 或是数字 0-1</li>
+<li><code>@lightness</code>: 整数 0-100% 或是数字 0-1</li>
+</ul>
+<p>返回值：<code>颜色（color）</code></p>
+<p>例如：<code>hsl(90, 100%, 50%)</code></p>
+<p>输出：<code>#80ff00</code></p>
+<p>当你想使用一种颜色来创建另一种颜色时很方便，如：<code>@new: hsl(hue(@old), 45%, 90%);</code></p>
+<p><code>@new</code> 将使用 <code>@old</code> 的 <em>色相值</em>(hue)，以及它自己的饱和度与亮度。</p>
+<h3 id="color-definition-hslahuesaturationlightnessalpha">hsla（@hue,@saturation,@lightness,@alpha）</h3><blockquote>
+<p>通过色相 (hue)，饱和度 (saturation)，亮度 (lightness)，以及 alpha 四种值 (HSLA) 创建透明的颜色对象。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@hue</code>: 整数 0-360 表示度数</li>
+<li><code>@saturation</code>: 百分比 0-100% 或数字 0-1.</li>
+<li><code>@lightness</code>: 百分比 0-100% 或数字 0-1.</li>
+<li><code>@alpha</code>: 百分比 0-100% 或数字 0-1.</li>
+</ul>
+<p>返回值： <code>颜色（color）</code></p>
+<p>例如： <code>hsl(90, 100%, 50%, 0.5)</code></p>
+<p>输出： <code>rgba(128, 255, 0, 0.5)</code></p>
+<h3 id="color-definition-hsvhuesaturationvalue">hsv(@hue,@saturation,@value)</h3><blockquote>
+<p>通过色相 (hue)，饱和度 (saturation)，色调 (value) 三种值 (HSV) 创建不透明的颜色对象。</p>
+</blockquote>
+<p>注意: HSV 与 HSL 不同，HSV是另一种在Photoshop中可用的色彩空间</p>
+<p>参数：</p>
+<ul>
+<li><code>@hue</code>: 整数 0-360 代表度数</li>
+<li><code>@saturation</code>: 百分比 0-100% 或数字 0-1</li>
+<li><code>@value</code>: 百分比 0-100% 或数字 0-1</li>
+</ul>
+<p>返回值： <code>颜色（color）</code></p>
+<p>例如： <code>hsv(90, 100%, 50%)</code></p>
+<p>输出： <code>#408000</code></p>
+<h3 id="color-definition-hsvahuesaturationvaluealpha">hsva（@hue,@saturation,@value,@alpha）</h3><blockquote>
+<p>通过色相 (hue)，饱和度 (saturation)，色调 (value)，以及 alpha 四种值 (HSVA) 创建透明的颜色对象。</p>
+</blockquote>
+<p>注意：<code>HSVA</code> 与 <code>HSLA</code> 不同，<code>HSVA</code>另一种在Photoshop中可用的色彩空间。</p>
+<p>参数：</p>
+<ul>
+<li><code>@hue</code>: 整数 0-360 代表度数</li>
+<li><code>@saturation</code>: 百分比 0-100% 或数字 0-1</li>
+<li><code>@value</code>: 百分比 0-100% 或数字 0-1</li>
+<li><code>@alpha</code>: 百分比 0-100% 或数字 0-1</li>
+</ul>
+<p>返回值： <code>颜色（color）</code></p>
+<p>例如： <code>hsva(90, 100%, 50%, 0.5)</code></p>
+<p>输出： <code>rgba(64, 128, 0, 0.5)</code></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/color-definition.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Color Channel Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="color-channel">Color Channel Functions</h1>
+    </div>
+    <div class="section-content">
+      <h3 id="color-channel-huecolor">hue(@color)</h3><blockquote>
+<p>从HSL色彩空间中提取颜色对象的色相值。</p>
+</blockquote>
+<p>参数：<code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>整数</code> <code>0-360</code></p>
+<p>例如： <code>hue(hsl(90, 100%, 50%))</code></p>
+<p>输出： <code>90</code></p>
+<h3 id="color-channel-saturationcolor">saturation(@color)</h3><blockquote>
+<p>从HSL色彩空间中提取颜色对象的饱和度值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>百分比</code> <code>0-100</code></p>
+<p>例如： <code>saturation(hsl(90, 100%, 50%))</code></p>
+<p>输出： <code>100%</code></p>
+<h3 id="color-channel-lightnesscolor">lightness(@color)</h3><blockquote>
+<p>从HSL色彩空间中提取颜色对象的亮度值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>百分比</code> <code>0-100</code></p>
+<p>例如： <code>lightness(hsl(90, 100%, 50%))</code></p>
+<p>输出： <code>50%</code></p>
+<h3 id="color-channel-hsvhuecolor">hsvhue(@color)</h3><blockquote>
+<p>从HSV色彩空间中提取颜色对象的色相值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>整数</code> <code>0-360</code></p>
+<p>例如： <code>hsvhue(hsv(90, 100%, 50%))</code></p>
+<p>输出： <code>90</code></p>
+<h3 id="color-channel-hsvsaturationcolor">hsvsaturation(@color)</h3><blockquote>
+<p>从HSV色彩空间中提取颜色对象的饱和度值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>百分比</code> 0-100</p>
+<p>例如： <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
+<p>输出： <code>100%</code></p>
+<h3 id="color-channel-hsvvaluecolor">hsvvalue(@color)</h3><blockquote>
+<p>从色彩空间中提取颜色对象的色调值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>百分比</code> 0-100</p>
+<p>例如： <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
+<p>输出： <code>50%</code></p>
+<h3 id="color-channel-redcolor">red(@color)</h3><blockquote>
+<p>提取颜色对象的红色值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>整数</code> <code>0-255</code></p>
+<p>例如： <code>red(rgb(10, 20, 30))</code></p>
+<p>输出： <code>10</code></p>
+<h3 id="color-channel-greencolor">green(@color)</h3><blockquote>
+<p>提取颜色对象的绿色值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>整数</code> 0-255</p>
+<p>例如： <code>green(rgb(10, 20, 30))</code></p>
+<p>输出： <code>20</code></p>
+<h3 id="color-channel-bluecolor">blue(@color)</h3><blockquote>
+<p>提取颜色对象的蓝色值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>整数</code> 0-255</p>
+<p>例如： <code>blue(rgb(10, 20, 30))</code></p>
+<p>输出： <code>30</code></p>
+<h3 id="color-channel-alphacolor">alpha(@color)</h3><blockquote>
+<p>提取颜色对象的透明度值。</p>
+</blockquote>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>浮点数</code> <code>0-1</code></p>
+<p>例如： <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
+<p>输出： <code>0.5</code></p>
+<h3 id="color-channel-lumacolor">luma(@color)</h3><blockquote>
+<p>计算颜色对象<a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a>的值（亮度的百分比表示法）。</p>
+</blockquote>
+<p>使用在<a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>中定义的<strong>SMPTE C / Rec. 709</strong>  coefficients。 这个计算公式也用在 contrast() 函数中。</p>
+<p>参数： <code>@color</code> - 颜色对象(a color object)</p>
+<p>返回值： <code>百分比</code> 0-100%</p>
+<p>例如： <code>luma(rgb(100, 200, 30))</code></p>
+<p>输出： <code>65%</code></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/color-channel.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Color Operation Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="color-operations">Color Operation Functions</h1>
+    </div>
+    <div class="section-content">
+      <p>颜色值运算有几点注意事项：参数必须单位/格式相同；百分比将作为绝对值处理，比如 10% 增加 10%，结果是 20% 而不是 11%；参数值只能在限定的范围内；they do not wrap around (这一句不清楚意思，可能是指参数值不会在超过范围后自动从另一侧“穿越”回去。)。返回值时，除了十六进制的颜色值 (hex versions) 外将对其他格式做简化处理。</p>
+<h3 id="color-operations-saturatecoloramount">saturate(@color,@amount)</h3><blockquote>
+<p>增加一定数值的颜色饱和度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
+<p>输出： <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#80ff00:#000000/text:80ff00"></p>
+<h3 id="color-operations-desaturatecoloramount">desaturate(@color,@amount)</h3><blockquote>
+<p>降低一定数值的颜色饱和度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
+<p>输出 <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#80cc33:#000000/text:80cc33"></p>
+<h3 id="color-operations-lightencoloramount">lighten(@color,@amount)</h3><blockquote>
+<p>增加一定数值的颜色亮度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
+<p>输出： <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#b3f075:#000000/text:b3f075"></p>
+<h3 id="color-operations-darkencoloramount">darken(@color,@amount)</h3><blockquote>
+<p>降低一定数值的颜色亮度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
+<p>输出： <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f"></p>
+<h3 id="color-operations-fadeincoloramount">fadein(@color,@amount)</h3><blockquote>
+<p>降低颜色的透明度（或增加不透明度），令其更不透明。</p>
+</blockquote>
+<p>对不透明的颜色无效。如果要增加颜色的透明度，使用 <code>fadeout()</code> 函数。</p>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
+<p>输出： <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
+<h3 id="color-operations-fadeoutcoloramount">fadeout(@color,@amount)</h3><blockquote>
+<p>增加颜色的透明度（或降低不透明度），令其更透明。</p>
+</blockquote>
+<p>对不透明的颜色无效。如果要增加颜色的透明度，使用<code>fadein()</code> 函数。</p>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
+<p>输出： <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)</code></p>
+<h3 id="color-operations-fadecoloramount">fade(@color,@amount)</h3><blockquote>
+<p>给颜色（包括不透明的颜色）设定一定数值的透明度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@amount</code>: 百分比 范围：0-100%</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
+<p>输出： <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
+<h3 id="color-operations-spincoloramount">spin(@color,@amount)</h3><blockquote>
+<p>任意方向旋转颜色的色相角度 (hue angle)。</p>
+</blockquote>
+<p>旋转范围 0-360，超过一周后将从起点开始继续旋转（+-控制方向），比如旋转360度与720度是相同的结果。需要注意的是，颜色值会通过RGB格式转换，这个过程不能保留灰色的色相值（灰色没有饱和度，色相值也就没有意义了），因此要确定使用函数的方法能够保留颜色的色相值，例如不要这样使用函数：</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@c:<span class="lang-preprocessor"> saturate</span>(<span class="lang-function">spin(#aaaaaa, <span class="lang-number">10</span>)</span>,<span class="lang-preprocessor"> 10</span>%);</span>
+</code></pre>
+<p>而应该用这种方法代替：</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@c:<span class="lang-preprocessor"> spin</span>(<span class="lang-function">saturate(#aaaaaa, <span class="lang-number">10</span>%)</span>,<span class="lang-preprocessor"> 10</span>);</span>
+</code></pre>
+<p>因为颜色值永远输出为 RGB 格式，因此 <code>spin()</code> 函数对灰色无效。</p>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 颜色对象(A color object)</li>
+<li><code>@angle</code>: 任意数字表示角度 （+ 或 – 表示方向）</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">spin(<span class="lang-function">hsl(<span class="lang-number">10</span>, <span class="lang-number">90</span>%, <span class="lang-number">50</span>%)</span>, <span class="lang-number">30</span>)</span>
+<span class="lang-function">spin(<span class="lang-function">hsl(<span class="lang-number">10</span>, <span class="lang-number">90</span>%, <span class="lang-number">50</span>%)</span>, -<span class="lang-number">30</span>)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code class="lang-css">#f2a60d // hsl(40, 90%, 50%)
+#f20d59 // hsl(340, 90%, 50%)
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#f2a60d:#000000/text:f2a60d"></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#f20d59:#000000/text:f20d59"></p>
+<h3 id="color-operations-mixcolor1color2-weight-50">mix(@color1,@color2, [@weight: 50%])</h3><blockquote>
+<p>根据比例混合两种颜色，包括计算不透明度。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 颜色对象(A color object)</li>
+<li><code>@color2</code>: 颜色对象(A color object)</li>
+<li><code>@weight</code>: 可选项：平衡两种颜色的百分比, 默认 50%。</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">mix(#ff0000, #<span class="lang-number">0000</span>ff, <span class="lang-number">50</span>%)</span>
+<span class="lang-function">mix(<span class="lang-function">rgba(<span class="lang-number">100</span>,<span class="lang-number">0</span>,<span class="lang-number">0</span>,<span class="lang-number">1.0</span>)</span>, <span class="lang-function">rgba(<span class="lang-number">0</span>,<span class="lang-number">100</span>,<span class="lang-number">0</span>,<span class="lang-number">0.5</span>)</span>, <span class="lang-number">50</span>%)</span>
+</code></pre>
+<p>输出：</p>
+<pre><code class="lang-css"><span class="lang-id">#800080</span>
+<span class="lang-tag">rgba</span>(75, 25, 0, 0<span class="lang-class">.75</span>)
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"> + <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"> ➜ <img alt="Color 3" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
+<h3 id="color-operations-greyscalecolor">greyscale(@color)</h3><blockquote>
+<p>完全移除颜色的饱和度，与 <code>desaturate(@color, 100%)</code> 函数效果相同。</p>
+</blockquote>
+<p>因为颜色的饱和度不受色相值影响，所以输出的颜色会稍显暗淡 (dull or muddy)；如果使用<a href="#color-channel-luma"><code>luma</code></a>值可能会有更好的结果，因为它提取的是百分比亮度，而不是线性亮度。比如<code>greyscale(&#39;#0000ff&#39;)</code>与<code>greyscale(&#39;#00ff00&#39;)</code>会得出相同的结果，尽管对人眼来说，它们的亮度是不一样的。</p>
+<p>参数： <code>@color</code>: 颜色对象(A color object)</p>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如： <code>greyscale(hsl(90, 90%, 50%))</code></p>
+<p>输出： <code>#808080 // hsl(90, 0%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#808080:#000000/text:808080"></p>
+<p>注意：即便它们的亮度值(lightness value)一样，但是生成的灰色看起来比原来的绿色更暗些。</p>
+<p>与<code>luma</code>相比较(因为<code>luma</code>返回一个单独的值，而不是颜色，所以它们的用法不一样)：</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@c:<span class="lang-preprocessor"> luma</span>(<span class="lang-function">hsl(<span class="lang-number">90</span>, <span class="lang-number">90</span>%, <span class="lang-number">50</span>%)</span>);</span>
+<span class="lang-attribute">color</span><span class="lang-value">: rgb(@c, @c, @c);</span>
+</code></pre>
+<p>输出： <code>#cacaca</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#cacaca:#000000/text:cacaca"></p>
+<p>实际上灰色的值跟高些，但是灰色的亮度值跟绿色的看起来大致上相同。</p>
+<h3 id="color-operations-contrastbackground-darkcolor-black-lightcolor-white-threshold-43">contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])</h3><blockquote>
+<p>选择两种颜色相比较，得出哪种颜色的对比度最大就倾向于对比度最大的颜色。</p>
+</blockquote>
+<p>这个函数对比 @background 的 luma 值与 @threshold 参数的大小，如果大于输出 @darkcolor, 小于则输出 @lightcolor，便于选择相对于背景更容易阅读的颜色，同时提高了使用颜色的灵活性，与 <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">Compass 的 contrast() 函数</a> 工作方式相同。根据 <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a> 应该对比颜色的 luma 值，而不是亮度值 (lightness)。</p>
+<p><code>@light</code> 和 <code>@dark</code> 两个参数可以调换顺序。因为<code>contrast()</code>函数会自动计算它们的luma值和自动分配<code>@light</code>和<code>@dark</code>，这样你就不用通过颠倒两个参数的顺序才能选到最小对比度颜色(the <em>least</em> contrasting color)。</p>
+<p>参数：</p>
+<ul>
+<li><code>@color</code>: 需要对比的颜色对象 (A color object to compare against.)</li>
+<li><code>@dark</code>: 可选项 – 指定的黑色（默认 black）</li>
+<li><code>@light</code>: 可选项 – 指定的白色（默认 white）</li>
+<li><code>@threshold</code>: 可选项 – 百分比 0-100% 界定深色过渡到浅色的转变位置（默认 43%），这个数值决定了输出结果偏向于哪一方，比如判断 50% 的灰色背景应该显示白色还是黑色的文字。一般来说，如果本色方案偏浅，则应该设低一点，否则设高一点。</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">contrast(#aaaaaa)</span>
+<span class="lang-function">contrast(#<span class="lang-number">222222</span>, #<span class="lang-number">101010</span>)</span>
+<span class="lang-function">contrast(#<span class="lang-number">222222</span>, #<span class="lang-number">101010</span>, #dddddd)</span>
+<span class="lang-function">contrast(<span class="lang-function">hsl(<span class="lang-number">90</span>, <span class="lang-number">100</span>%, <span class="lang-number">50</span>%)</span>, #<span class="lang-number">000000</span>, #ffffff, <span class="lang-number">40</span>%)</span>;
+<span class="lang-function">contrast(<span class="lang-function">hsl(<span class="lang-number">90</span>, <span class="lang-number">100</span>%, <span class="lang-number">50</span>%)</span>, #<span class="lang-number">000000</span>, #ffffff, <span class="lang-number">60</span>%)</span>;
+</code></pre>
+<p>输出：</p>
+<pre><code>#000000 // 黑色
+#ffffff // 白色
+#dddddd
+#000000 // 黑色
+#ffffff // 白色
+</code></pre><p>这些例子是利用计算颜色的值作为背景色和前景色。正如你所见，即便可能使用阈值允许得出更低对比度的颜色，但是不可能白衬白结束，也不可能黑衬黑结束。如最后一个例子：</p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#aaaaaa:#000000/text:000000">
+<img alt="Color 1" data-src="holder.js/100x40/#222222:#ffffff/text:ffffff">
+<img alt="Color 1" data-src="holder.js/100x40/#222222:#dddddd/text:dddddd">
+<img alt="Color 1" data-src="holder.js/100x40/#80ff00:#000000/text:000000">
+<img alt="Color 1" data-src="holder.js/100x40/#80ff00:#ffffff/text:ffffff"></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/color-operations.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+  <!-- Color Blending Functions -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 id="color-blending">Color Blending Functions</h1>
+    </div>
+    <div class="section-content">
+      <blockquote>
+<p>颜色混合的方式与图像编辑器 Photoshop, Firework 或者 GIMP 的图层混合模式 (layer blending modes) 相似，因此制作 .psd 文件时处理颜色的方法可以同样用在 CSS 中。</p>
+</blockquote>
+<h3 id="color-blending-multiplycolor1color2">multiply(@color1,@color2)</h3><blockquote>
+<p>分别将两种颜色的红绿蓝 (RGB) 三种值做乘法运算，然后再除以255，输出结果是更深的颜色。（译注：对应Photoshop中的“变暗/正片叠底”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 颜色对象( A color object)</li>
+<li><code>@color2</code>: 颜色对象( A color object)</li>
+</ul>
+<p>返回值: <code>颜色(color)</code></p>
+<p><strong>例如</strong>:</p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#331400:#ffffff/text:331400"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#662900:#ffffff/text:662900"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#993d00:#ffffff/text:993d00"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#cc5200:#ffffff/text:cc5200"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="lang-function">multiply(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<h3 id="color-blending-screencolor1color2">screen(@color1,@color2)</h3><blockquote>
+<p>与<code>multiply()</code> 函数效果相反，输出结果是更亮的颜色。（译注：对应Photoshop中的“变亮/滤色”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 颜色对象(A color object)</li>
+<li><code>@color2</code>: 颜色对象(A color object)</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8533:#ffffff/text:ff8533"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa366:#ffffff/text:ffa366"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ffc299:#000000/text:ffc299"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ffe0cc:#000000/text:ffe0cc"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ffff00:#ffffff/text:ffff00"></p>
+<pre><code class="lang-less"><span class="lang-function">screen(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-overlaycolor1color2">overlay(@color1,@color2)</h3><blockquote>
+<p>结合 <code>multiply()</code> 与 <code>screen()</code> 两个函数的效果，令浅的颜色变得更浅，深的颜色变得更深。（译注：对应Photoshop中的“叠加”。）<strong>注意</strong>：输出结果由第一个颜色参数决定。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 颜色对象，是用于叠加的颜色，也是结果是更亮还是更暗的决定因素。</li>
+<li><code>@color2</code>:  颜色对象，被<em>叠加</em>的颜色。</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ff5200:#ffffff/text:ff5200"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff7a00:#ffffff/text:ff7a00"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa300:#ffffff/text:ffa300"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00"></p>
+<pre><code class="lang-less"><span class="lang-function">overlay(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<h3 id="color-blending-softlightcolor1color2">softlight(@color1,@color2)</h3><blockquote>
+<p>与 <code>overlay()</code> 函数效果相似，只是当纯黑色或纯白色作为参数时输出结果不会是纯黑色或纯白色。（译注：对应Photoshop中的“柔光”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 混合色（光源）</li>
+<li><code>@color2</code>:  被混合的颜色</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff4100:#ffffff/text:ff4100"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ff5a00:#ffffff/text:ff5a00"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff7200:#ffffff/text:ff7200"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8a00:#ffffff/text:ff8a00"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa100:#ffffff/text:ffa100"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa100:#ffffff/text:ffa100"></p>
+<pre><code class="lang-less"><span class="lang-function">softlight(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<h3 id="color-blending-hardlightcolor1color2">hardlight(@color1,@color2)</h3><blockquote>
+<p>与 <code>overlay()</code> 函数效果相似，不过由第二个颜色参数决定输出颜色的亮度或黑度，而不是第一个颜色参数决定。（译注：对应Photoshop中的“强光/亮光/线性光/点光”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 混合色（光源）</li>
+<li><code>@color2</code>: 颜色对象，用于叠加颜色，也是结果是更亮还是更暗的决定因素。</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#662900:#ffffff/text:662900"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#cc5200:#ffffff/text:cc5200"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8533:#ffffff/text:ff8533"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00"></p>
+<pre><code class="lang-less"><span class="lang-function">hardlight(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"></p>
+<h3 id="color-blending-differencecolor1color2">difference(@color1,@color2)</h3><blockquote>
+<p>从第一个颜色值中减去第二个（分别计算 RGB 三种颜色值），输出结果是更深的颜色。（译注：对应Photoshop中的“差值/排除”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 被减的颜色对象</li>
+<li><code>@color2</code>: 减去的颜色对象</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc3333:#ffffff/text:cc3333"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#990066:#ffffff/text:990066"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#663399:#ffffff/text:663399"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#3366cc:#ffffff/text:3366cc"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="lang-function">difference(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-exclusioncolor1color2">exclusion(@color1,@color2)</h3><blockquote>
+<p>效果与 <code>difference()</code> 函数效果相似，只是输出结果差别更小 (lower contrast)。（译注：对应Photoshop中的“差值/排除”。）</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 被减的颜色对象</li>
+<li><code>@color2</code>: 减去的颜色对象</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc7033:#ffffff/text:cc7033"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#997a66:#ffffff/text:997a66"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#668599:#ffffff/text:668599"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#338fcc:#ffffff/text:338fcc"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="lang-function">exclusion(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-averagecolor1color2">average(@color1,@color2)</h3><blockquote>
+<p>分别对 RGB 的三种颜色值取平均值，然后输出结果。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 颜色对象(A color object)</li>
+<li><code>@color2</code>: 颜色对象(A color object)</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#803300:#ffffff/text:803300"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#994d1a:#ffffff/text:994d1a"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#b36633:#ffffff/text:b36633"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#cc804d:#ffffff/text:cc804d"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#e69966:#ffffff/text:e69966"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffb380:#000000/text:ffb380"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff3300:#ffffff/text:ff3300"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#80b300:#ffffff/text:80b300"></p>
+<pre><code class="lang-less"><span class="lang-function">average(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#803380:#ffffff/text:803380"></p>
+<h3 id="color-blending-negationcolor1color2">negation(@color1,@color2)</h3><blockquote>
+<p>与 difference() 函数效果相反，输出结果是更亮的颜色。请注意：效果相反不代表做加法运算。</p>
+</blockquote>
+<p>参数：</p>
+<ul>
+<li><code>@color1</code>: 被减的颜色对象</li>
+<li><code>@color2</code>: 减去的颜色对象</li>
+</ul>
+<p>返回值： <code>颜色(color)</code></p>
+<p>例如：</p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">000000</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">333333</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc9933:#ffffff/text:cc9933"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">666666</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#99cc66:#ffffff/text:99cc66"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">999999</span>)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#66ff99:#ffffff/text:66ff99"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #cccccc)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#33cccc:#ffffff/text:33cccc"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #ffffff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #ff0000)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">00</span>ff00)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="lang-function">negation(#ff6600, #<span class="lang-number">0000</span>ff)</span>;
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#ffffff/text:ff66ff"></p>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content_zh/functions/color-blending.md">Improve this section.</a>
+</div>
+    </div>
+  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    
+    <footer class="bs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-social">
+  <ul class="bs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+  </ul>
+</div>
+
+    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="footer-links">
+      <li>Currently v1.7.0</li>
+      
+      <li class="muted">&middot;</li>
+      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li class="muted">&middot;</li>
+      <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
+      <li class="muted">&middot;</li>
+      <li><a href="https://github.com/less/less.js/blob/master//CHANGELOG.md">Changelog</a></li>
+      
+    </ul>
+  </div>
+</footer>
+
+
+    
+    <!-- Core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
+<script src="../public/js/application.js"></script>
+
+
+
+  </body>
+</html>

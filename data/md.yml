@@ -1,9 +1,0 @@
-# =============================================
-# Options for the {{md}} helper
-# =============================================
-
-# Information about the source file?
-origin: true
-
-# Template to use for the generated info about the source file
-append: source-link
