@@ -1,156 +1,158 @@
-Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we've used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.
+颜色值运算有几点注意事项：参数必须单位/格式相同；百分比将作为绝对值处理，比如 10% 增加 10%，结果是 20% 而不是 11%；参数值只能在限定的范围内；they do not wrap around (这一句不清楚意思，可能是指参数值不会在超过范围后自动从另一侧“穿越”回去。)。返回值时，除了十六进制的颜色值 (hex versions) 外将对其他格式做简化处理。
 
-### saturate
+### saturate(@color,@amount)
 
-> Increase the saturation of a color in the HSL color space by an absolute amount.
+> 增加一定数值的颜色饱和度。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `saturate(hsl(90, 80%, 50%), 20%)`
+例如： `saturate(hsl(90, 80%, 50%), 20%)`
 
-Output: `#80ff00 // hsl(90, 100%, 50%)`
+输出： `#80ff00 // hsl(90, 100%, 50%)`
 
 ![Color 1](holder.js/100x40/#80e619:#000000/text:80e619) ➜ ![Color 2](holder.js/100x40/#80ff00:#000000/text:80ff00)
 
-### desaturate
+### desaturate(@color,@amount)
 
-> Decrease the saturation of a color in the HSL color space by an absolute amount.
+> 降低一定数值的颜色饱和度。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `desaturate(hsl(90, 80%, 50%), 20%)`
+例如： `desaturate(hsl(90, 80%, 50%), 20%)`
 
-Output: `#80cc33 // hsl(90, 60%, 50%)`
+输出 `#80cc33 // hsl(90, 60%, 50%)`
 
 ![Color 1](holder.js/100x40/#80e619:#000000/text:80e619) ➜ ![Color 2](holder.js/100x40/#80cc33:#000000/text:80cc33)
 
-### lighten
+### lighten(@color,@amount)
 
-> Increase the lightness of a color in the HSL color space by an absolute amount.
+> 增加一定数值的颜色亮度。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `lighten(hsl(90, 80%, 50%), 20%)`
+例如： `lighten(hsl(90, 80%, 50%), 20%)`
 
-Output: `#b3f075 // hsl(90, 80%, 70%)`
+输出： `#b3f075 // hsl(90, 80%, 70%)`
 
 ![Color 1](holder.js/100x40/#80e619:#000000/text:80e619) ➜ ![Color 2](holder.js/100x40/#b3f075:#000000/text:b3f075)
 
-### darken
+### darken(@color,@amount)
 
-> Decrease the lightness of a color in the HSL color space by an absolute amount.
+> 降低一定数值的颜色亮度。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `darken(hsl(90, 80%, 50%), 20%)`
+例如： `darken(hsl(90, 80%, 50%), 20%)`
 
-Output: `#4d8a0f // hsl(90, 80%, 30%)`
+输出： `#4d8a0f // hsl(90, 80%, 30%)`
 
 ![Color 1](holder.js/100x40/#80e619:#000000/text:80e619) ➜ ![Color 2](holder.js/100x40/#4d8a0f:#000000/text:4d8a0f)
 
-### fadein
+### fadein(@color,@amount)
 
-> Decrease the transparency (or increase the opacity) of a color, making it more opaque.
+> 降低颜色的透明度（或增加不透明度），令其更不透明。
 
-Has no effect on opaque colors. To fade in the other direction use `fadeout`.
+对不透明的颜色无效。如果要增加颜色的透明度，使用 `fadeout()` 函数。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `fadein(hsla(90, 90%, 50%, 0.5), 10%)`
+例如： `fadein(hsla(90, 90%, 50%, 0.5), 10%)`
 
-Output: `rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)`
-
-
-### fadeout
-
-> Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use `fadein`.
-
-Parameters:
-
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
-
-Returns: `color`
-
-Example: `fadeout(hsla(90, 90%, 50%, 0.5), 10%)`
-
-Output: `rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)`
+输出： `rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)`
 
 
-### fade
+### fadeout(@color,@amount)
 
-> Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.
+> 增加颜色的透明度（或降低不透明度），令其更透明。
 
-Parameters:
+对不透明的颜色无效。如果要增加颜色的透明度，使用`fadein()` 函数。
 
-* `color`: A color object.
-* `amount`: A percentage 0-100%.
+参数：
 
-Returns: `color`
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 0-100%
 
-Example: `fade(hsl(90, 90%, 50%), 10%)`
+返回值： `颜色(color)`
 
-Output: `rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)`
+例如： `fadeout(hsla(90, 90%, 50%, 0.5), 10%)`
+
+输出： `rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)`
 
 
-### spin
+### fade(@color,@amount)
 
-> Rotate the hue angle of a color in either direction.
+> 给颜色（包括不透明的颜色）设定一定数值的透明度。
 
-While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn't retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don't do this:
+参数：
+
+* `@color`: 颜色对象(A color object)
+* `@amount`: 百分比 范围：0-100%
+
+返回值： `颜色(color)`
+
+例如： `fade(hsl(90, 90%, 50%), 10%)`
+
+输出： `rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)`
+
+
+### spin(@color,@amount)
+
+> 任意方向旋转颜色的色相角度 (hue angle)。
+
+旋转范围 0-360，超过一周后将从起点开始继续旋转（+-控制方向），比如旋转360度与720度是相同的结果。需要注意的是，颜色值会通过RGB格式转换，这个过程不能保留灰色的色相值（灰色没有饱和度，色相值也就没有意义了），因此要确定使用函数的方法能够保留颜色的色相值，例如不要这样使用函数：
 
 ```less
 @c: saturate(spin(#aaaaaa, 10), 10%);
 ```
 
-Do this instead:
+而应该用这种方法代替：
 
 ```less
 @c: spin(saturate(#aaaaaa, 10%), 10);
 ```
 
-Colors are always returned as RGB values, so applying `spin` to a grey value will do nothing.
+因为颜色值永远输出为 RGB 格式，因此 `spin()` 函数对灰色无效。
 
-Parameters:
+参数：
 
-* `color`: A color object.
-* `angle`: A number of degrees to rotate (+ or -).
+* `@color`: 颜色对象(A color object)
+* `@angle`: 任意数字表示角度 （+ 或 – 表示方向）
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 spin(hsl(10, 90%, 50%), 30)
 spin(hsl(10, 90%, 50%), -30)
 ```
 
-Output:
+输出：
 
 ```css
 #f2a60d // hsl(40, 90%, 50%)
@@ -161,26 +163,26 @@ Output:
 
 ![Color 1](holder.js/100x40/#f2330d:#000000/text:f2330d) ➜ ![Color 2](holder.js/100x40/#f20d59:#000000/text:f20d59)
 
-### mix
+### mix(@color1,@color2, [@weight: 50%])
 
-> Mix two colors together in variable proportion. Opacity is included in the calculations.
+> 根据比例混合两种颜色，包括计算不透明度。
 
-Parameters:
+参数：
 
-* `color1`: A color object.
-* `color2`: A color object.
-* `weight`: Optional, a percentage balance point between the two colors, defaults to 50%.
+* `@color1`: 颜色对象(A color object)
+* `@color2`: 颜色对象(A color object)
+* `@weight`: 可选项：平衡两种颜色的百分比, 默认 50%。
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example:
+例如：
 
 ```less
 mix(#ff0000, #0000ff, 50%)
 mix(rgba(100,0,0,1.0), rgba(0,100,0,0.5), 50%)
 ```
 
-Output:
+输出：
 
 ```css
 #800080
@@ -189,55 +191,57 @@ rgba(75, 25, 0, 0.75)
 
 ![Color 1](holder.js/100x40/#ff0000:#ffffff/text:ff0000) + ![Color 2](holder.js/100x40/#0000ff:#ffffff/text:0000ff) ➜ ![Color 3](holder.js/100x40/#800080:#ffffff/text:800080)
 
-### greyscale
+### greyscale(@color)
 
-> Remove all saturation from a color in the HSL color space; the same as calling `desaturate(@color, 100%)`.
+> 完全移除颜色的饱和度，与 `desaturate(@color, 100%)` 函数效果相同。
 
-Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; [`luma`](#color-channel-luma) may provide a better result as it extracts perceptual rather than linear brightness, for example `greyscale('#0000ff')` will return the same value as `greyscale('#00ff00')`, though they appear quite different in brightness to the human eye.
+因为颜色的饱和度不受色相值影响，所以输出的颜色会稍显暗淡 (dull or muddy)；如果使用[`luma`](#color-channel-luma)值可能会有更好的结果，因为它提取的是百分比亮度，而不是线性亮度。比如`greyscale('#0000ff')`与`greyscale('#00ff00')`会得出相同的结果，尽管对人眼来说，它们的亮度是不一样的。
 
-Parameters: `color`: A color object.
+参数： `@color`: 颜色对象(A color object)
 
-Returns: `color`
+返回值： `颜色(color)`
 
-Example: `greyscale(hsl(90, 90%, 50%))`
+例如： `greyscale(hsl(90, 90%, 50%))`
 
-Output: `#808080 // hsl(90, 0%, 50%)`
+输出： `#808080 // hsl(90, 0%, 50%)`
 
 ![Color 1](holder.js/100x40/#80f20d:#000000/text:80f20d) ➜ ![Color 2](holder.js/100x40/#808080:#000000/text:808080)
 
-Notice that the generated grey looks darker than the original green, even though its lightness value is the same.
+注意：即便它们的亮度值(lightness value)一样，但是生成的灰色看起来比原来的绿色更暗些。
 
-Compare with using `luma` (usage is different because `luma` returns a single value, not a color):
+与`luma`相比较(因为`luma`返回一个单独的值，而不是颜色，所以它们的用法不一样)：
 
 ```less
 @c: luma(hsl(90, 90%, 50%));
 color: rgb(@c, @c, @c);
 ```
 
-Output: `#cacaca`
+输出： `#cacaca`
 
 ![Color 1](holder.js/100x40/#80f20d:#000000/text:80f20d) ➜ ![Color 2](holder.js/100x40/#cacaca:#000000/text:cacaca)
 
-This time the grey's lightness looks about the same as the green, though its value is actually higher.
+实际上灰色的值跟高些，但是灰色的亮度值跟绿色的看起来大致上相同。
 
-### contrast
+### contrast(@background, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%])
 
-> Choose which of two colors provides the greatest contrast with another.
+> 选择两种颜色相比较，得出哪种颜色的对比度最大就倾向于对比度最大的颜色。
 
-This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the [contrast function in Compass for SASS](http://compass-style.org/reference/compass/utilities/color/contrast/). In accordance with [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef), colors are compared using their [luma](#color-channel-luma) value, not their lightness.
 
-The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can't use this function to select the *least* contrasting color by reversing the order.
+这个函数对比 @background 的 luma 值与 @threshold 参数的大小，如果大于输出 @darkcolor, 小于则输出 @lightcolor，便于选择相对于背景更容易阅读的颜色，同时提高了使用颜色的灵活性，与 [Compass 的 contrast() 函数](http://compass-style.org/reference/compass/utilities/color/contrast/) 工作方式相同。根据 [WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef) 应该对比颜色的 luma 值，而不是亮度值 (lightness)。
 
-Parameters:
 
-* `color`: A color object to compare against.
-* `dark`: optional - A designated dark color (defaults to black).
-* `light`: optional - A designated light color (defaults to white).
-* `threshold`: optional - A percentage 0-100% specifying where the transition from "dark" to "light" is (defaults to 43%, matching SASS). This is used to bias the contrast one way or another, for example to allow you to decide whether a 50% grey background should result in black or white text. You would generally set this lower for 'lighter' palettes, higher for 'darker' ones..
+`@light` 和 `@dark` 两个参数可以调换顺序。因为`contrast()`函数会自动计算它们的luma值和自动分配`@light`和`@dark`，这样你就不用通过颠倒两个参数的顺序才能选到最小对比度颜色(the *least* contrasting color)。
 
-Returns: `color`
+参数：
 
-Example:
+* `@color`: 需要对比的颜色对象 (A color object to compare against.)
+* `@dark`: 可选项 – 指定的黑色（默认 black）
+* `@light`: 可选项 – 指定的白色（默认 white）
+* `@threshold`: 可选项 – 百分比 0-100% 界定深色过渡到浅色的转变位置（默认 43%），这个数值决定了输出结果偏向于哪一方，比如判断 50% 的灰色背景应该显示白色还是黑色的文字。一般来说，如果本色方案偏浅，则应该设低一点，否则设高一点。
+
+返回值： `颜色(color)`
+
+例如：
 
 ```less
 contrast(#aaaaaa)
@@ -247,16 +251,17 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 40%);
 contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);
 ```
 
-Output:
+输出：
 
 ```
-#000000 // black
-#ffffff // white
+#000000 // 黑色
+#ffffff // 白色
 #dddddd
-#000000 // black
-#ffffff // white
+#000000 // 黑色
+#ffffff // 白色
 ```
-These examples use the calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it's possible to use the threshold to permit lower-contrast outcomes, as in the last example:
+
+这些例子是利用计算颜色的值作为背景色和前景色。正如你所见，即便可能使用阈值允许得出更低对比度的颜色，但是不可能白衬白结束，也不可能黑衬黑结束。如最后一个例子：
 
 ![Color 1](holder.js/100x40/#aaaaaa:#000000/text:000000)
 ![Color 1](holder.js/100x40/#222222:#ffffff/text:ffffff)

@@ -1,4 +1,4 @@
-This is a bash script that converts a folder full of PNGs to a `.less` file, designed to be included in a "main" `.less` file, referencing all images encoded as base64 data URIs, along with their sizes.
+data-URI是一个bash脚本，它的作用是把文件夹中所有的PNG图片放到一个LESS文件中，这么做的目的是为了在主LESS文件中引用这个包含全部图片base64编码以及尺寸的LESS文件。
 
 ```bash
 #!/bin/bash
@@ -16,9 +16,9 @@ done > "$TMP";
 mv "$TMP" "$DST"
 ```
 
-You may need to change paths/params to `mktemp`, `file`, `base64` and `gm` [GraphicsMagick] according to your setup.
+根据你的设置，可以修改`mktemp`,`file`,`base64`和`gm` [GraphicsMagick]的路径或参数。
 
-Say you have `foo.png` and `foo@2x.png` in your source folder, the script produces this result (base64 data cut to save space) :
+在源文件夹中会有2张由脚本生成的PNG图片，`foo.png`和`foo@2x.png`（base64编码能节省空间）：
 
 ```less
 @foo-img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAfCAYAAAA(...)";
@@ -27,10 +27,10 @@ Say you have `foo.png` and `foo@2x.png` in your source folder, the script produc
 @foo-size-2x: 58px 62px;
 ```
 
-This allows you to create a `.less` file like this:
+也可以像下面的例子一样创建LESS文件:
 
 ```less
-@import "gfx.less" //file produced by the script
+@import "gfx.less" //脚本生成的LESS文件
 
 .foo {
   background: url(@foo-img) no-repeat center center;
@@ -44,4 +44,4 @@ This allows you to create a `.less` file like this:
 }
 ```
 
-That speeds things a lot and keeps your code nice, clean, and readable. You can put a number of `.png` files in your source folder, and the final compilation of your `.less` file will only include the assets needed and drop the ones that are not used.
+data-URI能提高代码的加载速度，还能保持代码的美观，整洁和可读性。你可以在源文件夹中放若干张PNG图片，当LESS编译的时候，LESS文件只会引入需用到的PNG图片，不会引入不需要用到的PNG图片。

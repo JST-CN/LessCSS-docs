@@ -1,6 +1,6 @@
-> Referencing parent selectors with `&`
+> 使用`&`引用父选择器
 
-The `&` operator represents the parent selectors of a [nested rule](#features-overview-feature-nested-rules) and is most commonly used when applying a modifying class or pseudo-class to an existing selector:
+`&`运算符表示一个嵌套规则的父选择器，它在应用修改类或者应用伪类给现有选择器时最常用：
 
 ```less
 a {
@@ -11,7 +11,7 @@ a {
 }
 ```
 
-results in:
+结果为：
 
 ```css
 a {
@@ -23,9 +23,9 @@ a:hover {
 }
 ```
 
-Notice that without the `&`, the above example would result in `a :hover` rule (a descendant selector that matches hovered elements inside of `<a>` tags) and this is not what we typically would want with the nested `:hover`.
+注意，如果上面的示例没有使用`&`，那么它的结果就是`a :hover`（一个匹配`<a>`标签内的hovered元素的后代选择器），这通常并不是我么想要的嵌套的`:hover`的结果。
 
-The "parent selectors" operator has a variety of uses. Basically any time you need the selectors of the nested rules to be combined in other ways than the default. For example another typical use of the `&` is to produce repetitive class names:
+“父选择器”有各种各样的用法。基本上，任何时候你都需要以不同的方式来组合选择器嵌套的规则，而不是默认规则。比如，一个使用`&`的典型的场景就是生成重复的类名：
 
 ```less
 .button {
@@ -42,7 +42,7 @@ The "parent selectors" operator has a variety of uses. Basically any time you ne
 }
 ```
 
-output:
+输出：
 
 ```css
 .button-ok {
@@ -56,9 +56,9 @@ output:
 }
 ```
 
-### Multiple `&`
+### 多个 `&`
 
-`&` may appear more then once within a selector. This makes it possible to repeatedly refer to a parent selector without repeating its name.
+`&`可以在一个选择器中出现不止一次。这就使得它可以反复引用父选择器，而不是重复父选择器的类名。
 
 ```less
 .link {
@@ -80,7 +80,7 @@ output:
 }
 ```
 
-will output:
+这会输出：
 
 ```css
 .link + .link {
@@ -97,8 +97,7 @@ will output:
 }
 ```
 
-
-Note that `&` represents all parent selectors (not just the nearest ancestor) so the following example:
+注意，`&`代表所有的父选择器（而不只是最近的长辈），因此下面的例子：
 
 ```less
 .grand {
@@ -122,7 +121,7 @@ Note that `&` represents all parent selectors (not just the nearest ancestor) so
 }
 ```
 
-results in:
+结果为：
 
 ```css
 .grand .parent > .grand .parent {
@@ -141,10 +140,11 @@ results in:
 ```
 
 
-### Changing selector order
+### 改变选择器顺序
 
-It can be useful to prepend a selector to the inherited (parent) selectors.  This can be done by putting the `&` after current selector.
-For example, when using Modernizr, you might want to specify different rules based on supported features:
+要前置插入一个选择器给继承的(父)选择器时它是很有用的。用过将`&`放到当前选择器之后就可以做到这一点。
+
+比如，使用Modernizr时，你可能希望基于要支持的特性来指定不同的规则：
 
 ```less
 .header {
@@ -157,7 +157,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 }
 ```
 
-The selector `.no-borderradius &` will prepend `.no-borderradius` to its parent `.header .menu` to form the`.no-borderradius .header .menu` on output:
+选择器`.no-borderradius &`会前置插入`.no-borderradius`给它的父选择器`.header .menu`，最后变成`.no-borderradius .header .menu`形式输出：
 
 ```css
 .header .menu {
@@ -169,9 +169,10 @@ The selector `.no-borderradius &` will prepend `.no-borderradius` to its parent 
 ```
 
 
-### Combinatorial explosion
+### 组合使用(explosion->爆发?)
 
-`&` can also be used to generate every possible permutation of selectors in a comma separated list:
+`&`还可以用于生成一个逗号分割列表的所有可能的选择器排列：
+
 
 ```less
 p, a, ul, li {
@@ -181,8 +182,7 @@ border-top: 2px dotted #366;
   }
 }
 ```
-
-This expands to all possible (16) combinations of the specified elements:
+这个组合可以扩展出指定元素的所有（16种）可能的组合：
 
 ```css
 p,

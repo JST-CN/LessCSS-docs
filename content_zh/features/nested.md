@@ -1,12 +1,12 @@
-> Less allows you to use nesting as well as normal cascading CSS.
+> Less允许你使用嵌套以及标准的层叠CSS。
 
 ...
 
-### Nested media queries
+### 嵌套媒体查询
 
-Media queries can be nested in the same way as selectors, and output will create the appropriate rules within media queries.
+媒体查询可以如同选择器一样嵌套，它会创建输出合适的媒体查询规则。
 
-For example:
+比如：
 
 ```less
 .one {
@@ -19,7 +19,7 @@ For example:
 }
 ```
 
-Will output:
+这会输出：
 
 ```css
 @media (width: 400px) {
@@ -36,11 +36,11 @@ Will output:
 
 ...
 
-### `&` and mixins
+### `&` 和mixin
 
-The `&` combinator can also be used with mixins. In the case of mixins, `&` refers to the selector for the scope that is mixing in the other class.
+`&`连接符还可以用于mixins。在用于mixin的情况下，`&`引用的是它被混入的类所在作用域中的选择器。
 
-For example:
+比如：
 
 ```less
 .mixin {
@@ -55,7 +55,7 @@ For example:
 
 ```
 
-Will output
+输出：
 
 ```css
 .mixin:hover {
