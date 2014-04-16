@@ -1,36 +1,36 @@
 ---
-title: Developing Less
+标题： 开发 Less
 ---
 
-Thanks for thinking about contributing. Please read the [contributing instructions]({{ less.master }}CONTRIBUTING.md) carefully to avoid wasted work.
+感谢您考虑为此贡献。请先认真阅读[贡献说明]({{ less.master }}CONTRIBUTING.md)，以免造成浪费。
 
-## Install these tools
+## 安装这些工具
 
 * **node** - <http://nodejs.org/>
 * **phantomjs** - <http://phantomjs.org/download.html>
 
-make sure the paths are setup. If you start your favourite command line and type `node -v` you should see the node compiler. If you run `phantomjs -v` you should see the phantomjs version number.
+确保环境变量（paths）已经配置好。 当你打开你最喜欢的命令行，执行 `node -v` 命令，你会看到node编译器版本号，执行 `phantomjs -v` 命令，你会看到phantomjs的版本号。
 
-* clone your less.js repository locally
-* navigate to your local less.js repository and run `npm install` this installs less' npm dependencies.
-* If you haven't used grunt before, run `npm install grunt-cli -g` - this allows you to use the "grunt" command anywhere
+* 克隆你的 less.js 库到本地
+* 前往你本地的 less.js 库然后执行 `npm install` 命令，这将会安装 less 的相关资源文件。
+* 如果你之前没有用过grunt, 执行 `npm install grunt-cli -g`  命令，然后你就可以在各个地方（全局）执行“grunt”命令了。
 
-## Usage
+## 使用
 
-If you go to the root of the less repository you should be able to do `grunt test` - this should run all the tests. For the browser specific only, run `grunt browsertest` If you want to try out the current version of less against a file, from here do `node bin/lessc path/to/file.less`
+当你去到less库的根目录，你可以执行 `grunt test` 命令，这个操作将会执行所有的测试。 为特定的浏览器，执行 `grunt browsertest` 命令，如果你不想使用一个文件，而是想使用当前版本的less，请执行 `node bin/lessc path/to/file.less` 命令。
 
-To debug the browser tests, run `grunt browsertest-server` then go to http://localhost:8088/tmp/browser/ to see the test runner pages.
+在浏览器调试，执行 `grunt browsertest-server` 命令，然后前往 http://localhost:8088/tmp/browser/ 去看测试运行的页面。
 
-Optional: To get the current version of the less compiler do `npm -g install less` - npm is the node package manager and "-g" installs it to be available globally.
+可选: 想要获得最新的 less 编译器，请执行 `npm -g install less` 命令， npm 是node的包管理， "-g" 表示安装之后全局有效。
 
-You should now be able to do `lessc file.less` and if there is an appropriate file.less then it will be compiled and output to the stdout. You can then compare it to running localy (`node bin/lessc file.less`).
+现在你可以执行 `lessc file.less` 命令了，如果有一个相应的 file.less 文件，它将会被编译以及标准输出编译后的内容。 你可以拿它跟通过本地执行 (`node bin/lessc file.less`)后得到的文件进行对比下。
 
-Other grunt commands
+其他grunt命令
 
-* `grunt benchmark` - run our benchmark tests to get some numbers on performance
-* `grunt stable` to create a new release
-* `grunt readme` to generate a new readme.md in the root directory (after each release)
+* `grunt benchmark` - 执行基准测试去获得一些性能指数
+* `grunt stable` - 新建一个版本
+* `grunt readme` - 在路径根目录新建一个 readme.md 文件（每产生一个新版本之后）
 
-## Guide
+## 指南
 
-If you look at [http://www.gliffy.com/go/publish/4784259](http://www.gliffy.com/go/publish/4784259),  This is an overview diagram of how less works.
+你可以看看 [http://www.gliffy.com/go/publish/4784259](http://www.gliffy.com/go/publish/4784259)，  这是一个less工作原理概览图。
