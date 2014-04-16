@@ -1,7 +1,6 @@
-> "mix-in" properties from existing styles
+> 从现有的样式混合（mixin）属性
 
-You can mix-in class selectors and id selectors, e.g.
-
+你可以混合“类”选择器或者“id”选择器，例如：
 ```less
 .a, #b {
   color: red;
@@ -13,7 +12,7 @@ You can mix-in class selectors and id selectors, e.g.
   #b();
 }
 ```
-which results in:
+以上将得到:
 ```css
 .a, #b {
   color: red;
@@ -26,17 +25,16 @@ which results in:
 }
 ```
 
-Notice that when you call the mixin, the parenthesis are optional.
+*（小提示：当你调用混合集的时候，括号可加可不加）*
 
 ```less
-.a();   //these lines do the same thing
+.a();   //这两种调用方式效果是一样的
 .a;
 ```
 
-## Not outputting the mixin
+## 不输出混合集
 
-If you want to create a mixin but you do not want that mixin to be output, you can put parenthesis after it.
-
+如果你想要创建一个混合集，但是却不想让它输出到你的样式中，你可以在混合集的名字后面加上一个括号。
 ```less
 .my-mixin {
   color: black;
@@ -49,7 +47,7 @@ If you want to create a mixin but you do not want that mixin to be output, you c
   .my-other-mixin;
 }
 ```
-outputs
+结果为：
 
 ```css
 .my-mixin {
@@ -61,11 +59,11 @@ outputs
 }
 ```
 
-## Selectors in mixins
+## 带选择器的混合集
 
-Mixins can contain more than just properties, they can contain selectors to.
+混合集不仅可以包含各种属性，而且可以包括各种选择器。
 
-For example:
+例如：
 
 ```less
 .my-hover-mixin() {
@@ -78,7 +76,7 @@ button {
 }
 ```
 
-Outputs
+结果为：
 
 ```css
 button:hover {
@@ -86,9 +84,9 @@ button:hover {
 }
 ```
 
-## Namespaces
+## 命名空间
 
-If you want to mixin properties inside a more complicated selector, you can stack up multiple id's or classes.
+如果你想要将属性混合到比较复杂的选择器中，你可以通过嵌套多层id或者class。
 
 ```less
 #outer {
@@ -102,19 +100,19 @@ If you want to mixin properties inside a more complicated selector, you can stac
 }
 ```
 
-and again the `>` is optional
+同样 `>` 是可选的
 
 ```less
-// all do the same thing
+// 下面四种写法效果是一样的
 #outer > .inner;
 #outer > .inner();
 #outer.inner;
 #outer.inner();
 ```
 
-One use of this is known as namespacing. You can put your mixins under a id selector and this makes sure it won't conflict with another library.
+这种用法的效果相当于我们熟知的命名空间，你可以把混合集放到一个id选择器里面，这样可以确保它（这个混合集）不会跟其他的库冲突。
 
-Example:
+例如：
 
 ```less
 #my-library {
@@ -122,17 +120,17 @@ Example:
     color: black;
   }
 }
-// which can be used like this
+// 可以这样调用
 .class {
   #my-library > .my-mixin();
 }
 ```
 
-## The `!important` keyword
+## `!important` 关键字
 
-Use the `!important` keyword after mixin call to mark all properties inherited by it as `!important`:
+在调用的混合集后面追加 `!important` 关键字，可以使混合集里面的所有属性都继承 `!important`：
 
-Example:
+例如：
 
 ```less
 .foo (@bg: #f5f5f5, @color: #900) {
@@ -147,7 +145,7 @@ Example:
 }
 ```
 
-Results in:
+结果为:
 
 ```css
 .unimportant {
