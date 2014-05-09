@@ -54,7 +54,7 @@ title: 特性概览
 }
 ```
 
-类 `.bordered` 的属性现在就会同时呈现在 `#menu a` 和 `.post a` 中了（注意，同样可以将 `#ids` 作为 mixins）。
+类 `.bordered` 的属性现在就会同时呈现在 `#menu a` 和 `.post a` 中（注意，同样可以将 `#ids` 作为 mixins）。
 
 **Learn more**
 
