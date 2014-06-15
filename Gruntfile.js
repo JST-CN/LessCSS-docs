@@ -1,7 +1,7 @@
 /*
- * lesscss.org
- * https://github.com/less/less-docs
- * Copyright (c) 2013
+ * lesscss.org <https://github.com/less/less-docs>
+ *
+ * Copyright (c) 2014, Alexis Sellier, LESS Core Team, contributors.
  * Licensed under the MIT license.
  */
 
@@ -9,20 +9,19 @@
 
 module.exports = function(grunt) {
 
-
   // Project configuration.
   grunt.initConfig({
 
     // Project metadata
     pkg: grunt.file.readJSON('package.json'),
-    site: grunt.file.readYAML('_config.yml'),
+    site: grunt.file.readYAML('.assemblerc.yml'),
+    _less: grunt.file.readJSON('data/less.json'),
 
     jshint: {
-      options: {jshintrc: '.jshintrc'},
-      all: [
-        'Gruntfile.js',
-        'templates/helpers/*.js'
-      ]
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: ['Gruntfile.js', '<%= site.helpers %>/*.js']
     },
 
     // Pull down a JSON list of repos from the Less org, using
@@ -44,43 +43,45 @@ module.exports = function(grunt) {
         assets: '<%= site.dest %>/public',
 
         // Metadata
-        pkg: '<%= pkg %>',
-        site: '<%= site %>',
-        data: ['<%= site.data %>/*.{json,yml}', 'content_zh/**/*.json'],
-
-        // Extensions
-        plugins: '<%= site.plugins %>',
-        helpers: ['<%= site.helpers %>/*.js'],
-
-        // Helper options
-        compose: {cwd: 'content_zh'},
-        marked: {
-          process: true,
-          heading: '<%= site.markedtemplates %>/heading.tmpl',
-          // highlight.js options
-          prefix: 'lang-'
-        },
+        pkg: '<%= pkg %>',     // extend the context with `pkg`
+        site: '<%= site %>',   // extend the context with `site`
+        less: '<%= _less %>',  // extend the context with `less`
+        data: ['<%= site.data %>/*.{json,yml}', 'content/**/*.json'],
 
         // Templates
         partials: '<%= site.includes %>/*.hbs',
         layoutdir: '<%= site.layouts %>',
         layoutext: '<%= site.layoutext %>',
-        layout: '<%= site.layout %>'
+        layout: '<%= site.layout %>',
+
+        // Extensions
+        // mixins: ['<%= site.mixins %>/utils.js'],
+        helpers: ['<%= site.helpers %>/*.js'],
+        plugins: ['<%= site.plugins %>'],
+
+        // `compose` helper options
+        compose: {cwd: 'content'},
+
+        // markdown options
+        marked: {
+          process: true,
+          heading: '<%= site.snippets %>/heading.tmpl',
+
+          // highlight.js options
+          prefix: 'lang-'
+        }
       },
       site: {
         options: {
-          partials: ['content_zh/**/*.md'],
-          permalinks: {preset: 'pretty'}
+          permalinks: {preset: 'pretty'},
+          partials: ['content/**/*.md']
         },
         src: '<%= site.pages %>/*.hbs',
         dest: '<%= site.dest %>/'
       },
       feed: {
-        options: {
-          ext: '.xml',
-          layout: 'none'
-        },
-        src: '<%= site.pages %>/feed.xml',
+        options: {ext: '.xml', layout: 'none'},
+        src: '<%= site.snippets %>/feed.xml',
         dest: '<%= site.dest %>/'
       }
     },
@@ -88,14 +89,20 @@ module.exports = function(grunt) {
     prettify: {
       site: {
         files: [
-          {expand: true, cwd: '<%= site.dest %>', src: '*.html', dest: '<%= site.dest %>/', ext: '.html'}
+          {
+            expand: true,
+            cwd: '<%= site.dest %>',
+            src: '*.html',
+            dest: '<%= site.dest %>/',
+            ext: '.html'
+          }
         ]
       }
     },
 
     connect: {
       options: {
-        port: 3000,
+        port: 9000,
         livereload: 35729,
         hostname: 'localhost'
       },
@@ -122,11 +129,22 @@ module.exports = function(grunt) {
     copy: {
       assets: {
         files: [
-          {expand: true, cwd: '<%= site.assets %>/public', src: ['**'], dest: '<%= site.dest %>/public/'},
-          {expand: true, cwd: '<%= site.assets %>/root', src: ['*'], dest: '<%= site.dest %>/', rename: function(dest, src) {
+          {
+            expand: true,
+            cwd: '<%= site.assets %>/public',
+            src: ['**'],
+            dest: '<%= site.dest %>/public/'
+          },
+          {
+            expand: true,
+            cwd: '<%= site.assets %>/root',
+            src: ['*'],
+            dest: '<%= site.dest %>/',
+            rename: function (dest, src) {
             dest = dest + src.replace(/^_/, '');
             return dest;
-          }}
+            }
+          }
         ]
       }
     },
@@ -136,18 +154,26 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      options: {livereload: true},
-      site: {
-        files: [
-          '<%= site.helpers %>',
-          '<%= site.styles %>/**/*.less',
-          '<%= site.templates %>/**/*.hbs',
-          '<%= site.content %>/**/*.md',
-          '<%= site.content %>/_config.yml',
-          '<%= site.data %>/*.yml',
-          '<%= site.data %>/*.json'
-        ],
-        tasks: ['clean', 'copy', 'less:site', 'assemble']
+      options: {livereload: true },
+      styles: {
+        files: ['<%= site.styles %>/**/*.less'],
+        tasks: ['less:site']
+      },
+      content: {
+        files: ['<%= site.content %>/**/*.md'],
+        tasks: ['assemble:site']
+      },
+      templates: {
+        files: ['<%= site.templates %>/**/*.hbs'],
+        tasks: ['assemble:site']
+      },
+      data: {
+        files: ['<%= site.data %>/*.{json,yml}'],
+        tasks: ['assemble:site']
+      },
+      assets: {
+        files: ['<%= site.assets %>/**/*.*'],
+        tasks: ['clean', 'copy']
       }
     }
   });
@@ -165,8 +191,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sync-pkg');
 
   grunt.registerTask('update', ['repos', 'default']);
-  grunt.registerTask('design', ['clean', 'copy', 'less:site', 'assemble:site', 'connect', 'watch']);
+  grunt.registerTask('design', [
+    'clean',
+    'copy',
+    'less:site',
+    'assemble:site',
+    'connect',
+    'watch'
+  ]);
 
   // Default tasks to be run.
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'less:site', 'assemble:site']);
+  grunt.registerTask('default', [
+    'jshint',
+    'clean',
+    'copy',
+    'less:site',
+    'assemble:site'
+  ]);
 };

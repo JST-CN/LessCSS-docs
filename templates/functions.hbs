@@ -14,14 +14,30 @@ lead: Function reference
   <p class="lead">Built-in functions supported by Less.</p>
 </div>
 
+
+
 {{#each functions.published}}
   <!-- {{title}} -->
   <div class="docs-section">
     <div class="page-header">
       <h1 id="{{@key}}">{{title}}</h1>
     </div>
+
+    {{#each (expand files)}}
     <div class="section-content">
-      {{md @key}}
+      {{> popover-source-link . }}
+
+      <!-- {{filename .}} -->
+      {{success '>> Inlining:' (filename .)}} {{! log a success message! }}
+
+
+{{#markdown}}
+{{inline .}}
+{{/markdown}}
+
+      <br>
     </div>
+    {{/each}}
+
   </div>
 {{/each}}

@@ -11,10 +11,10 @@ You may want to define a mixin that will abstract out either wrapping a piece of
 }
 
 header {
-  color: blue;
+  background-color: blue;
 
   .desktop-and-old-ie({
-    background: red;
+    background-color: red;
   });
 }
 ```
@@ -23,15 +23,15 @@ Here the `desktop-and-old-ie` mixin defines the media query and root class so th
 
 ```css
 header {
-  background: blue;
+  background-color: blue;
 }
 @media screen and (min-width: 1200) {
   header {
-    background: red;
+    background-color: red;
   }
 }
 html.lt-ie9 header {
-  background: red;
+  background-color: red;
 }
 ```
 
@@ -45,7 +45,7 @@ A ruleset can be now assigned to a variable or passed in to a mixin and can cont
   };
 ```
 
-You can even take advantage of media query bubbling, for instance
+You can even take advantage of [media query bubbling](#media-query-bubbling-and-nested-media-queries), for instance
 
 ```less
 @my-ruleset: {
@@ -63,14 +63,9 @@ You can even take advantage of media query bubbling, for instance
 which will output
 
 ```css
-@my-ruleset: {
-    .my-selector {
-      @media tv {
-        background-color: black;
-      }
-    }
-  };
-@media (orientation:portrait) {
-    @my-ruleset();
+@media (orientation: portrait) and tv {
+  .my-selector {
+    background-color: black;
+  }
 }
 ```

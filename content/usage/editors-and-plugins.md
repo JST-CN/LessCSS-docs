@@ -15,6 +15,7 @@ Also see: [GUIs for Less.js](#guis-for-less)
 * [Brackets][brackets] (built-in syntax highlighting, [several extensions][brackets-ext] for compilation)
 * [CodeLobster][codelobster] (built-in [syntax highlighting][codelobster-sh])
 * [KineticWing IDE][kineticwing] (built-in [support][kineticwing-less])
+* [nodeMirror](https://www.npmjs.org/package/node-mirror) (built-in support, built-in HTML/CSS/Less preview)
 
 ### [Sublime Text 2 & 3](http://sublimetext.com/)
 
@@ -25,7 +26,8 @@ Also see: [GUIs for Less.js](#guis-for-less)
 
 ### [Eclipse](http://www.eclipse.org/)
 
-* [Plugin](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html) by Vincent Simonet
+* [Eclipse Less Plugin](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html) by Vincent Simonet
+* [Transpiler Plugin](https://github.com/gossi/eclipse-transpiler-plugin) by Thomas Gossmann
 
 ### [Visual Studio](http://www.visualstudio.com/)
 
