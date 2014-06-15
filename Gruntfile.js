@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         pkg: '<%= pkg %>',     // extend the context with `pkg`
         site: '<%= site %>',   // extend the context with `site`
         less: '<%= _less %>',  // extend the context with `less`
-        data: ['<%= site.data %>/*.{json,yml}', 'content/**/*.json'],
+        data: ['<%= site.data %>/*.{json,yml}', 'content_zh/**/*.json'],
 
         // Templates
         partials: '<%= site.includes %>/*.hbs',
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         plugins: ['<%= site.plugins %>'],
 
         // `compose` helper options
-        compose: {cwd: 'content'},
+        compose: {cwd: 'content_zh'},
 
         // markdown options
         marked: {
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
       site: {
         options: {
           permalinks: {preset: 'pretty'},
-          partials: ['content/**/*.md']
+          partials: ['content_zh/**/*.md']
         },
         src: '<%= site.pages %>/*.hbs',
         dest: '<%= site.dest %>/'
