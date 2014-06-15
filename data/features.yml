@@ -7,14 +7,14 @@
 
 # The base path for features docs. Makes this easier
 # to update without having to change each path.
-base: content/features
+base: content_zh/features
 
 # Published documenation
 published:
   features-overview:
     title: Overview
     lead:  Simple overview of the basic features
-    files: content/features-overview.md
+    files: content_zh/features-overview.md
 
   variables:
     title: Variables

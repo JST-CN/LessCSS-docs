@@ -116,6 +116,44 @@ Less 为我们提供了嵌套的能力, 而不是合并在样式表中.假设我
 
 * [Parent Selectors](#parent-selectors-feature)
 
+### Media query bubbling and nested media queries 
+
+Media queries can be nested in the same way as selectors. Selector are copied into the body of the media query:
+
+```less
+.screencolor{
+  @media screen {
+    color: green;
+    @media (min-width:768px) {
+    color: red;
+    }
+    }
+  @media tv {
+    color: black;
+  }
+}
+
+```
+outputs:
+
+```css
+@media screen {
+  .screencolor {
+    color: green;
+  }
+}
+@media screen and (min-width: 768px) {
+  .screencolor {
+    color: red;
+  }
+}
+@media tv {
+  .screencolor {
+    color: black;
+  }
+}
+```
+
 ### 运算(Operations)
 
 任何数值，颜色和变量都可以进行运算。这里有一对示例：
@@ -159,7 +197,7 @@ Less 提供了许多用于转换颜色，处理字符串和进行算术运算的
 
 (不要将它与 [CSS `@namespace`](http://www.w3.org/TR/css3-namespace/) or [namespace 选择器](http://www.w3.org/TR/css3-selectors/#typenmsp)混为一谈)。
 
-有时候，出于组织的目的，或者为了提供一些封装，你会希望将你的变量和 mixins 组合在一起。在 Less 中做到这一点非常直观，假设你想在 `#bundle` 下捆绑一些 mixins 和变量，以便稍候复用或者分发：
+有时候，出于组织的目的，或者为了提供一些封装，你会希望将你的mixins 组合在一起。在 Less 中做到这一点非常直观，假设你想在 `#bundle` 下捆绑一些 mixins 和变量，以便稍候复用或者分发：
 
 ```less
 #bundle {
@@ -185,6 +223,7 @@ Less 提供了许多用于转换颜色，处理字符串和进行算术运算的
 }
 ```
 
+Note that variables declared within a namespace will be scoped to that namespace only and will not be available outside of the scope via the same syntax that you would use to reference a mixin (`#Namespace > .mixin-name`). So, for example, you can't do the following: (`#Namespace > @this-will-not-work`).
 
 ### 作用域(Scope)
 

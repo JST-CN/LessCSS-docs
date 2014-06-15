@@ -15,6 +15,8 @@ title: 编辑器和插件
 * [Brackets][brackets] (内置支持 语法高亮, [一些编译扩展][brackets-ext])
 * [CodeLobster][codelobster] (内置支持 [语法高亮][codelobster-sh])
 * [KineticWing IDE][kineticwing] (内置 [支持][kineticwing-less])
+* [nodeMirror](https://www.npmjs.org/package/node-mirror) (built-in support, built-in HTML/CSS/Less preview)
+
 
 ### [Sublime Text 2 & 3](http://sublimetext.com/)
 
@@ -25,7 +27,8 @@ title: 编辑器和插件
 
 ### [Eclipse](http://www.eclipse.org/)
 
-* 由 Vincent Simonet 提供的[插件](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html)
+* [Eclipse Less Plugin](http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html) by Vincent Simonet
+* [Transpiler Plugin](https://github.com/gossi/eclipse-transpiler-plugin) by Thomas Gossmann
 
 ### [Visual Studio](http://www.visualstudio.com/)
 

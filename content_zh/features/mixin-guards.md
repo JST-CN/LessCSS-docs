@@ -72,6 +72,28 @@ Guards可以使用逗号`,`分割，如果guards求值都为`true`，它就被�
 .max (@a; @b) when (@a < @b) { width: @b }
 ```
 
+### Guard logical operators
+
+You can use logical operators with guards. The syntax is based on CSS media queries.
+
+Use the `and` keyword to combine guards:
+
+```less
+.mixin (@a) when (isnumber(@a)) and (@a > 0) { ... }
+```
+
+You can emulate the *or* operator by separating guards with a comma `,`. If any of the guards evaluate to true, it's considered a match:
+
+```less
+.mixin (@a) when (@a > 10), (@a < -10) { ... }
+```
+
+Use the `not` keyword to negate conditions:
+
+```less
+.mixin (@b) when not (@b > 0) { ... }
+```
+
 ### 类型检查函数
 
 最后，如果你想基于值类型匹配mixins，那么你可以使用`is`函数：
@@ -103,15 +125,4 @@ _(**FIXME**)_ 此外，`default`函数可以用于让一个mixin匹配依赖于�
 ```less
 .mixin (@a) when (@a > 0) { ...  }
 .mixin (@a) when (default()) { ... } // matches only if first mixin does not, i.e. when @a <= 0
-```
-最后一项要点，在一个guard内你可以使用`and`关键字提供额外的条件：
-
-```less
-.mixin (@a) when (isnumber(@a)) and (@a > 0) { ... }
-```
-
-最后，**`not`**关键字用于否定条件：
-
-```less
-.mixin (@b) when not (@b > 0) { ... }
 ```

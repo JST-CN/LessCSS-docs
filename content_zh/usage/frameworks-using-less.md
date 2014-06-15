@@ -5,8 +5,10 @@ notes: Entreaty for contributors. Please filter out all purely advertising and n
 ## UI/Theme Frameworks and Components
 | | |
 |-|-|
+| [1pxdeep](http://rriepe.github.io/1pxdeep/) | Brings designing by relative visual weight, or designing with color schemes, to Bootstrap |
 | [Bootflat](http://www.flathemes.com/) | Open source Flat UI KIT based on Bootstrap |
 | [Bootstrap](http://getbootstrap.com/) | Front-end framework for developing responsive, mobile first projects on the web |
+| [Bootstrap a11y theme](https://github.com/bassjobsen/bootstrap-a11y-theme) | Makes web accessibility easier for Bootstrap developers |
 | [Bootswatch](http://bootswatch.com/) | Collection of free themes for Bootstrap |
 | [Cardinal](http://cardinalcss.com/) | Small "mobile first" CSS framework for front-end developers who build responsive web applications |
 | [CSSHórus](http://csshor.us/) | Library for development of responsive and mobile websites |
@@ -27,6 +29,7 @@ notes: Entreaty for contributors. Please filter out all purely advertising and n
 |-|-|
 | [Fluidable](http://fluidable.com/) | |
 | [Golden Grid System](http://goldengridsystem.com/) | |
+| [LESS Zen Grid](https://github.com/bassjobsen/LESS-Zen-Grid) | |
 | [Order.less](https://github.com/chromice/order.less) | |
 | [responsibly](https://github.com/BuschFunker/responsibly) | |
 | [Responsive Boilerplate](http://responsiveboilerplate.com/) | |
@@ -41,13 +44,16 @@ notes: Entreaty for contributors. Please filter out all purely advertising and n
 | [CssEffects](http://adodson.com/css-effects/) | Collection of CSS style effects |
 | [Cssowl](http://cssowl.owl-stars.com/) | Mixin library |
 | [cube.less](https://github.com/sparanoid/cube.less) | Animated 3D cube using only CSS |
+| [est](https://github.com/ecomfe/est/) | Mixin library |
 | [Hexagon](http://db0company.github.io/css-hexagon/) | Generate CSS hexagons with custom size and color |
 | [LESS Elements](http://lesselements.com/) | Set of mixins |
 | [LESS Hat](http://lesshat.com/) | Mixins library |
 | [LESS-bidi](https://github.com/danielkatz/less-bidi) | Set of mixins for creating bi-directional styling |
 | [media-query-to-type](https://github.com/himedlooff/media-query-to-type) | Media Queries to Media Types with Less |
 | [More-Colors.less](http://jasonrobb.github.io/More-Colors.less/) | Variables for easier color manipulation while you design in the browser |
+| [more-less](https://github.com/roelvanhintum/More-Less) | Mixin lib supporting LESS 1.7 |
 | [More.less](https://github.com/weinitz/More.less) | Mixins, animations, shapes and more |
+| [more-or-less](https://github.com/pixelass/more-or-less) | for-loops and other functions + css3 mixins |
 | [Oban](http://oban.io/) | Collection of mixins |
 | [Preboot](http://getpreboot.com/) | Collection of variables and mixins. The precursor to Bootstrap |
 | [Shape.LESS](https://github.com/fahad19/shape.less) | Collection of mixins for various shapes |

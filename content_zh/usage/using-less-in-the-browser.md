@@ -55,16 +55,16 @@ less.modifyVars({
 <script src="less.js"></script>
 ```
 
-### less对象参数说明
+## less对象参数说明
 
-#### async
+### async
 类型： `布尔值（Boolean）`
 
 默认： `false`
 
 async的参数是用来判断是否异步导入文件。
 
-#### dumpLineNumbers
+### dumpLineNumbers
 类型： `字符串（String）`
 
 参数： `comments`|`mediaQuery`|`all`
@@ -77,7 +77,7 @@ comments参数用于输出用户可以理解的内容，而mediaQuery使用Firef
 
 之后我们希望comments能被sourcemaps替代。
 
-#### env
+### env
 类型： `字符串（String）`
 
 默认： 取决于页面的URL
@@ -93,7 +93,7 @@ comments参数用于输出用户可以理解的内容，而mediaQuery使用Firef
 less = { env: 'production' };
 ```
 
-#### errorReporting
+### errorReporting
 类型： `字符串（String）`
 
 参数： `html`|`console`|`function`
@@ -102,14 +102,14 @@ less = { env: 'production' };
 
 在LESS编译失败时候，errorReporting会设置错误报告的方法。
 
-#### fileAsync
+### fileAsync
 类型： `布尔值（Boolean）`
 
 默认： `false`
 
 使用文件协议访问页面时异步加载导入的文件。
 
-#### functions
+### functions
 类型： `对象（object）`
 
 在functions这个对象中，key作为函数的名字。
@@ -128,7 +128,7 @@ functions可以像内置的LESS函数一样使用。
 }
 ```
 
-#### logLevel
+### logLevel
 类型： `数字（Number）`
 
 默认： 2
@@ -141,28 +141,47 @@ javascript控制台日志量（错误等级）。注意：在production环境下
 0 - 空（Nothing）
 ```
 
-#### poll
+### poll
 类型： `整型（Integer）`
 
 默认： `1000`
 
 在监视模式下，每两次请求之间的时间间隔（ms）。
 
-#### relativeUrls
+### relativeUrls
 类型： `布尔型（Boolean）`
 
 默认： `false`
 
 是否调整相对路径。如果为false，则url已经是相对于入口的LESS文件。
 
-#### globalVars
+### globalVars
+
 类型： `对象（Object）`
 
 默认： `undefined`
 
-被注入代码的全局变量列表。对象的主键是变量名，值是变量的值。包括在停止注入的时候，字符串的变量类型必须明确。
+Programmatic version of [Global Variable](#command-line-usage-global-variable).
+List of global variables to be injected into the code. Keys of the object are variables names, values are variables values. Variables of "string" type must explicitly include quotes if needed.
 
-#### rootpath
+E.g.
+
+```js
+less.globalVars = { myvar: "#ddffee", mystr: "\"quoted\"" };
+```
+
+### modifyVars
+
+Type: `Object`
+
+Default: `undefined`
+
+Programmatic version of [Modify Variable](#command-line-usage-modify-variable).
+
+Same format as [globalVars](#using-less-in-the-browser-globalvars).
+
+### rootpath
+
 类型： `字符串（String）`
 
 默认： `false`

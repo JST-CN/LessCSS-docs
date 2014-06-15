@@ -34,3 +34,8 @@
 ## 指南
 
 你可以看看 [http://www.gliffy.com/go/publish/4784259](http://www.gliffy.com/go/publish/4784259)，  这是一个less工作原理概览图。
+
+
+## Books
+
+* [Less Web Development Essentials](http://www.packtpub.com/less-web-development-essentials/book), by Bass Jobsen, Foreword by Alexis Sellier

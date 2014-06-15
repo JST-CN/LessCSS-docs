@@ -134,10 +134,24 @@
 
 使用在[WCAG 2.0](http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef)中定义的**SMPTE C / Rec. 709**  coefficients。 这个计算公式也用在 contrast() 函数中。
 
+Before v1.7.0 the luma was calculated without gamma correction, use the luminance function to calculate these "old" values.
+
 参数： `@color` - 颜色对象(a color object)
 
 返回值： `百分比` 0-100%
 
 例如： `luma(rgb(100, 200, 30))`
+
+Output: `44%`
+
+### luminance
+
+> Calculates the value of the luma without gamma correction (this function was named `luma` before v1.7.0)
+
+Parameters: `color` - a color object.
+
+Returns: `percentage` 0-100%
+
+Example: `luminance(rgb(100, 200, 30))`
 
 输出： `65%`

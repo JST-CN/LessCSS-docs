@@ -2,7 +2,7 @@
 标题：服务器端使用
 ---
 
-> Less可以通过npm在命令行上使用，作为一个脚本文件浏览器或用于广泛的第三方工具下载。有关更多详细信息， 参见[用法]({{rel 'usage'}}) 部分。
+> Less可以通过npm在命令行上使用，作为一个脚本文件浏览器或用于广泛的第三方工具下载。有关更多详细信息， 参见[用法]({{resolve 'usage'}}) 部分。
 
 ## 安装
 
@@ -81,13 +81,9 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 });
 ```
 
-## Grunt
-
-Less还集成了流行的构建框架grunt,使用[grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)插件。
-
 ## 第三方工具
 
-有关其他工具详细信息,参见[用法]({{rel 'usage'}}) 部分。
+有关其他工具详细信息,参见[用法]({{resolve 'usage'}}) 部分。
 
 # 在浏览器中使用LESSCSS
 
@@ -132,3 +128,6 @@ Less还集成了流行的构建框架grunt,使用[grunt-contrib-less](https://gi
 </script>
 <script src="less.js"></script>
 ```
+
+Learn more about [Browser Options](usage/#using-less-in-the-browser-client-side-options)
+

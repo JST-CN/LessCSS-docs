@@ -180,9 +180,9 @@ content: "I am fnord.";
 
 ```less
 @var: 0;
-.class1 {
+.class {
   @var: 1;
-  .class {
+  .brass {
     @var: 2;
     three: @var;
     @var: 3;
@@ -193,12 +193,13 @@ content: "I am fnord.";
 会编译为：
 
 ```css
-.class1 .class {
-  three: 3;
-}
 .class {
   one: 1;
 }
+.class .brass {
+  three: 3;
+}
+
 ```
 
 ## 默认变量
