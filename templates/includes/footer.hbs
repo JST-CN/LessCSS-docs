@@ -1,23 +1,24 @@
 <footer class="footer" role="contentinfo">
   <div class="container">
     {{> social-buttons }}
-    <p>Less.js and these docs are maintained by <a href="{{rel 'about'}}/#team">the core less team</a>.</p>
-    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Less.js 及其英文文档由<a href="{{rel 'about'}}/#team">Less 核心开发小组</a>维护.</p>
+      <p>Less.js 中文文档由<a href="https://github.com/JST-CN">JST-CN 开发小组</a>维护.</p>
+    <p>文档源代码使用 <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT 许可证</a>, 文档使用 <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0 许可证</a>.</p>
     <ul class="footer-links">
-      <li>Currently v{{ less.version }}</li>
+      <li>当前版本 v{{ less.version }}</li>
       {{#is links.blog true}}
       <li class="muted">&middot;</li>
-      <li><a href="{{ site.blog }}">Blog</a></li>
+      <li><a href="{{ site.blog }}">博客</a></li>
       {{/is}}
       <li class="muted">&middot;</li>
-      <li><a href="{{ less.issues }}">Less.js Issues</a></li>
+      <li><a href="{{ less.issues }}">Less.js 问题</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="{{ site.issues }}">Less Docs Issues</a></li>
+      <li><a href="{{ site.issues }}">Less 文档问题</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="{{ less.master }}/CHANGELOG.md">Changelog</a></li>
+      <li><a href="{{ less.master }}/CHANGELOG.md">更新日志</a></li>
       {{#is links.releases true}}
       <li class="muted">&middot;</li>
-      <li><a href="{{ less.master }}/dist/">Releases</a>Blog</a></li>
+      <li><a href="{{ less.master }}/dist/">发布</a>博客</a></li>
       {{/is}}
     </ul>
   </div>

@@ -85,7 +85,7 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 
 有关其他工具详细信息,参见[用法]({{resolve 'usage'}}) 部分。
 
-# 在浏览器中使用LESSCSS
+# 在浏览器中使用
 
 > 在浏览器中使用less.js开发是很好的，但不推荐用于生产环境中。
 
@@ -129,5 +129,5 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 <script src="less.js"></script>
 ```
 
-Learn more about [Browser Options](usage/#using-less-in-the-browser-client-side-options)
+了解更多关于 [浏览器选项](usage/#using-less-in-the-browser-client-side-options)
 
