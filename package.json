@@ -54,7 +54,7 @@
     "grunt-prettify": "~0.3.4",
     "grunt-repos": "~0.1.2",
     "grunt-sync-pkg": "~0.1.2",
-    "handlebars": "^2.0.0-alpha.4",
+    "handlebars": "^4.5.1",
     "handlebars-helper-datetime": "~0.1.0",
     "handlebars-helper-feed": "^0.1.1",
     "handlebars-helper-slugify": "~0.2.0",
